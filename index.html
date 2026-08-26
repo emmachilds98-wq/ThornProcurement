@@ -297,7 +297,7 @@
   img,svg,video{max-width:100%;height:auto}
   .phone-bar{display:none;position:sticky;top:0;z-index:30;align-items:center;gap:8px;min-height:54px;padding:7px max(14px,env(safe-area-inset-right)) 7px max(14px,env(safe-area-inset-left));background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 1px 10px rgba(0,0,0,.06)}
   .phone-bar a,.phone-bar .phone-brand{margin:0 auto 0 0;color:var(--accent-ink);font-weight:700;text-decoration:none;font-size:14px}
-  .phone-action,.appearance-close,.palette-swatch,.appearance-reset,.appearance-switch{appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:10px;min-height:40px;padding:8px 11px;font:600 13px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
+  .phone-action,.appearance-close,.palette-swatch,.appearance-reset,.appearance-switch,.appearance-refresh{appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:10px;min-height:40px;padding:8px 11px;font:600 13px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
   .phone-icon{width:40px;padding:0;font-size:18px;line-height:1;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
   .phone-action:active,.bb-item:active,.palette-swatch:active{transform:scale(.97)}
   .bottom-appbar{display:none;position:fixed;z-index:35;left:0;right:0;bottom:0;gap:2px;padding:6px max(4px,env(safe-area-inset-right)) calc(4px + env(safe-area-inset-bottom)) max(4px,env(safe-area-inset-left));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(0,0,0,.08)}
@@ -313,7 +313,10 @@
   .appearance-close{position:absolute;right:14px;top:13px;font-size:18px;min-width:40px}
   .appearance-label{display:block;margin:18px 0 8px;font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
   .palette-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.palette-swatch{position:relative;aspect-ratio:1;padding:0;min-height:44px;border:2px solid var(--line-strong)}.palette-swatch[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}.palette-swatch[aria-pressed="true"]::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:18px;text-shadow:0 1px 2px #000}
-  .appearance-choice{margin:10px 0 0!important}.appearance-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid var(--line)}.appearance-row>div{flex:1 1 auto;min-width:0}.appearance-row strong{font-size:15px}.appearance-row small{display:block;color:var(--muted);margin-top:3px}.appearance-switch{position:relative;flex:0 0 auto;width:54px;height:32px;min-height:32px;padding:0;border-radius:999px;background:var(--line-strong);transition:background .16s}.appearance-switch::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .16s}.appearance-switch[aria-checked="true"]{background:var(--accent)}.appearance-switch[aria-checked="true"]::after{transform:translateX(22px)}.appearance-reset{width:100%;margin-top:16px}.appearance-sheet input{font-size:16px}
+  .appearance-choice{margin:10px 0 0!important}.appearance-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid var(--line)}.appearance-row>div{flex:1 1 auto;min-width:0}.appearance-row strong{font-size:15px}.appearance-row small{display:block;color:var(--muted);margin-top:3px}.appearance-switch{position:relative;flex:0 0 auto;width:54px;height:32px;min-height:32px;padding:0;border-radius:999px;background:var(--line-strong);transition:background .16s}.appearance-switch::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .16s}.appearance-switch[aria-checked="true"]{background:var(--accent)}.appearance-switch[aria-checked="true"]::after{transform:translateX(22px)}.appearance-reset{width:100%;margin-top:16px}.appearance-sheet input{font-size:16px}.appearance-refresh{flex:0 0 auto;white-space:nowrap}
+.update-toast{position:fixed;left:50%;bottom:24px;z-index:70;transform:translate(-50%,12px);opacity:0;visibility:hidden;background:var(--ink);color:var(--paper);font:600 13.5px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:11px 18px;border-radius:999px;box-shadow:var(--shadow);transition:opacity .22s ease,transform .22s ease,visibility .22s;pointer-events:none;max-width:calc(100vw - 32px);text-align:center}
+.update-toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.update-toast{transition:none}}
   .today-sheet{position:fixed;left:0;right:0;bottom:0;z-index:51;max-height:min(82vh,720px);overflow:auto;-webkit-overflow-scrolling:touch;padding:18px max(18px,env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));border:1px solid var(--line-strong);border-bottom:0;border-radius:18px 18px 0 0;background:var(--surface);box-shadow:0 -8px 30px rgba(0,0,0,.2);transform:translateY(105%);transition:transform .22s ease}.today-sheet.open{transform:translateY(0)}.today-sheet h2{font-size:23px;margin:0 40px 6px 0}.today-sheet p{font-size:14px;color:var(--ink-soft)}.today-sheet .quick-links{display:grid;gap:8px;margin-top:14px}.today-sheet .quick-links a{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);color:var(--ink);text-decoration:none;font-weight:650}.today-sheet .quick-links small{display:block;margin-top:3px;color:var(--muted);font-weight:400}.daily-desk{max-width:820px;margin:0 auto 10px;padding:0 24px}.daily-card{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:16px 18px;background:var(--surface);box-shadow:var(--shadow)}.daily-card h2{font:600 20px/1.2 Georgia,"Iowan Old Style",serif;margin:0 0 5px}.daily-card p{font-size:14.5px;color:var(--ink-soft);margin-bottom:12px}.daily-checks{display:grid;grid-template-columns:1fr 1fr;gap:7px 18px}.daily-checks label{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;line-height:1.35;cursor:pointer}.daily-checks input{appearance:none;width:21px;height:21px;flex:0 0 21px;margin:0;border:1.5px solid var(--line-strong);border-radius:5px;background:var(--surface)}.daily-checks input:checked{background:var(--accent);border-color:var(--accent)}.daily-checks input:checked::after{content:"✓";display:block;color:#fff;text-align:center;line-height:18px;font-size:14px}.daily-reset{border:0;background:none;padding:0;color:var(--accent);font:600 13px/1.2 inherit;text-decoration:underline;cursor:pointer}.today-sheet .sheet-escalate{display:block;margin-top:14px;padding:12px 14px;border:1px solid var(--accent);border-radius:10px;background:var(--accent-soft);color:var(--accent-ink);text-decoration:none;font-weight:650}.today-sheet .sheet-escalate small{display:block;margin-top:3px;color:var(--ink-soft);font-weight:400}.sheet-close{position:absolute;right:14px;top:13px;background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;min-width:40px;min-height:40px;color:var(--ink);font-size:18px;cursor:pointer}
   :root[data-contrast="high"]{--paper:#fff;--surface:#fff;--surface-2:#f2f2f2;--ink:#111;--ink-soft:#292929;--muted:#484848;--line:#b8b8b8;--line-strong:#777;--accent:#064D63;--accent-ink:#003747;--accent-soft:#E0F1F5;--amber:#6B3E00;--amber-soft:#FFF0D6;--red:#8B1A1A;--red-soft:#F9E1E1;--info:#064D63;--info-soft:#E0F1F5}
   :root[data-theme="dark"][data-contrast="high"]{--paper:#111;--surface:#1c1c1c;--surface-2:#1c1c1c;--ink:#fff;--ink-soft:#e8e8e8;--muted:#d0d0d0;--line:#686868;--line-strong:#9a9a9a;--accent:#8DE9FF;--accent-ink:#D2F7FF;--accent-soft:#123942;--amber:#FFD079;--amber-soft:#382A11;--red:#FFB1A7;--red-soft:#3A1A18;--info:#8DE9FF;--info-soft:#123942}
@@ -811,6 +814,9 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
   }
   #siteSearchInput::placeholder{color:var(--muted)}
   .search-hint{margin:9px 2px 4px;font-size:12.5px;color:var(--muted)}
+  .search-suggest{display:flex;flex-wrap:wrap;gap:7px;margin:4px 2px 10px}
+  .search-suggest button{appearance:none;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--ink-soft);border-radius:999px;padding:6px 12px;font:600 12.5px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
+  .search-suggest button:hover{border-color:var(--accent);color:var(--accent-ink)}
   .search-results{overflow:auto;-webkit-overflow-scrolling:touch;margin:0 -6px;padding:0 6px 8px;list-style:none}
   .search-results li{margin:0}
   .search-results a{
@@ -4956,6 +4962,14 @@ Thanks, [You]</p>
     <button class="phone-action" id="searchClose" type="button" aria-label="Close search">Close</button>
   </div>
   <p class="search-hint" id="searchHint" aria-live="polite">Searches every part, sub-section, template and glossary term.</p>
+  <div class="search-suggest" id="searchSuggest" aria-label="Suggested searches">
+    <button type="button" data-suggest="cis">CIS</button>
+    <button type="button" data-suggest="retention">Retention</button>
+    <button type="button" data-suggest="insurance">Insurance</button>
+    <button type="button" data-suggest="emergency">Emergency purchase</button>
+    <button type="button" data-suggest="invoice no po">Invoice, no PO</button>
+    <button type="button" data-suggest="templates">Templates</button>
+  </div>
   <ul class="search-results" id="searchResults"></ul>
 </section>
 <section class="appearance-sheet" id="appearanceSheet" role="dialog" aria-modal="true" aria-labelledby="appearanceTitle" aria-hidden="true">
@@ -4994,6 +5008,7 @@ Thanks, [You]</p>
   <div class="appearance-row"><div><strong>Low-light mode</strong><small>Dark, dim-venue-friendly version of your selected colour. Off by default.</small></div><button class="appearance-switch" id="lowlightSwitch" type="button" role="switch" aria-checked="false" aria-label="Low-light mode"></button></div>
   <div class="appearance-row"><div><strong>High contrast</strong><small>Prioritises maximum text and control clarity.</small></div><button class="appearance-switch" id="contrastSwitch" type="button" role="switch" aria-checked="false" aria-label="High contrast"></button></div>
   <div class="appearance-row"><div><strong>Web view</strong><small>Always show the desktop sidebar and hide the phone bars, even in a narrow window.</small></div><button class="appearance-switch" id="webviewSwitch" type="button" role="switch" aria-checked="false" aria-label="Web view"></button></div>
+  <div class="appearance-row"><div><strong>Keep this up to date</strong><small id="appUpdateStatus">Checks for the newest copy automatically — you shouldn't need this.</small></div><button class="appearance-refresh" id="appRefreshBtn" type="button">Refresh now</button></div>
   <button class="appearance-reset" id="appearanceReset" type="button">Reset to default look</button>
 </section>
 
@@ -5530,6 +5545,7 @@ Thanks, [You]</p>
   var searchInput = document.getElementById('siteSearchInput');
   var searchResults = document.getElementById('searchResults');
   var searchHint = document.getElementById('searchHint');
+  var searchSuggest = document.getElementById('searchSuggest');
   var searchIndex = null;
   var lastSearchOpener = null;
 
@@ -5590,6 +5606,7 @@ Thanks, [You]</p>
   function runSearch() {
     if (!searchInput || !searchResults) return;
     var query = searchInput.value.trim().toLowerCase();
+    if (searchSuggest) searchSuggest.style.display = query ? 'none' : '';
     if (!query) {
       searchResults.innerHTML = '';
       if (searchHint) searchHint.textContent = 'Searches every part, sub-section, template and glossary term.';
@@ -5685,6 +5702,13 @@ Thanks, [You]</p>
   if (searchResults) searchResults.addEventListener('click', function (event) {
     if (event.target && event.target.closest && event.target.closest('a')) closeSearch();
   });
+  if (searchSuggest) searchSuggest.addEventListener('click', function (event) {
+    var chip = event.target && event.target.closest ? event.target.closest('[data-suggest]') : null;
+    if (!chip || !searchInput) return;
+    searchInput.value = chip.getAttribute('data-suggest') || '';
+    runSearch();
+    searchInput.focus();
+  });
   var searchClose = document.getElementById('searchClose');
   if (searchClose) searchClose.addEventListener('click', closeSearch);
   if (appearanceOverlay) appearanceOverlay.addEventListener('click', closeSearch);
@@ -5707,6 +5731,65 @@ Thanks, [You]</p>
   else window.setTimeout(startAutolink, 350);
 })();
 </script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){});});}</script>
+<div class="update-toast" id="updateToast" role="status" aria-live="polite"></div>
+<script>
+(function () {
+  var refreshBtn = document.getElementById('appRefreshBtn');
+  var statusEl = document.getElementById('appUpdateStatus');
+  function doManualRefresh() {
+    if (statusEl) statusEl.textContent = 'Checking…';
+    if ('serviceWorker' in navigator && navigator.serviceWorker.getRegistration) {
+      navigator.serviceWorker.getRegistration().then(function (reg) {
+        return reg ? reg.update().catch(function () {}) : null;
+      }).then(function () {
+        window.location.reload();
+      }).catch(function () { window.location.reload(); });
+    } else {
+      window.location.reload();
+    }
+  }
+  if (refreshBtn) refreshBtn.addEventListener('click', doManualRefresh);
+
+  try {
+    if (sessionStorage.getItem('ppb-just-updated')) {
+      sessionStorage.removeItem('ppb-just-updated');
+      var toast = document.getElementById('updateToast');
+      if (toast) {
+        toast.textContent = 'Updated to the latest version.';
+        toast.classList.add('show');
+        window.setTimeout(function () { toast.classList.remove('show'); }, 4000);
+      }
+    }
+  } catch (e) {}
+
+  /* Data safety: every reload below is a normal page navigation, which never
+     touches localStorage — checklists, workplan progress and appearance
+     settings all survive it untouched. */
+  if (!('serviceWorker' in navigator)) return;
+
+  var reloading = false;
+  var hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange', function () {
+    /* The very first time a service worker claims a fresh page load isn't an
+       update — only reload automatically on the second and later claims. */
+    if (!hadController) { hadController = true; return; }
+    if (reloading) return;
+    reloading = true;
+    try { sessionStorage.setItem('ppb-just-updated', '1'); } catch (e) {}
+    window.location.reload();
+  });
+
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').then(function (reg) {
+      var checkForUpdate = function () { reg.update().catch(function () {}); };
+      window.setInterval(checkForUpdate, 60 * 60 * 1000);
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') checkForUpdate();
+      });
+      window.addEventListener('focus', checkForUpdate);
+    }).catch(function () {});
+  });
+})();
+</script>
 </body>
 </html>

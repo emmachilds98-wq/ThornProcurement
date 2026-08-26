@@ -469,19 +469,20 @@
 
 
 @media (max-width:600px){
-.legacy-block /* Below phone width, .legacy-block stack every remaining (2-column) table too — no table on the page ever needs a sideways swipe. */
+.legacy-block /* Below phone width, .legacy-block stack every remaining (2-column) table too — no table on the page ever needs a sideways swipe. Each row renders as its own tinted card (not a flat list of repeated labels) so a long table reads as a set of distinct records instead of one repetitive scroll. */
   .table-wrap{overflow-x:visible;}
 .legacy-block .table-wrap table{min-width:0;}
 .legacy-block .table-wrap table, .legacy-block .table-wrap tr, .legacy-block .table-wrap td{display:block; width:100%;}
 .legacy-block .table-wrap tr:first-child{display:none;}
-.legacy-block .table-wrap tr{border-bottom:1px solid var(--line); padding:11px 0;}
-.legacy-block .table-wrap tr:last-child{border-bottom:none;}
-.legacy-block .table-wrap td{padding:5px 16px; border-bottom:none;}
+.legacy-block .table-wrap tr{border-bottom:none; margin:8px; padding:12px 14px; border-radius:10px; background:var(--surface-2);}
+.legacy-block .table-wrap tr:last-child{margin-bottom:8px;}
+.legacy-block .table-wrap td{padding:0 !important; border-bottom:none !important;}
+.legacy-block .table-wrap td:not(:last-child){margin-bottom:9px;}
 .legacy-block .table-wrap td[data-label]::before{
-    content:attr(data-label); display:block; font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace; font-size:0.66rem;
-    letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:3px;
+    content:attr(data-label); display:block; font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace; font-size:0.62rem;
+    letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:2px; opacity:.85;
   }
-.legacy-block .table-wrap td[colspan]{background:var(--surface-2); border-radius:6px; margin:6px 16px 8px; padding:12px 14px; width:auto;}
+.legacy-block .table-wrap td[colspan]{background:var(--surface); border-radius:6px; margin:0; padding:12px 14px; width:auto;}
 .legacy-block .table-wrap td.num{white-space:normal;}
 }
 .legacy-block /* callouts */

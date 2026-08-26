@@ -2809,7 +2809,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         <li><b>Don't let money leave while it's disputed.</b> Pausing a payment is reversible; paying wrongly is much harder to undo. It's completely normal to say "I'm holding this until we've checked it."</li>
         <li><b>Put it in writing.</b> A short email confirming what was agreed ("just to confirm — you'll credit the £180 for the damaged sheets") turns a fuzzy phone call into something you can point at later. This habit alone will save you repeatedly.</li>
       </ol>
-      <div class="callout warn">
+      <div class="callout warn" id="fix-mistake">
         <div class="callout-label">When you've made the mistake</div>
         <p>You will, at some point — wrong quantity, missed a date, paid something twice. Everyone in this job has. The move is always the same: <b>flag it early, say what happened, say what you're doing about it.</b> A mistake surfaced quickly is an admin task; the same mistake found later by someone else is a trust problem. Managers remember how you handled it far more than what it was — and "I've spotted an error, here's my fix" reads as competence, not failure.</p>
       </div>
@@ -2822,7 +2822,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         <p><b>Buying yourself thinking time:</b> "Let me check that and come back to you today." — always available, never wrong.</p>
       </div>
       
-<h3>When it tips into a formal payment dispute</h3>
+<h3 id="pay-dispute">When it tips into a formal payment dispute</h3>
       <p>Most of the above is everyday friction, sorted with a phone call and a bit of patience. Occasionally something escalates into a genuine payment dispute — usually on a subcontract package — and it's worth recognising the ladder that exists in UK law so you know it's there, even though you'll rarely need to climb it yourself.</p>
       <div class="table-wrap">
         <table>
@@ -3128,57 +3128,58 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
   <section id="reading" class="anchor">
     <p class="eyebrow"><span>Part 14</span><span class="rule"></span></p>
     <h2 class="title serif">Reading, research &amp; development</h2>
-    <p class="lead">This playbook gets you competent fast. This section is for going further — at whatever pace suits you, whether that's twenty minutes with a coffee or a proper qualification over a couple of years.</p>
+    <p class="lead">This playbook gets you competent fast. This section is for going further, at whatever pace suits you — steady, self-paced growth rather than an urgent fix. If something's on fire right now, <a href="#help">Part 16</a>'s emergency tiles are the faster door in.</p>
 
 <div class="legacy-block">
-<h3>Where to start reading — by the time you have</h3>
-      <div class="table-wrap">
-        <table>
-          <tr><th>Got</th><th>Read</th></tr>
-          <tr><td data-label="Got">5 minutes</td><td data-label="Read">CIPS Knowledge Hub — short, plain-English articles on one topic at a time (<a href="#help">Part 16</a> has the link)</td></tr>
-          <tr><td data-label="Got">20 minutes</td><td data-label="Read">A GOV.UK guidance page on CIS, VAT reverse charge, or the Construction Act — dry but authoritative, and free</td></tr>
-          <tr><td data-label="Got">An evening</td><td data-label="Read">A CIPS or Procurious webinar recording on supplier negotiation or category management</td></tr>
-          <tr><td data-label="Got">A weekend</td><td data-label="Read">Explore the official CIPS Level 2 qualification outline and sample study options; check current membership, assessment and provider costs before committing</td></tr>
-        </table>
+<h3>Where to start — by the time you've got</h3>
+      <div class="task-grid" aria-label="Reading starting points, by time available">
+        <a class="task-card" href="#help-craft"><span class="task-kicker">5 minutes</span><strong>One quick article</strong><span>CIPS Knowledge Hub — short, plain-English pieces, one topic at a time.</span></a>
+        <a class="task-card" href="#help-rules"><span class="task-kicker">20 minutes</span><strong>One official guidance page</strong><span>A GOV.UK page on CIS, VAT reverse charge, or the Construction Act — dry but authoritative, and free.</span></a>
+        <a class="task-card" href="#help-craft"><span class="task-kicker">An evening</span><strong>A recorded webinar</strong><span>A CIPS or Procurious recording on supplier negotiation or category management.</span></a>
+        <a class="task-card" href="#lrn-quals"><span class="task-kicker">A weekend</span><strong>Explore a qualification</strong><span>The CIPS Level 2 outline and study options — see the pathway below.</span></a>
       </div>
 
       <h3>A structured reading list, by topic</h3>
       <div class="grid grid-2">
         <div class="card">
           <h4>Procurement fundamentals</h4>
+          <p style="margin:0 0 8px;font-size:0.9rem;color:var(--ink-soft)">The theory behind what you're already doing day to day — worth having the vocabulary for when you talk to your manager or a supplier. Ties straight back to <a href="#cmd">Command centre</a> and <a href="#p1">Part 01</a>.</p>
           <ul class="plain">
-            <li>CIPS Knowledge Hub — the procurement cycle, the Five Rights, category management, negotiation basics</li>
+            <li>CIPS Knowledge Hub — the procurement cycle, the Five Rights, category management, negotiation basics (<a href="#help-craft">full link, Part 16</a>)</li>
             <li>Procurious — bite-size lessons and community discussion aimed at people newer to the profession</li>
           </ul>
         </div>
         <div class="card">
           <h4>Construction-specific</h4>
+          <p style="margin:0 0 8px;font-size:0.9rem;color:var(--ink-soft)">Guidance written for firms like yours rather than generic corporate procurement.</p>
           <ul class="plain">
             <li>Federation of Master Builders (FMB) guidance — written specifically for small building firms</li>
             <li>Build UK — industry best practice on payment and supply chain</li>
             <li>Build UK — the Common Assessment Standard, if you are being asked for pre-qualification certificates (<a href="#winwork">Part 18</a>)</li>
-            <li>Chartered Institute of Building (CIOB) — deeper construction management context if you want it</li>
+            <li>Chartered Institute of Building (CIOB) — deeper construction management context if you want it (<a href="#help-trade">full link, Part 16</a>)</li>
           </ul>
         </div>
         <div class="card">
           <h4>UK rules &amp; compliance</h4>
+          <p style="margin:0 0 8px;font-size:0.9rem;color:var(--ink-soft)">The legal backdrop worth reading once properly rather than piecing together from memory — see also <a href="#gov">Part 12</a>.</p>
           <ul class="plain">
             <li>GOV.UK — CIS, VAT reverse charge, and Construction Act guidance, kept current by HMRC and government</li>
             <li>Small Business Commissioner — plain-English guidance on late payment and the Fair Payment Code</li>
             <li>GOV.UK — waste duty of care and the digital waste tracking service, if nobody in the firm currently owns waste paperwork (<a href="#waste">Part 19</a>)</li>
-            <li>Find a Tender and the Central Digital Platform — worth an hour just to see what public work in your area actually looks like</li>
+            <li>Find a Tender and the Central Digital Platform — worth an hour just to see what public work in your area actually looks like (<a href="#help-rules">full link, Part 16</a>)</li>
           </ul>
         </div>
         <div class="card">
           <h4>Systems &amp; tools</h4>
+          <p style="margin:0 0 8px;font-size:0.9rem;color:var(--ink-soft)">For the Ariba-specific mechanics, <a href="#p6">Part 08</a> and <a href="#p7">Part 09</a> are the day-to-day reference; these are for going beyond what this pack covers.</p>
           <ul class="plain">
             <li>SAP Learning — free structured courses on Ariba modules</li>
-            <li>SAP Community — real questions from real Ariba users, searchable</li>
+            <li>SAP Community — real questions from real Ariba users, searchable (<a href="#help-ariba">full link, Part 16</a>)</li>
           </ul>
         </div>
       </div>
 
-      <h3>Building your skills — a qualification pathway, if you want one</h3>
+      <h3 id="lrn-quals">Building your skills — a qualification pathway, if you want one</h3>
       <p>You don't need a qualification to do this job well — this playbook plus a few years of doing it will take you a long way. But if you'd like the letters after your name, or just a structured way to deepen your knowledge, CIPS runs the UK-recognised route:</p>
       <div class="table-wrap">
         <table>
@@ -3192,14 +3193,8 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <p style="font-size:0.85rem; color:var(--muted);">Study part-time, self-paced, and often supported by employers. Worth asking your manager or the owner whether the firm would contribute — it benefits them directly, and it's a very reasonable thing to raise once you've delivered a couple of the quick wins from <a href="#p8">Part 10</a>.</p>
       <div class="source-strip"><b>Official check</b><a href="https://www.cips.org/qualifications" target="_blank" rel="noopener">CIPS qualifications</a><span>Qualification names, entry routes, fees and study-centre options can change.</span></div>
 
-      <h3>Free ongoing learning</h3>
-      <ul class="plain">
-        <li><b>CIPS Knowledge Hub / Intelligence Hub</b> — free articles, templates and guides, no membership required for most content.</li>
-        <li><b>Procurious community</b> — free peer network, discussion threads, and bite-size lessons aimed at people building procurement careers.</li>
-        <li><b>r/procurement and r/Construction</b> — candid, anonymous "has anyone dealt with this?" — often the fastest sanity-check when something feels off.</li>
-        <li><b>SAP Community Q&amp;A</b> — post a specific Ariba question, get answers from people who use it daily.</li>
-        <li><b>LinkedIn groups</b> — search "procurement" or "construction procurement" for active UK-focused groups; good for networking and informal polls on how others handle a situation.</li>
-      </ul>
+      <h3>Free ongoing learning — communities and Q&amp;A</h3>
+      <p>CIPS Knowledge Hub, Procurious, r/procurement and r/Construction, SAP Community Q&amp;A, and active LinkedIn groups all live in the full directory, kept in one place so it's easier to keep current: <a href="#help-community">Part 16 — Communities, ask real people</a>.</p>
 
       <h3>Skills self-assessment</h3>
       <p>A quick honesty check against this playbook — not a test, just a way to see where to focus next. Revisit it every few months; watch the bar move.</p>
@@ -3403,9 +3398,23 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
   <section id="help" class="anchor">
     <p class="eyebrow"><span>Part 16</span><span class="rule"></span></p>
     <h2 class="title serif">Where to go when it's not here</h2>
-    <p class="lead">This pack can't cover everything, and it'll go out of date — rules change, Ariba updates, situations get weird. So here's your one-stop directory: the places to learn more, get official answers, and ask real humans who've been there. Bookmark this part.</p>
+    <p class="lead">This pack can't cover everything, and it'll go out of date — rules change, Ariba updates, situations get weird. So here's your one-stop shop: fast triage for the moment something lands on your desk and you don't know where to start, then a full directory of where to learn more, get official answers, and ask real humans who've been there. Bookmark this part.</p>
 
-    <h3>Learn the craft (procurement)</h3>
+<div class="legacy-block">
+    <h3>In an emergency, start here</h3>
+    <p>Don't know what to search for? Pick the situation closest to yours — each one jumps straight to the part of this pack that walks you through it.</p>
+    <div class="task-grid" aria-label="Emergency scenarios">
+      <a class="task-card" href="#task-emergency"><span class="task-kicker">Buy</span><strong>Need to buy right now</strong><span>Move fast on an emergency purchase without losing the approval trail.</span></a>
+      <a class="task-card" href="#trouble"><span class="task-kicker">Order</span><strong>Something's gone wrong with an order or invoice</strong><span>Short deliveries, price creep, an invoice with no PO, a supplier on stop.</span></a>
+      <a class="task-card" href="#p04-cert-check"><span class="task-kicker">Check</span><strong>An insurance or competence certificate looks off</strong><span>The six things to check before you file it — or chase a replacement.</span></a>
+      <a class="task-card" href="#pay-dispute"><span class="task-kicker">Money</span><strong>A payment's being disputed or overdue</strong><span>Payment notices, pay-less notices, and the formal-dispute ladder if it escalates.</span></a>
+      <a class="task-card" href="#p8"><span class="task-kicker">Diagnose</span><strong>Ariba or the process is doing something odd</strong><span>Work out what's actually broken before you assume the worst.</span></a>
+      <a class="task-card" href="#fix-mistake"><span class="task-kicker">Recover</span><strong>You've made a mistake</strong><span>The one move that turns an error into an admin task, not a trust problem.</span></a>
+    </div>
+
+    <h3>Full directory — everywhere else to look</h3>
+    <p>Nothing above fit your situation, or you want to go deeper? Here's the complete list of places to learn more, get an official answer, or ask someone who's dealt with it.</p>
+    <h4 id="help-craft">Learn the craft (procurement)</h4>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
@@ -3417,7 +3426,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       </table>
     </div>
 
-    <h3>SAP Ariba — official help &amp; how-tos</h3>
+    <h4 id="help-ariba">SAP Ariba — official help &amp; how-tos</h4>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
@@ -3431,7 +3440,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       </table>
     </div>
 
-    <h3>Trade &amp; construction bodies</h3>
+    <h4 id="help-trade">Trade &amp; construction bodies</h4>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
@@ -3443,7 +3452,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       </table>
     </div>
 
-    <h3>Rules, tax &amp; getting paid (UK)</h3>
+    <h4 id="help-rules">Rules, tax &amp; getting paid (UK)</h4>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
@@ -3456,7 +3465,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       </table>
     </div>
 
-    <h3>Communities — ask real people</h3>
+    <h4 id="help-community">Communities — ask real people</h4>
     <div class="table-scroll">
       <table>
         <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
@@ -3473,6 +3482,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <span class="lbl">…and if it's still not here</span>
       <p style="margin:0;font-size:15.5px;color:var(--ink-soft)">Three quick fallbacks, in order: <strong>1)</strong> for anything <em>system</em>-shaped, ask your Ariba admin or the SAP Community. <strong>2)</strong> for anything <em>money / tax / CIS / retention</em>-shaped, ask your accountant or bookkeeper — don't guess on those. <strong>3)</strong> for anything <em>"is this normal / how would you play this"</em>-shaped… ping me. Seriously — that's what mates are for. 🙂</p>
     </div>
+</div>
   </section>
 
   <!-- ============ APPENDIX ============ -->
@@ -3863,7 +3873,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
   <section id="negotiate" class="anchor">
     <p class="eyebrow"><span>Part 20</span><span class="rule"></span></p>
     <h2 class="title serif">Negotiating, without being a shark</h2>
-    <p class="lead">The self-assessment in <a href="#p13">Part 13</a> lists negotiation as the thing this playbook hadn't properly covered. This is that part. It is not about being tough — most of the money in a small firm's buying is won by being prepared, asking for things nobody thought to ask for, and being the customer a supplier actually wants to look after.</p>
+    <p class="lead">The self-assessment in <a href="#kpi">Part 13</a> lists negotiation as the thing this playbook hadn't properly covered. This is that part. It is not about being tough — most of the money in a small firm's buying is won by being prepared, asking for things nobody thought to ask for, and being the customer a supplier actually wants to look after.</p>
 
 <div class="legacy-block">
 <div class="callout info">

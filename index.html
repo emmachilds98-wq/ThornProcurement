@@ -736,6 +736,10 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
 .rail-quick a:nth-child(2),.rail-quick a:nth-child(3){grid-column:span 1;background:var(--surface-2);color:var(--ink);border-color:var(--line);font-size:12.5px}
 .rail-quick a:hover{filter:brightness(.96)}
 .rail-scroll{flex:1;overflow-y:auto;padding:8px 10px 14px}
+.rail-shortcuts-label{padding:8px 8px 4px;font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rail-shortcuts{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 0 12px}
+.rail-shortcuts a{text-decoration:none;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:12.5px;font-weight:600;line-height:1.3}
+.rail-shortcuts a:hover{border-color:var(--accent);color:var(--accent-ink)}
 .rail-routes{list-style:none;margin:0;padding:0}
 .rail-routes li{margin:1px 0}
 .rail-routes a{display:flex;gap:9px;align-items:baseline;text-decoration:none;color:var(--ink-soft);padding:7px 8px;border-radius:8px;font-size:13px;line-height:1.3}
@@ -870,6 +874,18 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
     <a href="#glossary">Glossary</a>
   </div>
   <div class="rail-scroll">
+    <div class="rail-shortcuts-label"><span>Jump to a topic</span></div>
+    <div class="rail-shortcuts">
+      <a href="#cmd">Learn the job</a>
+      <a href="#p3">The buying engine</a>
+      <a href="#p4">Merchants, plant &amp; subbies</a>
+      <a href="#p5">Money &amp; reporting</a>
+      <a href="#systems">Systems (Ariba &amp; monday)</a>
+      <a href="#p8">Fix what's broken</a>
+      <a href="#reading">Grow your career</a>
+      <a href="#winwork">Winning &amp; negotiating work</a>
+    </div>
+    <div class="rail-shortcuts-label"><span>Full contents</span></div>
     <ul class="rail-routes">
       <li><a href="#cmd"><span class="n">00</span><span>Command centre</span></a></li>
       <li><a href="#p1"><span class="n">01</span><span>Procurement in a building firm</span></a></li>

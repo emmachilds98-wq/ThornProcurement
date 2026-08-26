@@ -1,0 +1,1945 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" id="themeColorMeta" content="#F5F6F2">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ThornProcurement">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="application-name" content="ThornProcurement">
+<meta name="description" content="ThornProcurement — a friendly, practical procurement playbook for calmer, more confident workdays.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ThornProcurement">
+<meta property="og:title" content="ThornProcurement — your friendly procurement playbook">
+<meta property="og:description" content="A practical little companion for calmer, more confident procurement workdays.">
+<meta property="og:url" content="https://emmachilds98-wq.github.io/ThornProcurement/">
+<meta property="og:image" content="https://emmachilds98-wq.github.io/ThornProcurement/thornprocurement-icon.png">
+<meta property="og:image:alt" content="ThornProcurement’s friendly thorn-and-clipboard app icon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ThornProcurement — your friendly procurement playbook">
+<meta name="twitter:description" content="A practical little companion for calmer, more confident procurement workdays.">
+<meta name="twitter:image" content="https://emmachilds98-wq.github.io/ThornProcurement/thornprocurement-icon.png">
+<link rel="icon" href="thornprocurement-icon.png">
+<link rel="apple-touch-icon" href="thornprocurement-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<title>ThornProcurement — your friendly procurement playbook</title>
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --paper:#F5F6F2;
+    --surface:#FFFFFF;
+    --surface-2:#FBFBF8;
+    --ink:#18211C;
+    --ink-soft:#47524B;
+    --muted:#6C766E;
+    --line:#E2E5DD;
+    --line-strong:#CDD2C8;
+    --accent:#1E6A50;
+    --accent-ink:#164a38;
+    --accent-soft:#E7F0EA;
+    --amber:#9A6410;
+    --amber-soft:#F6EDD9;
+    --red:#AE3A31;
+    --red-soft:#F6E4E1;
+    --info:#2C577F;
+    --info-soft:#E4ECF3;
+    --shadow:0 1px 2px rgba(20,30,24,.04),0 6px 20px rgba(20,30,24,.05);
+    --radius:10px;
+  }
+  /* Deliberately no prefers-color-scheme rule: this file starts light on every
+     phone. Low-light mode is an explicit, remembered choice in Appearance. */
+  :root[data-theme="dark"]{
+    --paper:#0F1411;
+    --surface:#161D18;
+    --surface-2:#131a15;
+    --ink:#E9ECE5;
+    --ink-soft:#AEB7AE;
+    --muted:#899187;
+    --line:#28322B;
+    --line-strong:#37423a;
+    --accent:#54B98F;
+    --accent-ink:#7fceab;
+    --accent-soft:#17281F;
+    --amber:#D9A85A;
+    --amber-soft:#2A2413;
+    --red:#E08A81;
+    --red-soft:#2C1917;
+    --info:#8FB4D6;
+    --info-soft:#152230;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.35);
+  }
+
+  /* ============ BASE ============ */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  .serif{font-family:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif}
+  .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+
+  h1,h2,h3,h4{text-wrap:balance;line-height:1.2}
+  p{margin:0 0 1em}
+  a{color:var(--accent);text-underline-offset:2px}
+
+  /* ============ HERO ============ */
+  header.hero{
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(120% 90% at 88% -10%,var(--accent-soft) 0%,transparent 55%),
+      var(--surface-2);
+  }
+  .hero-inner{max-width:820px;margin:0 auto;padding:64px 24px 44px}
+  .kicker{
+    font-family:ui-monospace,"SF Mono",Consolas,monospace;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 20px;font-weight:600;
+  }
+  .hero h1{
+    font-family:Georgia,"Iowan Old Style",Palatino,serif;
+    font-weight:600;font-size:clamp(34px,6vw,52px);
+    letter-spacing:-.015em;margin:0 0 18px;
+  }
+  .hero .lede{font-size:clamp(18px,2.4vw,21px);color:var(--ink-soft);max-width:60ch;margin:0}
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:28px;
+  }
+  .handbook-logo{width:76px;height:76px;display:block;object-fit:cover;border-radius:22px;margin:0 0 18px;box-shadow:var(--shadow)}
+  .tag{
+    font-size:12.5px;letter-spacing:.02em;
+    border:1px solid var(--line-strong);border-radius:999px;
+    padding:5px 12px;color:var(--ink-soft);background:var(--surface);
+  }
+
+  /* ============ CONTENTS ============ */
+  nav.toc{
+    margin:40px auto;max-width:820px;padding:0 24px;
+  }
+  .toc-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;box-shadow:var(--shadow);
+  }
+  .toc-card h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;font-weight:600}
+  .toc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 28px}
+  @media(max-width:560px){.toc-list{grid-template-columns:1fr}}
+  .toc-list a{
+    display:flex;gap:12px;align-items:baseline;text-decoration:none;color:var(--ink);
+    padding:7px 0;border-bottom:1px solid transparent;
+  }
+  .toc-list a:hover{color:var(--accent)}
+  .toc-list .n{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--accent);min-width:22px}
+
+  /* ============ SECTIONS ============ */
+  section{padding:26px 0}
+  .eyebrow{
+    display:flex;align-items:center;gap:12px;margin:0 0 6px;
+    font-family:ui-monospace,Consolas,monospace;font-size:12.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);font-weight:600;
+  }
+  .eyebrow .rule{height:1px;flex:1;background:var(--line)}
+  h2.title{font-family:Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);letter-spacing:-.01em;margin:0 0 18px}
+  h3{font-family:Georgia,serif;font-weight:600;font-size:21px;margin:32px 0 10px;letter-spacing:-.005em}
+  h4{font-size:15px;letter-spacing:.02em;margin:22px 0 8px;color:var(--ink)}
+  .lead{font-size:18.5px;color:var(--ink-soft)}
+  ul,ol{margin:0 0 1em;padding-left:1.25em}
+  li{margin:.3em 0}
+  strong{font-weight:650}
+  hr.sep{border:none;border-top:1px solid var(--line);margin:8px 0}
+
+  /* ============ CALLOUTS ============ */
+  .note{
+    border:1px solid var(--line);border-left:3px solid var(--accent);
+    background:var(--surface);border-radius:8px;padding:16px 18px;margin:20px 0;
+    box-shadow:var(--shadow);
+  }
+  .note .lbl{
+    font-family:ui-monospace,Consolas,monospace;font-size:11.5px;letter-spacing:.12em;
+    text-transform:uppercase;font-weight:600;color:var(--accent);display:block;margin-bottom:6px;
+  }
+  .note p:last-child{margin-bottom:0}
+  .note.warn{border-left-color:var(--amber);background:var(--amber-soft)}
+  .note.warn .lbl{color:var(--amber)}
+  .note.risk{border-left-color:var(--red);background:var(--red-soft)}
+  .note.risk .lbl{color:var(--red)}
+  .note.say{border-left-color:var(--info);background:var(--info-soft)}
+  .note.say .lbl{color:var(--info)}
+  .note.say .quote{font-family:Georgia,serif;font-style:italic;font-size:18px;line-height:1.5}
+
+  /* ============ TABLES ============ */
+  .table-scroll{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;font-size:15px;background:var(--surface);min-width:520px}
+  caption{caption-side:top;text-align:left;font-size:13px;color:var(--muted);padding:12px 16px 0}
+  th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{
+    background:var(--surface-2);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;position:sticky;top:0;
+  }
+  tbody tr:last-child td{border-bottom:none}
+  td.mono,th.mono{font-family:ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;font-size:13.5px}
+  .pill{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;letter-spacing:.02em;white-space:nowrap}
+  .pill.r{background:var(--red-soft);color:var(--red)}
+  .pill.a{background:var(--accent-soft);color:var(--accent)}
+  .pill.c{background:var(--info-soft);color:var(--info)}
+  .pill.i{background:var(--amber-soft);color:var(--amber)}
+  .pill.n{background:var(--line);color:var(--ink-soft)}
+
+  /* ============ DIAGRAMS ============ */
+  figure{margin:24px 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px 8px;box-shadow:var(--shadow)}
+  .fig-scroll{overflow-x:auto}
+  figure svg{display:block;width:100%;height:auto;min-width:520px}
+  figcaption{font-size:13px;color:var(--muted);padding:12px 2px 6px;line-height:1.5}
+  .dg-fill-surface{fill:var(--surface)}
+  .dg-fill-accent{fill:var(--accent-soft)}
+  .dg-fill-amber{fill:var(--amber-soft)}
+  .dg-fill-info{fill:var(--info-soft)}
+  .dg-stroke{stroke:var(--line-strong)}
+  .dg-stroke-accent{stroke:var(--accent)}
+  .dg-stroke-amber{stroke:var(--amber)}
+  .dg-stroke-info{stroke:var(--info)}
+  .dg-t{fill:var(--ink);font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px}
+  .dg-t.b{font-weight:650}
+  .dg-sub{fill:var(--muted);font-family:ui-monospace,Consolas,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+  .dg-band{fill:var(--muted);font-family:ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+  .dg-line{stroke:var(--ink-soft);stroke-width:1.6;fill:none}
+  .dg-line-soft{stroke:var(--line-strong);stroke-width:1.4;fill:none;stroke-dasharray:4 4}
+  .dg-accent-t{fill:var(--accent)}
+
+  /* ============ CROSS-REFERENCES ============ */
+  a.xref{
+    color:var(--accent);text-decoration:none;font-weight:600;
+    border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent);
+    white-space:nowrap;
+  }
+  a.xref:hover{border-bottom-color:var(--accent);background:var(--accent-soft)}
+  a.xref::after{content:" ↗";font-size:.82em;opacity:.65}
+  a:focus-visible,button:focus-visible,input:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px;border-radius:3px;
+  }
+
+  /* ============ GLOSSARY SEARCH ============ */
+  .gloss-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0 4px}
+  .gloss-search{
+    flex:1;min-width:220px;position:relative;display:flex;align-items:center;
+  }
+  .gloss-search svg{position:absolute;left:12px;width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2}
+  #gsearch{
+    width:100%;font:inherit;font-size:15px;color:var(--ink);
+    background:var(--surface);border:1px solid var(--line-strong);border-radius:8px;
+    padding:10px 12px 10px 34px;
+  }
+  #gsearch::placeholder{color:var(--muted)}
+  .gcount{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .gloss-empty{padding:18px 16px;color:var(--muted);font-size:15px;text-align:center;display:none}
+  tr.gone{display:none}
+
+  /* ============ BACK TO TOP ============ */
+  .totop{
+    position:fixed;right:20px;bottom:20px;z-index:20;
+    display:flex;align-items:center;gap:7px;
+    background:var(--surface);color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:999px;
+    padding:9px 15px;font:inherit;font-size:13.5px;font-weight:600;
+    box-shadow:var(--shadow);cursor:pointer;
+    opacity:0;visibility:hidden;transform:translateY(8px);
+    transition:opacity .22s ease,transform .22s ease,visibility .22s;
+  }
+  .totop.show{opacity:1;visibility:visible;transform:none}
+  .totop:hover{border-color:var(--accent);color:var(--accent)}
+  @media (prefers-reduced-motion:reduce){.totop{transition:none}}
+  @media(max-width:560px){.totop{right:12px;bottom:12px;padding:9px 12px}.totop span{display:none}}
+
+  /* ============ MISC ============ */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:20px 0}
+  @media(max-width:600px){.grid2,.grid3{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+  .card h4{margin-top:0}
+  .card .step{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.08em}
+  .checklist{list-style:none;padding:0;margin:0}
+  .checklist li{padding-left:28px;position:relative;margin:.5em 0}
+  .checklist li::before{content:"";position:absolute;left:0;top:.35em;width:15px;height:15px;border:1.5px solid var(--accent);border-radius:4px}
+  .tmpl{
+    background:var(--surface-2);border:1px solid var(--line);border-radius:8px;
+    padding:16px 18px;margin:16px 0;font-size:14.5px;line-height:1.6;
+  }
+  .tmpl .mono{color:var(--muted)}
+  .footer{border-top:1px solid var(--line);margin-top:48px;padding:32px 0 60px;color:var(--muted);font-size:14px}
+  .footer a{color:var(--accent)}
+  .anchor{scroll-margin-top:20px}
+  .disclaimer{font-size:13.5px;color:var(--muted);font-style:italic}
+
+  /* ============ IPHONE / OFFLINE APP SHELL ============ */
+  html{background:var(--paper);-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+  body{padding-bottom:0;overflow-x:hidden}
+  .skip-link{position:fixed;top:-64px;left:12px;z-index:100;padding:10px 14px;border-radius:0 0 8px 8px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:top .15s ease}.skip-link:focus{top:0;outline:2px solid #fff;outline-offset:-4px}
+  img,svg,video{max-width:100%;height:auto}
+  .phone-bar{display:none;position:sticky;top:0;z-index:30;align-items:center;gap:8px;min-height:54px;padding:7px max(14px,env(safe-area-inset-right)) 7px max(14px,env(safe-area-inset-left));background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 1px 10px rgba(0,0,0,.06)}
+  .phone-bar a{margin-right:auto;color:var(--accent-ink);font-weight:700;text-decoration:none;font-size:14px}
+  .phone-action,.bottom-appbar button,.appearance-close,.palette-swatch,.appearance-reset,.appearance-switch{appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:10px;min-height:40px;padding:8px 11px;font:600 13px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
+  .phone-action:active,.bottom-appbar button:active,.palette-swatch:active{transform:scale(.97)}
+  .bottom-appbar{display:none;position:fixed;z-index:35;left:0;right:0;bottom:0;gap:8px;padding:7px max(12px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(0,0,0,.08)}
+  .bottom-appbar button{flex:1;min-height:46px;background:var(--surface-2)}
+  .bottom-appbar button.primary{border-color:var(--accent);background:var(--accent);color:#fff}
+  .appearance-overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.36);opacity:0;pointer-events:none;transition:opacity .18s}
+  .appearance-overlay.open{opacity:1;pointer-events:auto}
+  .appearance-sheet{position:fixed;left:0;right:0;bottom:0;z-index:51;max-height:min(82vh,720px);overflow:auto;-webkit-overflow-scrolling:touch;padding:18px max(18px,env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));border:1px solid var(--line-strong);border-bottom:0;border-radius:18px 18px 0 0;background:var(--surface);box-shadow:0 -8px 30px rgba(0,0,0,.2);transform:translateY(105%);transition:transform .22s ease}
+  .appearance-sheet.open{transform:translateY(0)}
+  .appearance-sheet h2{font-size:23px;margin:0 40px 6px 0}.appearance-sheet p{font-size:14px;color:var(--ink-soft)}
+  .appearance-close{position:absolute;right:14px;top:13px;font-size:18px;min-width:40px}
+  .appearance-label{display:block;margin:18px 0 8px;font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .palette-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.palette-swatch{position:relative;aspect-ratio:1;padding:0;min-height:44px;border:2px solid var(--line-strong)}.palette-swatch[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}.palette-swatch[aria-pressed="true"]::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:18px;text-shadow:0 1px 2px #000}
+  .appearance-choice{margin:10px 0 0!important}.appearance-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid var(--line)}.appearance-row strong{font-size:15px}.appearance-row small{display:block;color:var(--muted);margin-top:3px}.appearance-switch{width:50px;height:30px;min-height:30px;padding:3px;border-radius:999px;background:var(--line-strong)}.appearance-switch::after{content:"";display:block;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .16s}.appearance-switch[aria-checked="true"]{background:var(--accent)}.appearance-switch[aria-checked="true"]::after{transform:translateX(18px)}.appearance-reset{width:100%;margin-top:16px}.appearance-sheet input{font-size:16px}
+  .today-sheet{position:fixed;left:0;right:0;bottom:0;z-index:51;max-height:min(82vh,720px);overflow:auto;-webkit-overflow-scrolling:touch;padding:18px max(18px,env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));border:1px solid var(--line-strong);border-bottom:0;border-radius:18px 18px 0 0;background:var(--surface);box-shadow:0 -8px 30px rgba(0,0,0,.2);transform:translateY(105%);transition:transform .22s ease}.today-sheet.open{transform:translateY(0)}.today-sheet h2{font-size:23px;margin:0 40px 6px 0}.today-sheet p{font-size:14px;color:var(--ink-soft)}.today-sheet .quick-links{display:grid;gap:8px;margin-top:14px}.today-sheet .quick-links a{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);color:var(--ink);text-decoration:none;font-weight:650}.today-sheet .quick-links small{display:block;margin-top:3px;color:var(--muted);font-weight:400}.daily-desk{max-width:820px;margin:0 auto 10px;padding:0 24px}.daily-card{border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:16px 18px;background:var(--surface);box-shadow:var(--shadow)}.daily-card h2{font:600 20px/1.2 Georgia,"Iowan Old Style",serif;margin:0 0 5px}.daily-card p{font-size:14.5px;color:var(--ink-soft);margin-bottom:12px}.daily-checks{display:grid;grid-template-columns:1fr 1fr;gap:7px 18px}.daily-checks label{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;line-height:1.35;cursor:pointer}.daily-checks input{appearance:none;width:21px;height:21px;flex:0 0 21px;margin:0;border:1.5px solid var(--line-strong);border-radius:5px;background:var(--surface)}.daily-checks input:checked{background:var(--accent);border-color:var(--accent)}.daily-checks input:checked::after{content:"✓";display:block;color:#fff;text-align:center;line-height:18px;font-size:14px}.daily-reset{border:0;background:none;padding:0;color:var(--accent);font:600 13px/1.2 inherit;text-decoration:underline;cursor:pointer}.sheet-close{position:absolute;right:14px;top:13px;background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;min-width:40px;min-height:40px;color:var(--ink);font-size:18px;cursor:pointer}
+  :root[data-contrast="high"]{--paper:#fff;--surface:#fff;--surface-2:#f2f2f2;--ink:#111;--ink-soft:#292929;--muted:#484848;--line:#b8b8b8;--line-strong:#777;--accent:#064D63;--accent-ink:#003747;--accent-soft:#E0F1F5;--amber:#6B3E00;--amber-soft:#FFF0D6;--red:#8B1A1A;--red-soft:#F9E1E1;--info:#064D63;--info-soft:#E0F1F5}
+  :root[data-theme="dark"][data-contrast="high"]{--paper:#111;--surface:#1c1c1c;--surface-2:#1c1c1c;--ink:#fff;--ink-soft:#e8e8e8;--muted:#d0d0d0;--line:#686868;--line-strong:#9a9a9a;--accent:#8DE9FF;--accent-ink:#D2F7FF;--accent-soft:#123942;--amber:#FFD079;--amber-soft:#382A11;--red:#FFB1A7;--red-soft:#3A1A18;--info:#8DE9FF;--info-soft:#123942}
+  :root[data-palette="coral"]{--paper:#FFF6F1;--surface:#fff;--surface-2:#F9E8DD;--ink:#30201B;--ink-soft:#65473C;--muted:#76564A;--line:#EBCFC0;--line-strong:#D8B4A1;--accent:#B9502D;--accent-ink:#7D351C;--accent-soft:#F9DFD5;--amber:#14727B;--amber-soft:#DCEFF0;--red:#A2372B;--red-soft:#F8E3E0;--info:#14727B;--info-soft:#DCEFF0}
+  :root[data-theme="dark"][data-palette="coral"]{--paper:#1F1613;--surface:#2A1D18;--surface-2:#2B1C17;--ink:#F8E8E1;--ink-soft:#D8B8AA;--muted:#A88679;--line:#4A3027;--line-strong:#684438;--accent:#F09974;--accent-ink:#FFD1BB;--accent-soft:#45271D;--amber:#78CDD1;--amber-soft:#153436;--red:#F09C91;--red-soft:#39201D;--info:#78CDD1;--info-soft:#153436}
+  :root[data-palette="sky"]{--paper:#F3FAFF;--surface:#fff;--surface-2:#E3F1FA;--ink:#162934;--ink-soft:#425E70;--muted:#577181;--line:#C9E0EC;--line-strong:#A9C8D8;--accent:#176C9F;--accent-ink:#10496E;--accent-soft:#DCEEF8;--amber:#845405;--amber-soft:#F8ECD4;--red:#A63D31;--red-soft:#F9E4E1;--info:#176C9F;--info-soft:#DCEEF8}
+  :root[data-theme="dark"][data-palette="sky"]{--paper:#101C24;--surface:#182A35;--surface-2:#172934;--ink:#E2F2FA;--ink-soft:#B2CFDD;--muted:#7F9EAD;--line:#294856;--line-strong:#3A6170;--accent:#82C9ED;--accent-ink:#BDE9FA;--accent-soft:#153746;--amber:#EABD64;--amber-soft:#332914;--red:#EE9A8D;--red-soft:#39201E;--info:#82C9ED;--info-soft:#153746}
+  :root[data-palette="forest"]{--paper:#F4FAF0;--surface:#fff;--surface-2:#E5F0DD;--ink:#1B2B17;--ink-soft:#4D6445;--muted:#5F7456;--line:#CFDFC5;--line-strong:#AFC4A2;--accent:#397A2B;--accent-ink:#255018;--accent-soft:#E0F0D9;--amber:#93420E;--amber-soft:#F7E2D3;--red:#A43D2C;--red-soft:#F8E3DF;--info:#397A2B;--info-soft:#E0F0D9}
+  :root[data-theme="dark"][data-palette="forest"]{--paper:#142015;--surface:#1E2D1E;--surface-2:#1D2D1C;--ink:#E6F2DF;--ink-soft:#BDD0B4;--muted:#8FA289;--line:#344A32;--line-strong:#4D6848;--accent:#94D77C;--accent-ink:#C8F0B8;--accent-soft:#213A1B;--amber:#F0A070;--amber-soft:#3B2618;--red:#EE9A8C;--red-soft:#39201D;--info:#94D77C;--info-soft:#213A1B}
+  :root[data-palette="plum"]{--paper:#FDF6FC;--surface:#fff;--surface-2:#F2E5F0;--ink:#2D1A2A;--ink-soft:#61465D;--muted:#705568;--line:#E4CCE1;--line-strong:#CDAAC7;--accent:#80366F;--accent-ink:#58234D;--accent-soft:#F1DFED;--amber:#874907;--amber-soft:#F7E8D4;--red:#A33B55;--red-soft:#F8E2E7;--info:#80366F;--info-soft:#F1DFED}
+  :root[data-theme="dark"][data-palette="plum"]{--paper:#21151F;--surface:#2D1D2B;--surface-2:#2D1C2A;--ink:#F5E6F1;--ink-soft:#D6B8D0;--muted:#A989A3;--line:#4C3048;--line-strong:#684361;--accent:#E09DD1;--accent-ink:#F4C8EA;--accent-soft:#42253D;--amber:#E9B368;--amber-soft:#382914;--red:#EE9BB0;--red-soft:#39202A;--info:#E09DD1;--info-soft:#42253D}
+  :root[data-palette="sunset"]{--paper:#FFF7EF;--surface:#fff;--surface-2:#F9E8DA;--ink:#33221B;--ink-soft:#694C3F;--muted:#765746;--line:#ECD2BF;--line-strong:#D7B396;--accent:#BC3E3E;--accent-ink:#7C2629;--accent-soft:#F9DFD8;--amber:#7E5D09;--amber-soft:#F8ECCD;--red:#A53029;--red-soft:#F8E1DF;--info:#BC3E3E;--info-soft:#F9DFD8}
+  :root[data-theme="dark"][data-palette="sunset"]{--paper:#251713;--surface:#311F19;--surface-2:#321E18;--ink:#F7E8DE;--ink-soft:#D7B9A8;--muted:#A98A79;--line:#51342A;--line-strong:#70493A;--accent:#F29A8D;--accent-ink:#FFC7BC;--accent-soft:#48221F;--amber:#E9C568;--amber-soft:#3B2E14;--red:#EF9A8D;--red-soft:#39201D;--info:#F29A8D;--info-soft:#48221F}
+  :root[data-palette="slate"]{--paper:#F5F7FA;--surface:#fff;--surface-2:#E8EDF3;--ink:#1D2733;--ink-soft:#4D6175;--muted:#5F7184;--line:#D2DCE6;--line-strong:#B6C4D1;--accent:#4859A4;--accent-ink:#303E7C;--accent-soft:#E3E7F7;--amber:#854F05;--amber-soft:#F7E8D1;--red:#A33B39;--red-soft:#F8E3E2;--info:#4859A4;--info-soft:#E3E7F7}
+  :root[data-theme="dark"][data-palette="slate"]{--paper:#161B24;--surface:#202733;--surface-2:#202733;--ink:#E9EDF5;--ink-soft:#C2CCDB;--muted:#8D9AAF;--line:#364353;--line-strong:#4E5F72;--accent:#AEBBFF;--accent-ink:#D6DCFF;--accent-soft:#2D355B;--amber:#E7BD6C;--amber-soft:#362A16;--red:#ED9B96;--red-soft:#39201F;--info:#AEBBFF;--info-soft:#2D355B}
+  :root[data-palette="moss"]{--paper:#FBFAF2;--surface:#FFFEF9;--surface-2:#EEEEDC;--ink:#292B17;--ink-soft:#5A5D3B;--muted:#656746;--line:#DFDFC3;--line-strong:#C7C79F;--accent:#66731D;--accent-ink:#44500B;--accent-soft:#EDF0CE;--amber:#86400F;--amber-soft:#F6E2D1;--red:#9E3E2D;--red-soft:#F8E4E0;--info:#66731D;--info-soft:#EDF0CE}
+  :root[data-theme="dark"][data-palette="moss"]{--paper:#1D2013;--surface:#292D1B;--surface-2:#292D19;--ink:#F0F1DE;--ink-soft:#C9CCAA;--muted:#999D78;--line:#464B2D;--line-strong:#626940;--accent:#C1D166;--accent-ink:#E0EFB2;--accent-soft:#364018;--amber:#EEA16F;--amber-soft:#3B2618;--red:#EE9B8C;--red-soft:#39201D;--info:#C1D166;--info-soft:#364018}
+  :root[data-palette="ocean"]{--paper:#F2FAFA;--surface:#fff;--surface-2:#E0F0F0;--ink:#162D2D;--ink-soft:#426160;--muted:#587674;--line:#C7E0DE;--line-strong:#A7C8C5;--accent:#14777A;--accent-ink:#0E5153;--accent-soft:#D9EEEE;--amber:#8A5005;--amber-soft:#F8EBD4;--red:#A23C36;--red-soft:#F8E3E1;--info:#14777A;--info-soft:#D9EEEE}
+  :root[data-theme="dark"][data-palette="ocean"]{--paper:#102122;--surface:#183033;--surface-2:#173032;--ink:#E4F3F1;--ink-soft:#B7D3D0;--muted:#88A6A3;--line:#2C4D4D;--line-strong:#416865;--accent:#81D1CF;--accent-ink:#BEEDEB;--accent-soft:#173C3D;--amber:#E8B76A;--amber-soft:#382A15;--red:#EF9A93;--red-soft:#39201F;--info:#81D1CF;--info-soft:#173C3D}
+  @media(max-width:820px){body{padding-bottom:calc(70px + env(safe-area-inset-bottom))}.phone-bar,.bottom-appbar{display:flex}.daily-desk{padding:0 16px}.daily-checks{grid-template-columns:1fr}.totop{bottom:calc(78px + env(safe-area-inset-bottom))}}
+  @media(max-width:560px){.wrap{padding-left:16px;padding-right:16px}.hero-inner{padding:38px 16px 28px}.toc{padding:0 16px;margin:28px auto}.toc-card{padding:18px 16px}.table-scroll{-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}th,td{padding:10px 12px}.totop{right:14px;min-width:44px;min-height:44px}.totop span{display:none}.gloss-search{min-width:0}#gsearch{font-size:16px;min-height:44px}.footer{padding-bottom:25px}.phone-bar a{font-size:13px}}
+  /* Keep the existing table formats and columns, but compress them gently for
+     a phone before allowing any horizontal movement. */
+  @media(max-width:820px){.table-scroll{overflow-x:hidden}.table-scroll table{min-width:0;width:100%;table-layout:fixed;font-size:clamp(11px,3.2vw,13px);line-height:1.32}.table-scroll caption{padding:10px 9px 0;font-size:11.5px}.table-scroll th,.table-scroll td{padding:7px 6px;white-space:normal;overflow-wrap:anywhere;word-break:normal;-webkit-hyphens:auto;hyphens:auto}.table-scroll thead th{font-size:clamp(9.5px,2.7vw,11.5px);letter-spacing:.035em}.table-scroll td.mono,.table-scroll th.mono{font-size:10.5px}}
+</style>
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to playbook</a>
+<div class="phone-bar" aria-label="Playbook controls"><a href="#contents">Procurement Playbook</a><button class="phone-action" id="appearanceBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Appearance</button></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <img class="handbook-logo" src="thornprocurement-icon.png" alt="">
+    <p class="kicker">A friendly field guide · Trade &amp; building · Ariba + monday.com</p>
+    <h1 class="serif">The Procurement Starter Pack</h1>
+    <p class="lede">You already know the basics — this isn't teaching you to suck eggs. It's a practical playbook for running buying (and a fair bit of the finance) in a small building firm: how to structure the work, what to report and when, how to handle SAP Ariba, what to do when it all goes sideways, and how to spot what's already broken and quietly fix it. Built on the UK-recognised way of doing things, with the trade-specific bits that actually bite.</p>
+    <div class="hero-meta">
+      <span class="tag">For a smart pro, new-ish to the seat</span>
+      <span class="tag">Trades / construction</span>
+      <span class="tag">Procurement + finance in one pair of hands</span>
+      <span class="tag">Ariba &amp; monday.com side by side</span>
+      <span class="tag">One non-specialist manager</span>
+      <span class="tag">Grounded in CIPS &amp; UK practice</span>
+    </div>
+  </div>
+</header>
+
+<section class="daily-desk" id="dailyDesk" aria-labelledby="dailyDeskTitle">
+  <div class="daily-card">
+    <h2 id="dailyDeskTitle">Today’s desk</h2>
+    <p>A short, reusable control loop for the jobs most likely to drift if nobody looks at them.</p>
+    <div class="daily-checks" id="dailyChecks">
+      <label><input type="checkbox" data-daily="new-requests"><span>New requests seen, with job code and need-by date clear</span></label>
+      <label><input type="checkbox" data-daily="approvals"><span>Anything awaiting approval chased or made visible</span></label>
+      <label><input type="checkbox" data-daily="purchase-orders"><span>Approved orders have a PO number before commitment</span></label>
+      <label><input type="checkbox" data-daily="deliveries"><span>Due deliveries checked; delivery notes attached or chased</span></label>
+      <label><input type="checkbox" data-daily="invoices"><span>New invoices matched to PO and receipt before payment</span></label>
+      <label><input type="checkbox" data-daily="tomorrow"><span>One likely issue for tomorrow flagged before close</span></label>
+    </div>
+    <p style="margin:12px 0 0"><button class="daily-reset" id="dailyReset" type="button">Start a fresh day</button></p>
+  </div>
+</section>
+
+<nav class="toc" id="contents">
+  <div class="toc-card">
+    <h2>What's inside</h2>
+    <ul class="toc-list">
+      <li><a href="#p1"><span class="n">01</span><span>Procurement in a building firm</span></a></li>
+      <li><a href="#p2"><span class="n">02</span><span>Your patch &amp; where the line is</span></a></li>
+      <li><a href="#p3"><span class="n">03</span><span>The buying engine</span></a></li>
+      <li><a href="#p4"><span class="n">04</span><span>Merchants, plant &amp; subbies</span></a></li>
+      <li><a href="#p5"><span class="n">05</span><span>Reporting that earns its keep</span></a></li>
+      <li><a href="#money"><span class="n">06</span><span>When you're also finance</span></a></li>
+      <li><a href="#systems"><span class="n">07</span><span>monday.com + Ariba together</span></a></li>
+      <li><a href="#p6"><span class="n">08</span><span>Using SAP Ariba well</span></a></li>
+      <li><a href="#p7"><span class="n">09</span><span>Changing Ariba safely</span></a></li>
+      <li><a href="#p8"><span class="n">10</span><span>Spotting &amp; fixing what's broken</span></a></li>
+      <li><a href="#trouble"><span class="n">11</span><span>When things go wrong</span></a></li>
+      <li><a href="#help"><span class="n">12</span><span>Where to go when it's not here</span></a></li>
+      <li><a href="#appx"><span class="n">+</span><span>Templates</span></a></li>
+      <li><a href="#glossary"><span class="n">+</span><span>Glossary (searchable)</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="main" tabindex="-1">
+
+  <!-- ============ HOW TO USE ============ -->
+  <section>
+    <div class="note">
+      <span class="lbl">Before you dive in</span>
+      <p>Put this together for you so you've got something solid to lean on while you find your feet. <strong>You don't need to read it cover to cover.</strong> Skim <a class="xref" href="#p1">01</a>–<a class="xref" href="#p3">03</a> for the mental model, then treat the rest as a reference you dip into when a merchant, a report, a subbie or an Ariba change lands on your desk.</p>
+      <p>Two things to know about how it's built: any <strong>green link like <a class="xref" href="#p5">Part 05</a></strong> jumps you to the bit that explains that thing properly, so you never have to hunt. And the <a class="xref" href="#glossary">Glossary</a> at the end is <strong>searchable</strong> — if a word turns up that you'd rather not ask about, type it in there.</p>
+      <p style="margin-bottom:0">Every number in here is a placeholder — swap them for your firm's real ones. And nothing in this pack assumes you should already know it. Go get 'em. 💪</p>
+    </div>
+
+    <h3 style="margin-top:34px">If you only do four things</h3>
+    <p>Everything else in this pack supports these. Get these four bedded in and you've fixed most of what goes wrong in a small firm's buying:</p>
+    <div class="grid2">
+      <div class="card">
+        <span class="step">Foundation 1</span>
+        <h4 style="margin:4px 0 6px">No PO, no pay</h4>
+        <p style="margin:0;font-size:15px">Every spend gets an order raised <em>before</em> it happens. This one rule prevents more grief than everything else combined. → <a class="xref" href="#p3">Part 03</a></p>
+      </div>
+      <div class="card">
+        <span class="step">Foundation 2</span>
+        <h4 style="margin:4px 0 6px">Job code on everything</h4>
+        <p style="margin:0;font-size:15px">Tag every order to the job it's for, at the moment you raise it. It's what makes your reports possible. → <a class="xref" href="#p5">Part 05</a></p>
+      </div>
+      <div class="card">
+        <span class="step">Foundation 3</span>
+        <h4 style="margin:4px 0 6px">Check before you pay</h4>
+        <p style="margin:0;font-size:15px">Order, delivery note and invoice must agree — the three-way match. Catches overcharging before the money's gone. → <a class="xref" href="#p3">Part 03</a></p>
+      </div>
+      <div class="card">
+        <span class="step">Foundation 4</span>
+        <h4 style="margin:4px 0 6px">Write down what you're allowed to do</h4>
+        <p style="margin:0;font-size:15px">Agreed spend limits, in writing, with your manager. Protects you as much as the firm. → <a class="xref" href="#p2">Part 02</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PART 1 ============ -->
+  <section id="p1" class="anchor">
+    <p class="eyebrow"><span>Part 01</span><span class="rule"></span></p>
+    <h2 class="title serif">Procurement in a building firm</h2>
+    <p class="lead">You know the theory. The thing worth locking in is how it actually <em>lands</em> on a trades job — where the money leaks, and what "good" looks like when your suppliers are merchants, plant-hire yards and subcontractors rather than a tidy corporate catalogue.</p>
+
+    <p>The whole job, boiled down, is turning a <em>need on site</em> into a <em>paid-for delivery or a completed bit of work</em> — the right stuff, right price, right place, right time, from someone reliable, with a paper trail finance and the taxman can trust. The recognised UK framework for this is the <strong>CIPS procurement cycle</strong>, and its north star is the <strong>Five Rights</strong>:</p>
+
+    <div class="grid3">
+      <div class="card"><span class="step">Right 1</span><h4 style="margin:4px 0 4px">Right quality</h4><p style="margin:0;font-size:14.5px">Fit for the job — the correct grade of timber, the right spec of aggregate, a competent subbie.</p></div>
+      <div class="card"><span class="step">Right 2</span><h4 style="margin:4px 0 4px">Right quantity</h4><p style="margin:0;font-size:14.5px">Enough to keep the job moving, not a yard full of over-ordered stock that walks or warps.</p></div>
+      <div class="card"><span class="step">Right 3</span><h4 style="margin:4px 0 4px">Right place</h4><p style="margin:0;font-size:14.5px">On the right site, where the gang can reach it — not the wrong depot 40 miles away.</p></div>
+      <div class="card"><span class="step">Right 4</span><h4 style="margin:4px 0 4px">Right time</h4><p style="margin:0;font-size:14.5px">There when the trade needs it. Early ties up cash and space; late stops the job.</p></div>
+      <div class="card"><span class="step">Right 5</span><h4 style="margin:4px 0 4px">Right price</h4><p style="margin:0;font-size:14.5px">What you priced the job at — not a number that quietly crept up between quote and invoice.</p></div>
+      <div class="card" style="background:var(--accent-soft);border-color:var(--accent)"><span class="step">The point</span><h4 style="margin:4px 0 4px">They're linked</h4><p style="margin:0;font-size:14.5px">Miss one and it drags the others down — a cheap price that turns up late and wrong isn't a saving.</p></div>
+    </div>
+
+    <p>CIPS formalises the cycle into 13 stages, but for day-to-day it splits neatly into two halves — and knowing which half you're in saves a lot of head-scratching:</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h4 class="serif" style="color:var(--accent)">Strategic — Source-to-Contract</h4>
+        <p style="margin-bottom:0;font-size:15.5px">The thinking half: deciding what you need, finding and vetting suppliers, getting quotes, negotiating, agreeing terms. Done per category or per big package — e.g. setting up a groundworks subbie, or a year's timber deal with a merchant.</p>
+      </div>
+      <div class="card">
+        <h4 class="serif" style="color:var(--accent)">Operational — Procure-to-Pay (P2P)</h4>
+        <p style="margin-bottom:0;font-size:15.5px">The doing half: the daily loop of requisition → order → delivery to site → invoice → pay. High volume, lots of small orders. <strong>This is where you'll spend most days — and where small errors quietly stack up.</strong></p>
+      </div>
+    </div>
+
+    <p>Together that's <strong>Source-to-Pay</strong>. Here's the full loop:</p>
+
+    <figure>
+      <div class="fig-scroll">
+        <svg viewBox="0 0 860 360" role="img" aria-labelledby="s2p-t">
+          <title id="s2p-t">The Source-to-Pay cycle: a strategic sourcing band feeding an operational procure-to-pay band, looping back to needs</title>
+          <text x="20" y="70" class="dg-band" transform="rotate(-90 20 70)">Strategic · S2C</text>
+          <text x="20" y="270" class="dg-band" transform="rotate(-90 20 270)">Operational · P2P</text>
+
+          <g>
+            <rect x="60" y="34" width="160" height="64" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+            <text x="140" y="60" text-anchor="middle" class="dg-t b">Identify need</text>
+            <text x="140" y="80" text-anchor="middle" class="dg-sub">what &amp; why</text>
+
+            <rect x="255" y="34" width="160" height="64" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+            <text x="335" y="60" text-anchor="middle" class="dg-t b">Source &amp; vet</text>
+            <text x="335" y="80" text-anchor="middle" class="dg-sub">merchants · subbies</text>
+
+            <rect x="450" y="34" width="160" height="64" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+            <text x="530" y="60" text-anchor="middle" class="dg-t b">Negotiate</text>
+            <text x="530" y="80" text-anchor="middle" class="dg-sub">price &amp; terms</text>
+
+            <rect x="645" y="34" width="160" height="64" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+            <text x="725" y="60" text-anchor="middle" class="dg-t b">Agree deal</text>
+            <text x="725" y="80" text-anchor="middle" class="dg-sub">account / contract</text>
+
+            <path d="M220 66 H255" class="dg-line" marker-end="url(#ah)"/>
+            <path d="M415 66 H450" class="dg-line" marker-end="url(#ah)"/>
+            <path d="M610 66 H645" class="dg-line" marker-end="url(#ah)"/>
+          </g>
+
+          <path d="M725 98 V150 H140 V184" class="dg-line" marker-end="url(#ah)"/>
+
+          <g>
+            <rect x="60" y="186" width="150" height="64" rx="9" class="dg-fill-surface dg-stroke" stroke-width="1.4"/>
+            <text x="135" y="212" text-anchor="middle" class="dg-t b">Requisition</text>
+            <text x="135" y="232" text-anchor="middle" class="dg-sub">site asks to buy</text>
+
+            <rect x="238" y="186" width="150" height="64" rx="9" class="dg-fill-surface dg-stroke" stroke-width="1.4"/>
+            <text x="313" y="212" text-anchor="middle" class="dg-t b">Purchase order</text>
+            <text x="313" y="232" text-anchor="middle" class="dg-sub">commit the spend</text>
+
+            <rect x="416" y="186" width="150" height="64" rx="9" class="dg-fill-surface dg-stroke" stroke-width="1.4"/>
+            <text x="491" y="212" text-anchor="middle" class="dg-t b">Delivery to site</text>
+            <text x="491" y="232" text-anchor="middle" class="dg-sub">signed for on site</text>
+
+            <rect x="594" y="186" width="150" height="64" rx="9" class="dg-fill-surface dg-stroke" stroke-width="1.4"/>
+            <text x="669" y="212" text-anchor="middle" class="dg-t b">Invoice &amp; pay</text>
+            <text x="669" y="232" text-anchor="middle" class="dg-sub">match &amp; settle</text>
+
+            <path d="M210 218 H238" class="dg-line" marker-end="url(#ah)"/>
+            <path d="M388 218 H416" class="dg-line" marker-end="url(#ah)"/>
+            <path d="M566 218 H594" class="dg-line" marker-end="url(#ah)"/>
+          </g>
+
+          <path d="M669 250 V312 H140 V100" class="dg-line-soft" marker-end="url(#ah-soft)"/>
+          <text x="404" y="332" text-anchor="middle" class="dg-sub">what did the job actually cost? — feeds the next quote</text>
+
+          <defs>
+            <marker id="ah" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--ink-soft)"/>
+            </marker>
+            <marker id="ah-soft" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--line-strong)"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      <figcaption>The loop back matters most in construction: knowing what a job <em>actually</em> cost vs what you priced it at is how the next quote gets sharper. That feedback only works if every cost was tied to the job — more on that in <a class="xref" href="#p5">Part 05</a>.</figcaption>
+    </figure>
+
+    <div class="note">
+      <span class="lbl">The one habit that saves you</span>
+      <p>Get the order agreed <strong>before</strong> the materials land or the subbie starts — never after. A PO raised up front protects the firm and gives you something to match the invoice against. An invoice that turns up with no PO behind it is where every overspend, dispute and awkward "did we actually agree this?" conversation comes from.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 2 ============ -->
+  <section id="p2" class="anchor">
+    <p class="eyebrow"><span>Part 02</span><span class="rule"></span></p>
+    <h2 class="title serif">Your patch &amp; where the line is</h2>
+    <p class="lead">Here's the trap when your manager isn't procurement-trained and the remit's a bit woolly: it's not that you'll do too little — it's that you'll quietly get blamed for things nobody actually gave you the authority to control. Sorting that is genuinely your first move, and it makes you look on-top-of-it, not needy.</p>
+
+    <p>You don't need a fancy job description. You need <strong>one page</strong> you and your manager both sign up to: what's <em>mine</em>, what's <em>not mine</em>, what I <em>escalate</em>.</p>
+
+    <h3>Your "mine / not mine / escalate" list</h3>
+    <div class="table-scroll">
+      <table>
+        <caption>A starting point — rewrite every row for your firm, then get your manager to nod it through.</caption>
+        <thead><tr><th style="width:34%">Mine to own</th><th style="width:33%">Not mine</th><th style="width:33%">Escalate / decide together</th></tr></thead>
+        <tbody>
+          <tr><td>Raising &amp; tracking POs to merchants and subbies</td><td>Deciding what a job needs (that's the estimator / site)</td><td>Any order over the agreed limit</td></tr>
+          <tr><td>Setting up &amp; maintaining suppliers</td><td>Approving budgets</td><td>New subbie on a high-risk package</td></tr>
+          <tr><td>Chasing deliveries &amp; sorting invoice mismatches</td><td>Paying invoices &amp; CIS (finance / accountant)</td><td>Subcontract terms &amp; retention</td></tr>
+          <tr><td>Running the standard reports</td><td>Negotiating major packages solo</td><td>Changing how Ariba works (<a class="xref" href="#p7">Part 09</a>)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Who does what — using a RACI (from scratch)</h3>
+    <p>Not met RACI before? It's a dead-simple grid for pinning down who does what on each task, so nothing falls through the cracks and nobody treads on toes. Tasks run down the side, people across the top, and you put <strong>one letter in each box</strong>. The four letters:</p>
+    <ul>
+      <li><strong><span class="pill r">R</span> Responsible</strong> — the person who actually <em>does</em> the task (you can have more than one).</li>
+      <li><strong><span class="pill a">A</span> Accountable</strong> — the one person who owns the outcome and carries the can if it goes wrong. <em>Exactly one per row — that's the golden rule.</em></li>
+      <li><strong><span class="pill c">C</span> Consulted</strong> — asked for input <em>before</em> it's done (a two-way conversation).</li>
+      <li><strong><span class="pill i">I</span> Informed</strong> — just told <em>after</em> it's done (one-way, FYI).</li>
+    </ul>
+    <p>Read each row like a sentence. Take "Issue the PO": <em>you</em> do it and own it (<span class="pill a">A</span> <span class="pill r">R</span>), and the site team is simply told it's done (<span class="pill i">I</span>). That single line settles who raises POs — no more grey area.</p>
+    <p>Two things people trip on: there's only ever <strong>one A</strong> per task (if two people are accountable, nobody really is), and A and R are often the <em>same</em> person — that's the <span class="pill a">A</span> <span class="pill r">R</span> combo you'll see below, totally normal in a small firm.</p>
+
+    <div class="note warn">
+      <span class="lbl">Reality check for a tiny firm</span>
+      <p>You'll often hold two or three letters across a single row yourself — Responsible <em>and</em> Accountable for raising POs, and probably the "finance" column too (<a class="xref" href="#money">Part 06</a>). That's fine — the point of the grid here isn't spreading work across a big team you don't have. It's making the <strong>manager's</strong> boxes explicit, so it's crystal clear what needs <em>their</em> nod versus what's simply yours to get on with.</p>
+    </div>
+
+    <p>Here's a starter grid — best filled in <em>with</em> your manager in a 1:1. Tweak every box, and you've turned a fuzzy remit into something you can both point at:</p>
+    <p style="font-size:14.5px;color:var(--muted)">
+      <span class="pill r">R</span> Responsible &nbsp;
+      <span class="pill a">A</span> Accountable &nbsp;
+      <span class="pill c">C</span> Consulted &nbsp;
+      <span class="pill i">I</span> Informed
+    </p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Task</th><th>Site team / foreman</th><th>You (Procurement)</th><th>Manager / owner</th><th>Finance (often you) / accountant</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Decide a job needs it</td><td><span class="pill a">A</span> <span class="pill r">R</span></td><td><span class="pill c">C</span></td><td><span class="pill c">C</span></td><td><span class="pill i">I</span></td></tr>
+          <tr><td>Raise requisition</td><td><span class="pill r">R</span></td><td><span class="pill a">A</span></td><td><span class="pill c">C</span></td><td><span class="pill i">I</span></td></tr>
+          <tr><td>Approve the spend</td><td><span class="pill i">I</span></td><td><span class="pill c">C</span></td><td><span class="pill a">A</span> <span class="pill r">R</span></td><td><span class="pill c">C</span></td></tr>
+          <tr><td>Issue the PO</td><td><span class="pill i">I</span></td><td><span class="pill a">A</span> <span class="pill r">R</span></td><td><span class="pill i">I</span></td><td><span class="pill i">I</span></td></tr>
+          <tr><td>Set up a supplier / subbie</td><td><span class="pill c">C</span></td><td><span class="pill a">A</span> <span class="pill r">R</span></td><td><span class="pill i">I</span></td><td><span class="pill c">C</span></td></tr>
+          <tr><td>Sign for delivery on site</td><td><span class="pill a">A</span> <span class="pill r">R</span></td><td><span class="pill c">C</span></td><td><span class="pill i">I</span></td><td><span class="pill i">I</span></td></tr>
+          <tr><td>Pay invoice / run CIS</td><td><span class="pill i">I</span></td><td><span class="pill c">C</span></td><td><span class="pill i">I</span></td><td><span class="pill a">A</span> <span class="pill r">R</span></td></tr>
+          <tr><td>Report on spend by job</td><td><span class="pill i">I</span></td><td><span class="pill a">A</span> <span class="pill r">R</span></td><td><span class="pill c">C</span></td><td><span class="pill c">C</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Nail your spend authority (this is the one people leave vague)</h3>
+    <p>Agree in writing <strong>how much you can commit without asking</strong>, and where the line sits. This is the bit that bites if it's fuzzy. Numbers below are illustrative for a small trades firm — the structure matters more than the figures.</p>
+    <div class="table-scroll">
+      <table>
+        <caption>An example delegation-of-authority ladder. Swap the amounts for ones your manager signs off.</caption>
+        <thead><tr><th>Order value</th><th>Quotes</th><th>Who approves</th><th>Typical trade example</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">Up to £250</td><td>1</td><td>You</td><td>Merchant top-ups, consumables, small tool</td></tr>
+          <tr><td class="mono">£250 – £2,500</td><td>2</td><td>Manager</td><td>Materials order, short plant hire</td></tr>
+          <tr><td class="mono">£2,500 – £15,000</td><td>3</td><td>Manager + Finance</td><td>Big material package, labour-only gang</td></tr>
+          <tr><td class="mono">Over £15,000</td><td>3+</td><td>Owner sign-off</td><td>Subcontract package, plant purchase — get a contract</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note say">
+      <span class="lbl">How to raise it with your manager</span>
+      <p class="quote">"Quick one — can we spend 20 minutes pinning down what I own, what I run past you, and how much I can commit without checking? I'll write it up as a single page so we've both got it to point back to. Just saves any crossed wires down the line."</p>
+      <p style="margin:12px 0 0;font-size:15px;color:var(--ink-soft)">This works because <em>you're</em> the one bringing order, and it's an easy "yes" for a non-specialist boss. You're not asking them to design procurement — just to confirm the boundaries. Frame it as protecting the firm, because it genuinely does.</p>
+    </div>
+
+    <div class="note">
+      <span class="lbl">Make your 1:1s count</span>
+      <p style="margin-bottom:8px">Your regular 1:1 with the site manager is your main steering wheel — so treat it like a standing meeting with an agenda, not just a catch-up. Run the same five beats every time and you'll walk out with decisions instead of vague nods:</p>
+      <ol style="margin:0">
+        <li><strong>Numbers</strong> — a quick spend / jobs update (the one-pager from <a class="xref" href="#p5">Part 05</a>).</li>
+        <li><strong>Decisions I need from you</strong> — anything over my limit, new suppliers, approvals to unblock.</li>
+        <li><strong>Watch-outs</strong> — jobs running over, late subbies, plant still on hire.</li>
+        <li><strong>One improvement</strong> — the quick win I'm working on right now (<a class="xref" href="#p8">Part 10</a>).</li>
+        <li><strong>Actions</strong> — who's doing what, by when — written down.</li>
+      </ol>
+      <p style="margin:8px 0 0;font-size:14px;color:var(--muted)">Keep a running note (a monday.com board or a simple shared doc) so nothing slips between meetings — and so you've a record of what was agreed.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 3 ============ -->
+  <section id="p3" class="anchor">
+    <p class="eyebrow"><span>Part 03</span><span class="rule"></span></p>
+    <h2 class="title serif">The buying engine</h2>
+    <p class="lead">Your daily loop. Run it as a fixed sequence with two checkpoints — because the checkpoints are what keep the firm's money safe and keep <em>you</em> out of the firing line.</p>
+
+    <figure>
+      <div class="fig-scroll">
+        <svg viewBox="0 0 860 300" role="img" aria-labelledby="p2p-t">
+          <title id="p2p-t">The procure-to-pay flow with an approval gate and a three-way match before payment</title>
+          <rect x="30" y="30" width="120" height="58" rx="9" class="dg-fill-surface dg-stroke" stroke-width="1.4"/>
+          <text x="90" y="55" text-anchor="middle" class="dg-t b">Need on site</text>
+          <text x="90" y="73" text-anchor="middle" class="dg-sub">gang wants X</text>
+
+          <rect x="186" y="30" width="120" height="58" rx="9" class="dg-fill-surface dg-stroke" stroke-width="1.4"/>
+          <text x="246" y="55" text-anchor="middle" class="dg-t b">Requisition</text>
+          <text x="246" y="73" text-anchor="middle" class="dg-sub">formal request</text>
+
+          <path d="M402 30 L448 59 L402 88 L356 59 Z" class="dg-fill-amber dg-stroke-amber" stroke-width="1.4"/>
+          <text x="402" y="56" text-anchor="middle" class="dg-t b" style="font-size:12px">Approve?</text>
+          <text x="402" y="71" text-anchor="middle" class="dg-sub">gate</text>
+
+          <rect x="498" y="30" width="130" height="58" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+          <text x="563" y="55" text-anchor="middle" class="dg-t b">Purchase order</text>
+          <text x="563" y="73" text-anchor="middle" class="dg-sub">you issue it</text>
+
+          <path d="M150 59 H186" class="dg-line" marker-end="url(#ah2)"/>
+          <path d="M306 59 H356" class="dg-line" marker-end="url(#ah2)"/>
+          <path d="M448 59 H498" class="dg-line" marker-end="url(#ah2)"/>
+          <text x="474" y="50" text-anchor="middle" class="dg-accent-t dg-sub">yes</text>
+
+          <path d="M402 88 V108 H246 V88" class="dg-line-soft" marker-end="url(#ah2-soft)"/>
+          <text x="324" y="124" text-anchor="middle" class="dg-sub">no → back to site</text>
+
+          <rect x="30" y="150" width="150" height="44" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.2"/>
+          <text x="105" y="169" text-anchor="middle" class="dg-t b" style="font-size:13px">Purchase order</text>
+          <text x="105" y="184" text-anchor="middle" class="dg-sub">what we agreed</text>
+
+          <rect x="30" y="200" width="150" height="44" rx="9" class="dg-fill-surface dg-stroke" stroke-width="1.2"/>
+          <text x="105" y="219" text-anchor="middle" class="dg-t b" style="font-size:13px">Delivery note</text>
+          <text x="105" y="234" text-anchor="middle" class="dg-sub">signed on site</text>
+
+          <rect x="30" y="250" width="150" height="44" rx="9" class="dg-fill-surface dg-stroke" stroke-width="1.2"/>
+          <text x="105" y="269" text-anchor="middle" class="dg-t b" style="font-size:13px">Invoice</text>
+          <text x="105" y="284" text-anchor="middle" class="dg-sub">what they charge</text>
+
+          <path d="M350 186 L410 222 L350 258 L290 222 Z" class="dg-fill-info dg-stroke-info" stroke-width="1.4"/>
+          <text x="350" y="219" text-anchor="middle" class="dg-t b" style="font-size:12px">3-way</text>
+          <text x="350" y="233" text-anchor="middle" class="dg-t b" style="font-size:12px">match</text>
+
+          <rect x="475" y="196" width="130" height="52" rx="9" class="dg-fill-surface dg-stroke" stroke-width="1.4"/>
+          <text x="540" y="218" text-anchor="middle" class="dg-t b">Payment</text>
+          <text x="540" y="234" text-anchor="middle" class="dg-sub">finance settles</text>
+
+          <path d="M180 172 L286 216" class="dg-line" marker-end="url(#ah2)"/>
+          <path d="M180 222 H286" class="dg-line" marker-end="url(#ah2)"/>
+          <path d="M180 272 L286 228" class="dg-line" marker-end="url(#ah2)"/>
+          <path d="M410 222 H475" class="dg-line" marker-end="url(#ah2)"/>
+          <text x="443" y="214" text-anchor="middle" class="dg-accent-t dg-sub">all agree</text>
+
+          <text x="628" y="164" class="dg-band">Three-way match</text>
+          <text x="628" y="188" class="dg-t" style="font-size:12.5px">PO + delivery note</text>
+          <text x="628" y="206" class="dg-t" style="font-size:12.5px">+ invoice must all</text>
+          <text x="628" y="224" class="dg-t" style="font-size:12.5px">agree before you pay.</text>
+
+          <defs>
+            <marker id="ah2" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--ink-soft)"/>
+            </marker>
+            <marker id="ah2-soft" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--line-strong)"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      <figcaption>Two checkpoints do most of the protecting: the <strong>approval gate</strong> (no PO without a yes) and the <strong>three-way match</strong> — the order, the signed delivery note, and the invoice all have to agree before a penny goes out.</figcaption>
+    </figure>
+
+    <h3>The three-way match, trade version</h3>
+    <p>Before finance pays a merchant or subbie invoice, three things line up:</p>
+    <ul>
+      <li><strong>The PO</strong> — what we agreed to buy and the price.</li>
+      <li><strong>The delivery note / receipt</strong> — proof it actually turned up on site (or the work got done).</li>
+      <li><strong>The invoice</strong> — what they're charging.</li>
+    </ul>
+    <p>Match? Pay it. Don't match — short delivery, price crept up, half the load's missing, damaged goods sent back? You've caught it <em>before</em> the money's gone. In a trade where merchant prices move and part-loads are normal, this one control saves serious money.</p>
+
+    <div class="note risk">
+      <span class="lbl">Watch out — signed delivery notes go walkabout</span>
+      <p>Deliveries get signed for in the mud and the note vanishes into a van door pocket forever. No signed note = no proof it arrived = you're paying blind. Make it a rule: <strong>every delivery note comes back to the office</strong> (a photo to a shared inbox is fine). It's the single biggest cause of "we paid for materials that never came" in small firms.</p>
+    </div>
+
+    <div class="note risk">
+      <span class="lbl">Watch out — segregation of duties</span>
+      <p>In a small firm the same person often requests, orders, receives <em>and</em> approves — that's the classic weak spot. You don't need a big team to fix it: just make sure <strong>no single person can both raise a purchase and confirm it was received/paid on their own</strong>. Even the manager casting an eye over delivery notes vs invoices breaks the risky loop. Since you're likely wearing the finance hat too, <a class="xref" href="#money">Part 06</a> has the realistic playbook for this when it's just you and your manager.</p>
+    </div>
+
+    <h3>Give the site one front door</h3>
+    <p>Decide how site asks you for stuff — one form, one channel, not five WhatsApps and a shout across the yard. Capture the same fields every time: <em>what, which job, how much, by when, deliver where</em>. Boring, but a clean intake is exactly what makes your job-costing reports write themselves later.</p>
+
+    <div class="note">
+      <span class="lbl">Running this in monday.com</span>
+      <p>The neatest way to build that front door is a <strong>monday form</strong> — site fills it in on a phone in twenty seconds, and you can make the job code a required field so it can't arrive incomplete. Each submission lands as an item you can then walk through to "Paid."</p>
+      <p style="margin-bottom:0">monday and Ariba divide up this workflow really well once each has a clear job — <a class="xref" href="#systems">Part 07</a> is the full build: which system owns what, the boards to create, and the automations that do your chasing for you.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 4 ============ -->
+  <section id="p4" class="anchor">
+    <p class="eyebrow"><span>Part 04</span><span class="rule"></span></p>
+    <h2 class="title serif">Merchants, plant &amp; subbies</h2>
+    <p class="lead">Your three supplier worlds behave completely differently. Most of the messes you'll inherit trace back to sloppy records in one of them — and subbies come with legal strings (CIS, insurance) that materials don't.</p>
+
+    <div class="grid3">
+      <div class="card">
+        <h4>Builders' merchants</h4>
+        <ul class="checklist" style="font-size:14.5px">
+          <li>Trade account &amp; credit limit</li>
+          <li>Agreed pricing / discount</li>
+          <li>Any rebate deal (claim it!)</li>
+          <li>Payment terms in writing</li>
+          <li>Delivery vs collection rules</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Plant &amp; tool hire</h4>
+        <ul class="checklist" style="font-size:14.5px">
+          <li>Day / week rate clear</li>
+          <li>Delivery &amp; collection charges</li>
+          <li>Damage / insurance terms</li>
+          <li><strong>Off-hire process</strong></li>
+          <li>Who can authorise hire</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Subcontractors</h4>
+        <ul class="checklist" style="font-size:14.5px">
+          <li>CIS details (to finance)</li>
+          <li>Public liability insurance</li>
+          <li>Right to work</li>
+          <li>RAMS / CSCS where needed</li>
+          <li>Rate &amp; retention terms</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note warn">
+      <span class="lbl">Money leak — off-hire discipline</span>
+      <p>Plant keeps charging until you <strong>formally off-hire it</strong> and get an off-hire number. A dumper that finished on Tuesday but wasn't off-hired till the following Monday is six days of dead money. Keep a live list of what's on hire, on which job, and chase the yard to collect the second it's done. This is one of the easiest wins you'll find in a trades firm.</p>
+    </div>
+
+    <div class="note risk">
+      <span class="lbl">Watch out — the bank-detail scam</span>
+      <p>A classic: an email that looks like it's from a merchant or subbie asking you to "update our bank details." <strong>Never change payment details off an email alone.</strong> Ring them back on a number you already hold — not one from the email — to confirm. This single habit prevents one of the most expensive mistakes in the whole function.</p>
+    </div>
+
+    <div class="note">
+      <span class="lbl">CIS &amp; retention — know enough to not drop the ball</span>
+      <p style="margin-bottom:10px">Usually your external accountant runs the mechanics (see <a class="xref" href="#money">Part 06</a>) — but in a firm this small you may well be the one coordinating them, so know the shape well enough that nothing slips:</p>
+      <p style="margin:0 0 8px"><strong>CIS (Construction Industry Scheme).</strong> When the firm pays most subcontractors, it generally has to verify them with HMRC and deduct tax before paying — commonly <span class="mono">20%</span> (verified) or <span class="mono">30%</span> (unverified), or <span class="mono">0%</span> if they hold gross status. <em>Your</em> bit: never let a subbie get set up or paid without their CIS/UTR details captured and passed to finance.</p>
+      <p style="margin:0"><strong>Retention.</strong> On subcontract work it's normal to hold back a slice of each payment as security against defects — typically <span class="mono">5%</span>, halving to <span class="mono">2.5%</span> at practical completion, released after the defects period. Track what's held and owed, both ways, so money doesn't get quietly forgotten. Best practice per UK guidance: <strong>agree retention terms before signing, not when you're chasing it back later.</strong></p>
+    </div>
+    <p class="disclaimer">The above is general awareness, not tax or legal advice — the exact CIS mechanics and retention terms sit with your accountant and your contracts.</p>
+
+    <h3>Getting quotes that actually compare</h3>
+    <p>"Get three quotes" is standard advice, but it only works if you're comparing like with like — otherwise you're just picking the one that left the most out. The trick is to <strong>give every supplier the exact same brief</strong>, in writing.</p>
+    <div class="table-scroll">
+      <table>
+        <caption>Send all of this to each supplier, so the quotes come back genuinely comparable.</caption>
+        <thead><tr><th style="width:32%">Tell them</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Exact spec</strong></td><td>Grade, size, finish, quantity. "Timber" gets you three different products at three different prices</td></tr>
+          <tr><td><strong>Where &amp; when</strong></td><td>Site address, access limits, delivery date — a price without delivery isn't a price</td></tr>
+          <tr><td><strong>What's included</strong></td><td>Delivery, offloading, VAT, waste/returns — the usual hiding places for extra cost</td></tr>
+          <tr><td><strong>Payment terms</strong></td><td>30 days vs upfront materially changes what the deal's worth to you</td></tr>
+          <tr><td><strong>Quote deadline</strong></td><td>A date by which you need it back, so it doesn't drift</td></tr>
+          <tr><td><strong>How long it holds</strong></td><td>Material prices move — ask how long the price is valid for</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>When they come back, compare <strong>total cost delivered</strong>, not the headline rate — then weigh in the things a number won't show you: can they actually hit the date, have they let you down before, and will they pick up the phone when something's wrong. Cheapest is not the same as best value, and you're allowed to say so when you explain your pick.</p>
+
+    <div class="note">
+      <span class="lbl">Keep the paper trail</span>
+      <p>Save the quotes you didn't pick, not just the one you did. It takes seconds, and it's what lets you show your manager <em>why</em> you chose who you chose — which is exactly the evidence that makes a savings claim believable at month-end. A quick note of "chose B: £40 more but could deliver Tuesday, A was 2 weeks out" is plenty.</p>
+    </div>
+
+    <h3>Keep a tight preferred list</h3>
+    <p>For the categories you buy again and again, agree a small set of <strong>preferred merchants and subbies</strong> with settled pricing. It cuts haggling on every order, makes cost predictable for quoting, and gives site an easy default — which is how you kill "maverick" buying (someone rocking up to a random merchant at full retail because it was closer).</p>
+  </section>
+
+  <!-- ============ PART 5 ============ -->
+  <section id="p5" class="anchor">
+    <p class="eyebrow"><span>Part 05</span><span class="rule"></span></p>
+    <h2 class="title serif">Reporting that earns its keep</h2>
+    <p class="lead">In construction, one report rules them all: <strong>spend by job</strong>. Did this job come in at what we priced it? If your reporting can answer that cleanly, you're worth your weight — everything else is supporting cast.</p>
+
+    <h3>The numbers that actually matter here</h3>
+    <div class="table-scroll">
+      <table>
+        <caption>Start with these. Add more only when someone asks a question this set can't answer.</caption>
+        <thead><tr><th>Metric</th><th>What it tells you</th><th>Why a builder cares</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Spend by job</strong></td><td>Total cost per project, split materials / labour / plant</td><td>The headline — is the job making money?</td></tr>
+          <tr><td><strong>Quoted vs actual</strong></td><td>What you priced vs what you spent</td><td>Catches jobs bleeding before it's too late</td></tr>
+          <tr><td><strong>Spend by merchant / subbie</strong></td><td>Where the money's going</td><td>Leverage for better rates &amp; rebates</td></tr>
+          <tr><td><strong>Open POs / uninvoiced</strong></td><td>Committed but not yet billed</td><td>The true cost-to-date, not just invoices in</td></tr>
+          <tr><td><strong>Retention held / owed</strong></td><td>Money held on subbies &amp; by clients</td><td>Cash that's easy to forget on both sides</td></tr>
+          <tr><td><strong>Savings &amp; rebates</strong></td><td>Cuts vs quote, merchant rebates claimed</td><td>The number that justifies your seat</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note warn">
+      <span class="lbl">This all rests on one thing</span>
+      <p>Every report above only works if <strong>every order is tagged to the right job</strong> at the point you raise it. Get that habit locked in — job code on every requisition and PO, no exceptions — and the reports basically build themselves. Skip it, and you'll spend the last day of every month guessing which job a timber delivery belonged to.</p>
+    </div>
+
+    <h3>Set a rhythm and hold it</h3>
+    <p>Predictability is the whole game. When your manager knows exactly what lands and when, the random "can you pull me a report?" pings drop right off. A sensible default:</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Cadence</th><th>What you send</th><th>Who for</th><th>Effort</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill a">Weekly</span></td><td>Open POs, anything stuck, plant still on hire, urgent issues</td><td>You / manager</td><td>15 min</td></tr>
+          <tr><td><span class="pill c">Monthly (4-weekly)</span></td><td>Spend by job, quoted-vs-actual, top suppliers, savings</td><td>Manager / owner</td><td>~1 hr</td></tr>
+          <tr><td><span class="pill i">Quarterly</span></td><td>Trends, supplier review, retention position, what to fix next</td><td>Owner</td><td>Half day</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note say">
+      <span class="lbl">On "weekly vs 4-weekly" — your manager's actual question</span>
+      <p style="font-size:15.5px;color:var(--ink-soft);margin-bottom:8px">Switching a report from weekly to 4-weekly is a fair call, and mostly a <em>cadence</em> decision, not a technical one. Simple rule of thumb before you change anything:</p>
+      <p style="margin:0;font-size:15.5px;color:var(--ink-soft)"><strong>Weekly</strong> for things that need action <em>now</em> — stuck orders, plant burning money on hire, exceptions. <strong>Monthly / 4-weekly</strong> for things you review and reflect on — spend by job, trends, savings. Match the frequency to how often someone will actually <em>act</em> on it, not how often Ariba <em>can</em> spit it out. (How to make that change in Ariba is in <a class="xref" href="#p7">Part 09</a> — spoiler: it's usually a two-minute job.)</p>
+    </div>
+
+    <div class="note">
+      <span class="lbl">Presenting to a non-specialist boss</span>
+      <p>Lead with the answer, not the spreadsheet. One page: three or four numbers, a one-line "so what," and anything you need a decision on. Park the detailed tables in an appendix they can ignore. Translating procurement into plain "this job's £4k over, here's why" is a big chunk of your value — most people can't.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 6 · FINANCE ============ -->
+  <section id="money" class="anchor">
+    <p class="eyebrow"><span>Part 06</span><span class="rule"></span></p>
+    <h2 class="title serif">When you're also finance</h2>
+    <p class="lead">In a firm this small there's usually no one to "hand it to finance" — a lot of the time that's you too, with your site manager for backup and maybe one other pair of hands. That's genuinely fine: procurement and accounts payable are basically the same pipeline, and running it end to end is an advantage, not a burden. But two things shift — your <em>controls</em> and your <em>daily admin</em>.</p>
+
+    <h3>You can't fully separate the jobs — so build "backstop" controls</h3>
+    <p>The textbook rule is that different people should raise, approve and pay — so no one person can push a dodgy payment through unnoticed. When it's just you (± manager ± one), that's impossible. So you swap it for the next best thing: a <strong>second pair of eyes on the money-out steps</strong>, plus checks that catch problems after the event. This is exactly what auditors expect of a micro-business — nobody thinks you can be three people.</p>
+    <div class="table-scroll">
+      <table>
+        <caption>The handful of steps that genuinely need a second person — make your manager that person.</caption>
+        <thead><tr><th>Risky step</th><th>Your second pair of eyes</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>Changing a supplier's bank details</td><td>Manager sees &amp; confirms</td><td>The #1 fraud target — verify by phone too</td></tr>
+          <tr><td>Adding a new supplier / subbie</td><td>Manager approves</td><td>Stops fake or phantom suppliers</td></tr>
+          <tr><td>Authorising a payment run</td><td>Manager signs off the batch</td><td>This is real money leaving the firm</td></tr>
+          <tr><td>Any order to a friend / relative</td><td>Manager approves</td><td>Removes any conflict-of-interest doubt</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>In a tiny team, your <strong>paper trail is the control</strong>. Because you can't rely on separation, keep every PO, delivery note and approval religiously — the trail is what proves things were done straight if anyone ever asks.</p>
+
+    <h3>Accounts payable — your other daily loop</h3>
+    <p>This sits right on top of the buying flow you already know. When a bill comes in:</p>
+    <ol>
+      <li><strong>Invoice arrives</strong> (from a merchant or subbie).</li>
+      <li><strong>Match it</strong> to the PO and the signed delivery note — your three-way match from <a class="xref" href="#p3">Part 03</a>.</li>
+      <li><strong>Code it</strong> — tag it to the right job, and to the right <em>nominal code</em>. (A nominal code is just the accounts system's label for <em>what kind</em> of cost it is — materials, plant hire, subcontractor, fuel. The job code says <em>which job</em> the money went on; the nominal code says <em>what it was spent on</em>. You need both.)</li>
+      <li><strong>Get it approved</strong> if it's over your limit.</li>
+      <li><strong>Schedule it</strong> into the next payment run.</li>
+      <li><strong>Pay &amp; file</strong> — with the trail attached.</li>
+    </ol>
+
+    <div class="note">
+      <span class="lbl">The 20 minutes that finds money — statement reconciliation</span>
+      <p>Once a month, take each main merchant's <strong>statement</strong> (their list of what you owe them) and check it against your records. It routinely turns up missing invoices, double-charges, and credits they owe <em>you</em> for returns. Suppliers make mistakes in their favour more often than yours — this is how you catch them.</p>
+    </div>
+
+    <h3>Pay to terms — cash flow is king in construction</h3>
+    <ul>
+      <li><strong>Batch it.</strong> Run payments on a regular day (say weekly), not ad-hoc every time an invoice lands — it's calmer and easier to control.</li>
+      <li><strong>Pay on terms.</strong> Not so early you strangle the firm's cash, not so late you burn merchants and subbies. Fair, on-time subbie payment is reputation on site — and it's the spirit of the Construction Act and Prompt Payment Code.</li>
+      <li><strong>Early-payment discounts</strong> are only worth taking if the discount beats the value of holding onto the cash.</li>
+    </ul>
+
+    <h3>A light month-end</h3>
+    <p>You don't need a corporate close. A simple monthly tick-list keeps things clean and makes your reports trustworthy:</p>
+    <ul class="checklist">
+      <li>All invoices in and matched to POs</li>
+      <li>Account for <strong>GRNI</strong> — "goods received, not invoiced." If materials landed on site in March but the bill doesn't arrive till April, that cost still belongs to March. Flagging these stops a job looking cheaper than it really is</li>
+      <li>Supplier statements reconciled</li>
+      <li>CIS return done (with your accountant)</li>
+      <li>Retention schedule updated — held and owed</li>
+      <li>Spend-by-job reconciled for the monthly pack</li>
+    </ul>
+    <p style="font-size:14.5px;color:var(--muted)">Tip: this list makes a perfect recurring checklist board in monday.com — one item per row, rebuilt automatically each month, so you'll never wonder what you've missed. See <a class="xref" href="#systems">Part 07</a>.</p>
+
+    <h3>Where the external accountant fits</h3>
+    <p>Most firms this size lean on an <strong>external accountant or bookkeeper</strong> for the statutory, technical stuff. So when this pack says "finance," that's often <em>them</em>, not an internal department — and sometimes it's you coordinating with them. Rough split:</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>You (day to day)</th><th>External accountant (specialist / statutory)</th></tr></thead>
+        <tbody>
+          <tr><td>Raising POs, matching &amp; coding invoices</td><td>CIS returns to HMRC</td></tr>
+          <tr><td>Payment runs &amp; supplier data</td><td>VAT returns</td></tr>
+          <tr><td>Spend &amp; job-cost reports</td><td>Payroll</td></tr>
+          <tr><td>Feeding them clean, matched, job-coded data</td><td>Year-end accounts &amp; tax</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Your single biggest gift to them: <strong>clean, matched, job-coded data.</strong> Do that and everything downstream gets faster — and cheaper, if they bill by the hour.</p>
+  </section>
+
+  <!-- ============ PART 7 · SYSTEMS ============ -->
+  <section id="systems" class="anchor">
+    <p class="eyebrow"><span>Part 07</span><span class="rule"></span></p>
+    <h2 class="title serif">monday.com + Ariba, working together</h2>
+    <p class="lead">You've got two systems, and that's actually a strength once you give each a clear job. The mistake almost everyone makes is treating them as rivals — or worse, typing everything into both. Here's the way to run them that gives you control without doubling your workload.</p>
+
+    <h3>The principle: one is the record, one is the cockpit</h3>
+    <div class="grid2">
+      <div class="card" style="border-color:var(--accent)">
+        <span class="step">System of record</span>
+        <h4 class="serif" style="margin:4px 0 6px;color:var(--accent)">SAP Ariba</h4>
+        <p style="margin:0;font-size:15.5px">Where the <strong>transaction officially lives</strong>: requisitions, POs, receipts, invoices, supplier master data, approvals, audit trail. If it's about money or compliance, Ariba is the truth. It's slow and heavy — but it's <em>defensible</em>, and that's the point.</p>
+      </div>
+      <div class="card" style="border-color:var(--info)">
+        <span class="step" style="color:var(--info)">Operating layer</span>
+        <h4 class="serif" style="margin:4px 0 6px;color:var(--info)">monday.com</h4>
+        <p style="margin:0;font-size:15.5px">Where the <strong>work about the work</strong> lives: what's been asked for, what you're chasing, what's due, what's expiring, what needs your manager. It's fast, visual and flexible — brilliant at the things Ariba is bad at, like nagging people.</p>
+      </div>
+    </div>
+
+    <p>You're already using monday to simplify things for your manager, which is exactly right — that's the "cockpit" instinct. The upgrade is to use it for the whole operational layer, not just reporting. Here's how one order flows across both:</p>
+
+    <figure>
+      <div class="fig-scroll">
+        <svg viewBox="0 0 860 340" role="img" aria-labelledby="sys-t">
+          <title id="sys-t">How an order flows between monday.com for coordination and SAP Ariba for the transaction record</title>
+          <text x="18" y="76" class="dg-band" transform="rotate(-90 18 76)">monday · cockpit</text>
+          <text x="18" y="262" class="dg-band" transform="rotate(-90 18 262)">Ariba · record</text>
+
+          <!-- monday row -->
+          <rect x="70" y="46" width="150" height="60" rx="9" class="dg-fill-info dg-stroke-info" stroke-width="1.4"/>
+          <text x="145" y="72" text-anchor="middle" class="dg-t b">Request in</text>
+          <text x="145" y="91" text-anchor="middle" class="dg-sub">monday form</text>
+
+          <rect x="276" y="46" width="150" height="60" rx="9" class="dg-fill-info dg-stroke-info" stroke-width="1.4"/>
+          <text x="351" y="72" text-anchor="middle" class="dg-t b">Approved</text>
+          <text x="351" y="91" text-anchor="middle" class="dg-sub">manager signs off</text>
+
+          <rect x="482" y="46" width="150" height="60" rx="9" class="dg-fill-info dg-stroke-info" stroke-width="1.4"/>
+          <text x="557" y="72" text-anchor="middle" class="dg-t b">Track &amp; chase</text>
+          <text x="557" y="91" text-anchor="middle" class="dg-sub">status · nudges</text>
+
+          <rect x="688" y="46" width="150" height="60" rx="9" class="dg-fill-info dg-stroke-info" stroke-width="1.4"/>
+          <text x="763" y="72" text-anchor="middle" class="dg-t b">Manager view</text>
+          <text x="763" y="91" text-anchor="middle" class="dg-sub">dashboard</text>
+
+          <path d="M220 76 H272" class="dg-line" marker-end="url(#ah4)"/>
+
+          <!-- Ariba row -->
+          <rect x="276" y="214" width="150" height="60" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+          <text x="351" y="240" text-anchor="middle" class="dg-t b">Raise PO</text>
+          <text x="351" y="259" text-anchor="middle" class="dg-sub">the commitment</text>
+
+          <rect x="482" y="214" width="150" height="60" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+          <text x="557" y="240" text-anchor="middle" class="dg-t b">Receipt</text>
+          <text x="557" y="259" text-anchor="middle" class="dg-sub">goods in</text>
+
+          <rect x="688" y="214" width="150" height="60" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+          <text x="763" y="240" text-anchor="middle" class="dg-t b">Invoice &amp; pay</text>
+          <text x="763" y="259" text-anchor="middle" class="dg-sub">3-way match</text>
+
+          <path d="M426 244 H478" class="dg-line" marker-end="url(#ah4)"/>
+          <path d="M632 244 H684" class="dg-line" marker-end="url(#ah4)"/>
+
+          <!-- handoff down -->
+          <path d="M351 106 V210" class="dg-line" marker-end="url(#ah4)"/>
+          <text x="363" y="150" class="dg-sub">approved →</text>
+          <text x="363" y="166" class="dg-sub">now execute</text>
+
+          <!-- PO number back up -->
+          <path d="M412 214 L520 110" class="dg-line-soft" marker-end="url(#ah4-soft)"/>
+          <text x="470" y="176" text-anchor="middle" class="dg-accent-t dg-sub">PO number</text>
+
+          <!-- spend data back up -->
+          <path d="M763 214 V110" class="dg-line-soft" marker-end="url(#ah4-soft)"/>
+          <text x="775" y="166" class="dg-sub">spend data</text>
+
+          <defs>
+            <marker id="ah4" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--ink-soft)"/>
+            </marker>
+            <marker id="ah4-soft" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--line-strong)"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      <figcaption>monday handles the <strong>human ends</strong> — asking, approving, chasing, showing. Ariba owns the <strong>transaction middle</strong>. Just two things travel back up: the <strong>PO number</strong> (so monday knows what to track) and the <strong>spend data</strong> (so the manager's view is real).</figcaption>
+    </figure>
+
+    <h3>What lives where</h3>
+    <div class="table-scroll">
+      <table>
+        <caption>When you're not sure which system something belongs in, this is the answer.</caption>
+        <thead><tr><th style="width:38%">The job to be done</th><th style="width:17%">Where</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Site asks for something</td><td><span class="pill c">monday</span></td><td>A form takes 20 seconds on a phone. An Ariba requisition doesn't</td></tr>
+          <tr><td>Manager approves the spend</td><td><span class="pill c">monday</span></td><td>Captures the decision with a timestamp — even if he never logs into Ariba</td></tr>
+          <tr><td>The official order to the supplier</td><td><span class="pill a">Ariba</span></td><td>It's the legal commitment and the audit trail</td></tr>
+          <tr><td>Chasing a late delivery</td><td><span class="pill c">monday</span></td><td>Ariba won't nudge anyone. monday will, automatically</td></tr>
+          <tr><td>Recording goods received</td><td><span class="pill a">Ariba</span></td><td>It's a leg of the three-way match</td></tr>
+          <tr><td>The delivery note photo</td><td><span class="pill c">monday</span></td><td>Site can snap it straight onto the order item from their phone</td></tr>
+          <tr><td>Invoice matching &amp; payment</td><td><span class="pill a">Ariba</span></td><td>Money out is always the system of record</td></tr>
+          <tr><td>Insurance / CIS expiry dates</td><td><span class="pill c">monday</span></td><td>Ariba won't tell you a subbie's insurance lapses next month. monday will</td></tr>
+          <tr><td>Plant on-hire register</td><td><span class="pill c">monday</span></td><td>There's no module for this at your scale — and it's pure money</td></tr>
+          <tr><td>Spend by job, £ figures</td><td><span class="pill a">Ariba</span></td><td>The numbers must come from the record, never be retyped</td></tr>
+          <tr><td>Month-end checklist, change register</td><td><span class="pill c">monday</span></td><td>Recurring task tracking is exactly what it's for</td></tr>
+          <tr><td>The manager's summary view</td><td><span class="pill c">monday</span></td><td>A dashboard he'll actually open, fed by Ariba's numbers</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note risk">
+      <span class="lbl">The one rule that keeps this sane</span>
+      <p style="margin-bottom:8px"><strong>Never duplicate the transaction — only reference it.</strong> monday holds the <em>PO number</em>, not a re-typed copy of the order lines. The moment you start maintaining prices and quantities in both systems, you've created two sets of books that will drift apart, and you'll spend your life reconciling them.</p>
+      <p style="margin:0">If the two ever disagree about money, <strong>Ariba wins</strong> — every time. monday is the truth about <em>status</em>; Ariba is the truth about <em>value</em>.</p>
+    </div>
+
+    <div class="note">
+      <span class="lbl">The join between them: the PO number</span>
+      <p>One field does all the work. When you raise a PO in Ariba, paste the number back into the monday item. Now you can go from "the foreman's asking where his blocks are" to the exact order in Ariba in one click — and from an odd-looking invoice back to who asked for it and why. Make that column mandatory and never let an item move past "Ordered" without it.</p>
+    </div>
+
+    <h3>Your board structure — the build</h3>
+    <p>Five boards and one dashboard cover everything in this pack. Resist adding more; a small firm's system dies from over-building.</p>
+    <div class="table-scroll">
+      <table>
+        <caption>Build these in order — 1 and 2 give you most of the benefit on their own.</caption>
+        <thead><tr><th style="width:20%">Board</th><th style="width:26%">What it's for</th><th style="width:30%">Key columns</th><th>The bit that earns its keep</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>1 · Order requests</strong></td>
+            <td>Your single front door for site (<a class="xref" href="#p3">Part 03</a>)</td>
+            <td>What · Job code · Value · Needed by · Deliver to · Requested by</td>
+            <td>A <strong>form</strong> — site fills it on a phone, no monday licence needed, and you can make job code compulsory</td>
+          </tr>
+          <tr>
+            <td><strong>2 · Live orders</strong></td>
+            <td>The spine — every order from request to paid</td>
+            <td>Status · PO number · Supplier · Job code · Value · Due date · Files</td>
+            <td>One status column: <em>Requested → Awaiting approval → Approved → PO raised → Delivered → Invoiced → Paid</em></td>
+          </tr>
+          <tr>
+            <td><strong>3 · Suppliers &amp; subbies</strong></td>
+            <td>Who you use and whether they're compliant (<a class="xref" href="#p4">Part 04</a>)</td>
+            <td>Type · Insurance expiry · CIS status · Terms · Rating · Preferred?</td>
+            <td><strong>Expiry date columns with reminders</strong> — this is the one people don't think of, and it prevents real trouble</td>
+          </tr>
+          <tr>
+            <td><strong>4 · Plant on hire</strong></td>
+            <td>What's out, where, and off-hire chased (<a class="xref" href="#p4">Part 04</a>)</td>
+            <td>Item · Job · On-hire date · Expected off · Off-hire ref · Day rate</td>
+            <td>Straight-up money. A weekly reminder to sweep this pays for the whole system</td>
+          </tr>
+          <tr>
+            <td><strong>5 · Admin rhythm</strong></td>
+            <td>Month-end (<a class="xref" href="#money">Part 06</a>), change register (<a class="xref" href="#p7">Part 09</a>), 1:1 actions</td>
+            <td>Task · Owner · Due · Status · Notes</td>
+            <td>Recurring items so the monthly close rebuilds itself every month</td>
+          </tr>
+          <tr>
+            <td><strong>6 · Dashboard</strong></td>
+            <td>What your manager sees</td>
+            <td>Widgets pulling from boards 2 and 4</td>
+            <td>Open orders, spend by job, plant still out, anything overdue — at a glance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Automations worth setting up</h3>
+    <p>This is where monday quietly does your chasing for you. Each of these replaces a thing you'd otherwise have to remember:</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th style="width:44%">When this happens…</th><th>…monday does this</th></tr></thead>
+        <tbody>
+          <tr><td>A request comes in via the form</td><td>Assigns it to you and notifies you — nothing sits unseen</td></tr>
+          <tr><td>Status changes to "Awaiting approval"</td><td>Notifies your manager. His reply <em>is</em> your approval record</td></tr>
+          <tr><td>An insurance or CIS date is 30 days out</td><td>Reminds you to chase — before it lapses, not after</td></tr>
+          <tr><td>A delivery due date arrives</td><td>Nudges you to check it landed and the note came back</td></tr>
+          <tr><td>Expected off-hire date arrives</td><td>Reminds you to call the yard and stop the charges</td></tr>
+          <tr><td>An item sits in one status too long</td><td>Flags it — this is how you catch stuck orders early</td></tr>
+          <tr><td>It's payment-run day / month-end</td><td>Creates the recurring task list automatically</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note warn">
+      <span class="lbl">Worth knowing before you build</span>
+      <p>Which features you get — automations, dashboards, guest access, and how many automation actions you can run a month — depends on your monday plan. Check what your firm's on before designing around something you can't use. If automations are limited, prioritise the <strong>expiry reminders</strong> and the <strong>approval notification</strong>; those two carry the most value.</p>
+    </div>
+
+    <h3>Uses you might not have thought of</h3>
+    <div class="grid2">
+      <div class="card">
+        <h4 style="margin-top:0">Delivery notes, solved</h4>
+        <p style="margin:0;font-size:15px">The "notes vanish into a van door" problem from <a class="xref" href="#p3">Part 03</a> disappears if site photographs the signed note straight onto the order item in the monday mobile app. Proof of delivery, attached to the right order, before the van's left the gate.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin-top:0">Approvals without an Ariba licence</h4>
+        <p style="margin:0;font-size:15px">If your manager doesn't use Ariba, a status change in monday becomes your timestamped record that he approved it. That's your evidence for the spend limits in <a class="xref" href="#p2">Part 02</a> — no extra seat required.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin-top:0">It builds your evidence for you</h4>
+        <p style="margin:0;font-size:15px">Every improvement you propose in <a class="xref" href="#p8">Part 10</a> lands better with a number behind it. Your boards quietly count how many requests arrived with no job code, how often orders sat waiting — that's your business case, already collected.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin-top:0">A supplier scorecard, free</h4>
+        <p style="margin:0;font-size:15px">Tick "delivered on time?" on each order and after a few months you've got real on-time performance per merchant — the <a class="xref" href="#p5">Part 05</a> KPI, built from work you were doing anyway. Powerful in a price negotiation.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin-top:0">Your own memory</h4>
+        <p style="margin:0;font-size:15px">Keep a private board of "how I did that in Ariba" notes. Rare monthly tasks stop being a re-learning exercise, and if you're ever off, someone can pick it up.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin-top:0">Cover when you're away</h4>
+        <p style="margin:0;font-size:15px">Because status lives in monday rather than your head, holiday stops being a crisis. Anyone can see what's outstanding and who's waiting on what — which also makes you easier to promote, not harder to replace.</p>
+      </div>
+    </div>
+
+    <h3>Your day to day</h3>
+    <p>Here's what a settled week looks like once both systems are doing their jobs. The point isn't to be busy — it's that nothing needs holding in your head.</p>
+    <div class="table-scroll">
+      <table>
+        <caption>A realistic rhythm. Times are a guide; the sequence is the useful bit.</caption>
+        <thead><tr><th style="width:17%">When</th><th style="width:44%">What you do</th><th>Where</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Morning</strong><br><span class="mono" style="font-size:12px">~20 min</span></td>
+            <td>Check new requests on the intake board. Triage: within your limit → crack on; over it → set to "Awaiting approval" so your manager gets pinged</td>
+            <td><span class="pill c">monday</span></td>
+          </tr>
+          <tr>
+            <td><strong>Morning</strong><br><span class="mono" style="font-size:12px">~30 min</span></td>
+            <td>Raise POs for everything approved. Paste each PO number back onto its monday item and move it to "PO raised"</td>
+            <td><span class="pill a">Ariba</span> → <span class="pill c">monday</span></td>
+          </tr>
+          <tr>
+            <td><strong>Through the day</strong></td>
+            <td>Invoices in: match against PO and delivery note, code to job and nominal, queue for the payment run. Query anything that doesn't match — don't pay it</td>
+            <td><span class="pill a">Ariba</span></td>
+          </tr>
+          <tr>
+            <td><strong>Afternoon</strong><br><span class="mono" style="font-size:12px">~15 min</span></td>
+            <td>Work the nudges: chase late deliveries, confirm what landed, check delivery-note photos came through, update statuses</td>
+            <td><span class="pill c">monday</span></td>
+          </tr>
+          <tr>
+            <td><strong>Weekly</strong></td>
+            <td>Payment run. Open-order review. Plant on-hire sweep — anything finished gets off-hired today. Compliance expiries coming up</td>
+            <td>Both</td>
+          </tr>
+          <tr>
+            <td><strong>Weekly</strong></td>
+            <td>1:1 with your manager, run to the standing agenda in <a class="xref" href="#p2">Part 02</a> — with the dashboard open</td>
+            <td><span class="pill c">monday</span></td>
+          </tr>
+          <tr>
+            <td><strong>Monthly</strong></td>
+            <td>Supplier statement reconciliations, the month-end checklist from <a class="xref" href="#money">Part 06</a>, CIS info to the accountant, and the one-page pack for your manager</td>
+            <td>Both</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note say">
+      <span class="lbl">Don't build it all at once</span>
+      <p style="margin:0;font-size:15.5px;color:var(--ink-soft)">Start with <strong>the intake form and the live-orders board</strong>. That alone gives you a single front door, a visible pipeline, and something real to show your manager — probably within a week. Add the supplier expiry reminders next, because they prevent actual problems. Everything else can wait until the first two are habits. A half-used system that people trust beats a beautiful one nobody updates.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 8 ============ -->
+  <section id="p6" class="anchor">
+    <p class="eyebrow"><span>Part 08</span><span class="rule"></span></p>
+    <h2 class="title serif">Using SAP Ariba well</h2>
+    <p class="lead">Real talk: Ariba is enterprise kit built for big corporations, and it's a heavy bit of machinery for a small building firm. Don't try to learn all of it. Learn the <em>small slice you need</em>, keep your data clean, and it'll serve you fine.</p>
+
+    <h3>What's under the bonnet</h3>
+    <p>Ariba's a suite of modules; you'll only really touch a couple. Knowing the names just helps when you're searching help articles or talking to support.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Module</th><th>What it's for</th><th>You'll use it…</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Buying / Guided Buying</strong></td><td>Requisitions, POs, receipts — the P2P engine</td><td><span class="pill a">Daily</span></td></tr>
+          <tr><td><strong>Supplier Management (SLP)</strong></td><td>Setting up &amp; maintaining merchants and subbies</td><td><span class="pill c">Often</span></td></tr>
+          <tr><td><strong>Reporting / Analysis</strong></td><td>Prepackaged &amp; scheduled spend reports</td><td><span class="pill c">Weekly+</span></td></tr>
+          <tr><td><strong>Sourcing</strong></td><td>Running competitive quotes / tenders</td><td><span class="pill n">Sometimes</span></td></tr>
+          <tr><td><strong>Contracts</strong></td><td>Storing subcontract &amp; supply agreements</td><td><span class="pill n">Sometimes</span></td></tr>
+          <tr><td><strong>SAP Business Network</strong></td><td>Where suppliers get POs &amp; send invoices</td><td><span class="pill n">Behind the scenes</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Habits that keep it tidy</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th style="width:50%">Do</th><th style="width:50%">Don't</th></tr></thead>
+        <tbody>
+          <tr><td>Tag every requisition &amp; PO to a job code</td><td>Leave job / cost centre blank "to fix later"</td></tr>
+          <tr><td>Use the standard prepackaged reports first</td><td>Rebuild a report that already exists as a template</td></tr>
+          <tr><td>Pick suppliers from existing master data</td><td>Free-type a merchant's name — hello, duplicates</td></tr>
+          <tr><td>Schedule recurring reports to email themselves</td><td>Manually re-pull the same report every week</td></tr>
+          <tr><td>Keep a personal "how I did that" notes file</td><td>Rely on memory for the rare monthly tasks</td></tr>
+          <tr><td>Ask SAP Ariba support for genuine how-tos</td><td>Poke settings that change things for everyone</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note warn">
+      <span class="lbl">A note on menu paths</span>
+      <p>Ariba's exact menus shift by version, edition and what your firm's switched on — so this pack tells you <em>what</em> to do, not click-by-click paths that might not match your screen. For steps on your exact setup, use the in-product Help, the SAP Help Portal, or whoever administers your account.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 7 ============ -->
+  <section id="p7" class="anchor">
+    <p class="eyebrow"><span>Part 09</span><span class="rule"></span></p>
+    <h2 class="title serif">Changing Ariba safely</h2>
+    <p class="lead">This is where a non-specialist manager and a big enterprise system rub up against each other. "Can you just switch that report to every four weeks?" sounds tiny — and sometimes it is. But changes in Ariba fall into three very different buckets, and treating them all the same is how small firms break their own setup.</p>
+
+    <h3>The three buckets of "change"</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Type</th><th>Examples</th><th>Who can do it</th><th>Risk</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill a">1 · Self-serve</span></td><td>Report <strong>schedule / frequency</strong>, filters, recipients, your own notifications, saved views</td><td>You, in the app</td><td>Low — reversible</td></tr>
+          <tr><td><span class="pill i">2 · Configuration</span></td><td>Approval rules, spend thresholds, new fields, workflow steps, new report <em>types</em></td><td>Admin / SAP, via change request</td><td>Medium — affects everyone</td></tr>
+          <tr><td><span class="pill r">3 · Customisation</span></td><td>Integrations, custom-built reports / data schema, network setup</td><td>SAP / a consultant</td><td>High — specialist work</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <span class="lbl">Your manager's example, decoded</span>
+      <p><strong>"Change the weekly report to every four weeks"</strong> is almost certainly <span class="pill a">Bucket 1</span> — a scheduling setting on a report that already exists. Ariba lets you set report frequency (daily / weekly / monthly), recipients and retention when you schedule a report. You can most likely do it yourself in a couple of minutes: open the scheduled report, edit the recurrence, save. <strong>No change request needed.</strong> The real judgement call is the cadence one from <a class="xref" href="#p5">Part 05</a>, not the technical bit.</p>
+    </div>
+
+    <p>The trap is a Bucket-1 request that's secretly a Bucket-2 one: "…oh, and can you add a column for something we don't currently capture?" That's a new reportable field — it touches configuration and the reporting schema. Same casual sentence, totally different job. Your value is <strong>spotting the difference before you promise a timescale.</strong></p>
+
+    <h3>Which bucket am I in?</h3>
+    <figure>
+      <div class="fig-scroll">
+        <svg viewBox="0 0 720 430" role="img" aria-labelledby="chg-t">
+          <title id="chg-t">Decision flow for handling an Ariba change request</title>
+          <rect x="250" y="20" width="220" height="52" rx="26" class="dg-fill-surface dg-stroke" stroke-width="1.4"/>
+          <text x="360" y="42" text-anchor="middle" class="dg-t b">Manager asks for a change</text>
+          <text x="360" y="60" text-anchor="middle" class="dg-sub">write down what &amp; why</text>
+
+          <path d="M360 72 V96" class="dg-line" marker-end="url(#ah3)"/>
+
+          <path d="M360 100 L520 150 L360 200 L200 150 Z" class="dg-fill-info dg-stroke-info" stroke-width="1.4"/>
+          <text x="360" y="142" text-anchor="middle" class="dg-t b" style="font-size:13px">A setting on something</text>
+          <text x="360" y="160" text-anchor="middle" class="dg-t b" style="font-size:13px">that already exists?</text>
+          <text x="360" y="178" text-anchor="middle" class="dg-sub">schedule · filter · recipients</text>
+
+          <path d="M520 150 H600 V232" class="dg-line" marker-end="url(#ah3)"/>
+          <text x="560" y="142" text-anchor="middle" class="dg-accent-t dg-sub">yes</text>
+          <rect x="500" y="234" width="200" height="66" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+          <text x="600" y="260" text-anchor="middle" class="dg-t b">Do it yourself</text>
+          <text x="600" y="278" text-anchor="middle" class="dg-sub">then log it in your</text>
+          <text x="600" y="292" text-anchor="middle" class="dg-sub">change register</text>
+
+          <path d="M360 200 V236" class="dg-line" marker-end="url(#ah3)"/>
+          <text x="378" y="222" text-anchor="middle" class="dg-sub">no</text>
+
+          <path d="M360 240 L520 290 L360 340 L200 290 Z" class="dg-fill-amber dg-stroke-amber" stroke-width="1.4"/>
+          <text x="360" y="284" text-anchor="middle" class="dg-t b" style="font-size:13px">Does it change how</text>
+          <text x="360" y="302" text-anchor="middle" class="dg-t b" style="font-size:13px">Ariba works for others?</text>
+
+          <path d="M200 290 H100 V150 H200" class="dg-line-soft" marker-end="url(#ah3-soft)"/>
+          <text x="140" y="282" text-anchor="middle" class="dg-sub">not sure</text>
+          <text x="150" y="140" text-anchor="middle" class="dg-sub">clarify the</text>
+          <text x="150" y="156" text-anchor="middle" class="dg-sub">real need first</text>
+
+          <path d="M360 340 V372" class="dg-line" marker-end="url(#ah3)"/>
+          <text x="378" y="360" text-anchor="middle" class="dg-sub">yes</text>
+          <rect x="210" y="374" width="300" height="46" rx="9" class="dg-fill-surface dg-stroke-amber" stroke-width="1.6"/>
+          <text x="360" y="396" text-anchor="middle" class="dg-t b">Raise a change request → admin / SAP</text>
+          <text x="360" y="412" text-anchor="middle" class="dg-sub">test first · then deploy · never straight to live</text>
+
+          <defs>
+            <marker id="ah3" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--ink-soft)"/>
+            </marker>
+            <marker id="ah3-soft" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--line-strong)"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      <figcaption>The habit that covers you: <strong>write down every change</strong> — even the self-serve ones — with what changed, when, and why. When someone asks "why's this report monthly now?" three months on, you've got the answer on file.</figcaption>
+    </figure>
+
+    <h3>Why you can't just flip switches</h3>
+    <p>In a big system, config changes ripple. An approval rule hits everyone's requisitions; a new field changes what reports can show; a workflow tweak can quietly break an integration. That's why proper changes go through a <strong>test environment first</strong>, then get deployed to the live ("production") site — standard SAP practice is build-and-test in a copy, then migrate deliberately, never edit live directly. You won't run that process, but you need to <em>recognise</em> when a request needs it, so you don't promise a five-minute fix that's really a two-week project.</p>
+
+    <h3>Run a simple change register</h3>
+    <p>No fancy software needed — one shared spreadsheet with these columns turns "who changed what?" into a clean, defensible trail:</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Date</th><th>Asked by</th><th>What &amp; why</th><th>Bucket</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">25 Aug</td><td>Manager</td><td>Spend report weekly → 4-weekly</td><td><span class="pill a">1</span></td><td>Done</td><td>Rescheduled, first run 1 Sep</td></tr>
+          <tr><td class="mono">25 Aug</td><td>Manager</td><td>Add "job code" column to report</td><td><span class="pill i">2</span></td><td>Assessing</td><td>New field — needs admin; scoping</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note say">
+      <span class="lbl">Pushing back — without saying "no"</span>
+      <p class="quote">"Yep, happy to sort that. Quick check first — are we retiming a report that already exists, or do we need new info we're not capturing yet? First one I'll do today; second means a proper change through the admin, so I'll scope it and come back with a timescale."</p>
+      <p style="margin:12px 0 0;font-size:15px;color:var(--ink-soft)">Never a flat no — it sorts the request into a bucket, sets expectations, and quietly teaches a non-specialist boss why some changes are quick and some aren't, without a lecture. Always ask <strong>"what problem are we actually solving?"</strong> first — nine times out of ten the real need has a simpler fix than the change they first pictured.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 8 ============ -->
+  <section id="p8" class="anchor">
+    <p class="eyebrow"><span>Part 10</span><span class="rule"></span></p>
+    <h2 class="title serif">Spotting &amp; fixing what's broken</h2>
+    <p class="lead">You're already in the seat, so forget a 90-day induction — the useful skill now is <em>diagnosis</em>: reading what's actually there, working out where it's leaking, knowing what "good" looks like for a firm this size, and taking that to your manager in a way that gets a yes. Do this well and you go from "the new buyer" to "the person who sorted our buying out."</p>
+
+    <h3>First, map what's actually happening now</h3>
+    <p>You can't fix a process you can't see — and in a small firm there often isn't a written one; it lives in people's heads and habits. So before you change anything, map the <em>current</em> reality. Quickest way: <strong>follow one real order end to end</strong> and note each hop exactly as it happens today, not how it's "meant" to.</p>
+    <ul>
+      <li>When site needs something, <strong>how do they ask</strong> — text, call, shout across the yard, a monday item?</li>
+      <li><strong>Who decides</strong> it's OK to buy — and is there any spend limit?</li>
+      <li><strong>Who places the order</strong>, and does a PO actually exist — or does someone just ring the merchant?</li>
+      <li>On delivery, <strong>who signs</strong>, and where does the note end up?</li>
+      <li>When the invoice arrives, <strong>how's it checked</strong> before it's paid?</li>
+      <li><strong>Where's any of it tracked</strong> — monday, a spreadsheet, Ariba, or nowhere?</li>
+    </ul>
+    <p>Do that for two or three orders and the gaps jump straight out — that's your diagnosis, grounded in what really happens rather than what people <em>say</em> happens. Sketch it as a simple flow (boxes and arrows on paper is plenty) and you've also got something concrete to show your manager.</p>
+
+    <h3>What "good" looks like — the target to aim at</h3>
+    <p>This is the ideal shape for procurement in a small trades firm, drawn from CIPS-recognised practice. Use it as a checklist: where's your firm already there, and where's the gap?</p>
+    <div class="table-scroll">
+      <table>
+        <caption>The target operating model — and the gap you'll most often find in a small building firm.</caption>
+        <thead><tr><th>Area</th><th>What good looks like</th><th>Common gap to look for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Authority</strong></td><td>Written spend limits &amp; a clear approval ladder</td><td>Everyone buys, nobody's sure who can approve what</td></tr>
+          <tr><td><strong>No PO, no pay</strong></td><td>Every spend has a PO raised before it happens</td><td>Invoices arriving with no order behind them</td></tr>
+          <tr><td><strong>Job costing</strong></td><td>Every cost tagged to a job at source</td><td>Can't say what a finished job actually cost</td></tr>
+          <tr><td><strong>Supplier base</strong></td><td>Tidy master data, preferred merchants &amp; subbies</td><td>Duplicates, random one-off merchants at full retail</td></tr>
+          <tr><td><strong>Subbie compliance</strong></td><td>CIS, insurance, RAMS captured before first payment</td><td>Subbies paid before paperwork's checked</td></tr>
+          <tr><td><strong>3-way match</strong></td><td>PO + delivery note + invoice checked before pay</td><td>Invoices paid on trust; delivery notes lost</td></tr>
+          <tr><td><strong>Reporting</strong></td><td>A fixed cadence of a few clear numbers</td><td>Ad-hoc, on-request, or no reporting at all</td></tr>
+          <tr><td><strong>Ethics &amp; fairness</strong></td><td>Fair competition, prompt payment, no bungs</td><td>"Always use my mate's yard," slow subbie payment</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <span class="lbl">The professional backdrop — good to name-drop</span>
+      <p>Two things give your recommendations weight with a manager. The <strong>CIPS Code of Conduct</strong> is the UK standard for ethical procurement — fair competition, no conflicts of interest, treating suppliers straight. And in construction specifically, the <strong>Construction Act</strong> (payment notices, the right to adjudication, and no "pay-when-paid") plus the voluntary <strong>Prompt Payment Code</strong> set the bar for paying subbies and suppliers fairly and on time. You don't need to quote chapter and verse — just knowing this is the recognised standard means your "we should tighten this up" isn't just an opinion.</p>
+    </div>
+
+    <h3>Symptom → likely cause → first fix</h3>
+    <p>A quick diagnostic. If you're seeing the symptom on the left, the middle column is usually why, and the right is the cheapest place to start.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>What you're seeing</th><th>Likely cause</th><th>First fix</th></tr></thead>
+        <tbody>
+          <tr><td>Invoices that don't match anything</td><td>No PO discipline up front</td><td>"No PO, no pay" rule + one intake channel</td></tr>
+          <tr><td>Jobs "feel" unprofitable but nobody's sure</td><td>Costs not tagged to jobs</td><td>Mandatory job code on every requisition</td></tr>
+          <tr><td>Same supplier, three spellings</td><td>Free-typed supplier names</td><td>Clean master data, lock down who adds suppliers</td></tr>
+          <tr><td>Surprise plant-hire bills</td><td>No off-hire tracking</td><td>Live on-hire list + off-hire numbers</td></tr>
+          <tr><td>Subbie paperwork chased after the fact</td><td>No onboarding gate before payment</td><td>Onboarding checklist before first PO</td></tr>
+          <tr><td>Paying more than you quoted the job at</td><td>No quoted-vs-actual check</td><td>Monthly quoted-vs-actual on live jobs</td></tr>
+          <tr><td>Everything's urgent, nothing's planned</td><td>No forward view of job needs</td><td>Look-ahead: what's each job needing in 2 weeks</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>How to actually approach it — spot it, size it, sell it</h3>
+    <p>Don't land on your manager's desk with a list of everything that's wrong — that reads as criticism and it's overwhelming. Work it in three moves:</p>
+    <div class="grid3">
+      <div class="card">
+        <span class="step">Move 1</span>
+        <h4 style="margin:4px 0 6px">Spot it</h4>
+        <p style="margin:0;font-size:14.5px">Quietly observe for a few weeks. Use the target table and the diagnostic above to note gaps. Get the facts — a rough figure on the leak (e.g. "~£X/month in late off-hires").</p>
+      </div>
+      <div class="card">
+        <span class="step">Move 2</span>
+        <h4 style="margin:4px 0 6px">Size it</h4>
+        <p style="margin:0;font-size:14.5px">Rank the gaps by <strong>money saved ÷ effort</strong>. Pick one or two quick wins first — visible, low-risk, hard to argue with. Build the case in £ and cash flow, the things a builder feels.</p>
+      </div>
+      <div class="card">
+        <span class="step">Move 3</span>
+        <h4 style="margin:4px 0 6px">Sell it</h4>
+        <p style="margin:0;font-size:14.5px">Take one idea at a time, framed as a fix not a criticism. Show the before/after and what you need from them. Deliver the quick win, <em>then</em> propose the next. Trust compounds.</p>
+      </div>
+    </div>
+
+    <div class="note say">
+      <span class="lbl">Framing it for your manager</span>
+      <p class="quote">"I've been getting under the skin of how we buy, and there's one quick win I'd start with — [e.g. plant that's sat off-job still on hire]. I reckon it's costing roughly [£X] a month, and the fix is small: [a live on-hire list]. Want me to run with that one, and I'll bring the next when it's bedded in?"</p>
+      <p style="margin:12px 0 0;font-size:15px;color:var(--ink-soft)">One idea, sized in money, framed as help, with a clear ask. That's how a non-specialist boss says yes — and how you earn the room to fix the bigger stuff later. You've got this.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 10 · TROUBLESHOOTING ============ -->
+  <section id="trouble" class="anchor">
+    <p class="eyebrow"><span>Part 11</span><span class="rule"></span></p>
+    <h2 class="title serif">When things go wrong</h2>
+    <p class="lead">Things will go sideways — that's the job, not a sign you're doing it badly. Here are the situations that come up most, and a calm way through each. None of these need you to be confrontational; most just need you to be the person with the paperwork.</p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>The everyday sticky moments — what's actually happening, and your move.</caption>
+        <thead><tr><th style="width:26%">Situation</th><th style="width:37%">What to do</th><th>Why / watch out</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Delivery is short, wrong or damaged</strong></td>
+            <td>Note it <em>on the delivery note</em> before signing, take photos, tell the supplier same day, ask for a credit note or replacement</td>
+            <td>Once it's signed clean, it's much harder to argue. "Signed unexamined" is worth writing if the driver won't wait</td>
+          </tr>
+          <tr>
+            <td><strong>Invoice is higher than the PO</strong></td>
+            <td>Don't pay the difference yet. Ask them to explain or re-issue. Only accept if there's a genuine agreed reason</td>
+            <td>This is exactly what the three-way match is for (<a class="xref" href="#p3">Part 03</a>). Price creep is common and usually goes unchallenged</td>
+          </tr>
+          <tr>
+            <td><strong>Invoice arrives with no PO</strong></td>
+            <td>Find out who ordered it and why. Raise a retrospective PO so the trail is complete, then have a gentle word about the process</td>
+            <td>Don't just pay it quietly — that's how "no PO, no pay" dies. But don't make an enemy over the first one either</td>
+          </tr>
+          <tr>
+            <td><strong>Supplier says you're on stop</strong></td>
+            <td>Check what's genuinely unpaid, sort the real ones fast, and tell them when payment's coming</td>
+            <td>Being on stop can halt a job. Usually it's one disputed invoice nobody chased</td>
+          </tr>
+          <tr>
+            <td><strong>Subbie wants paying, paperwork's missing</strong></td>
+            <td>Don't pay until the CIS and insurance details are in — but chase them <em>today</em>, don't just sit on it</td>
+            <td>Paying without CIS details creates a real tax problem (<a class="xref" href="#p4">Part 04</a>). Be quick, not obstructive</td>
+          </tr>
+          <tr>
+            <td><strong>Someone bypassed you and ordered direct</strong></td>
+            <td>Sort the immediate mess, then ask what made it easier to go around you — and fix that</td>
+            <td>People go around a process that's slow or unclear. Usually a symptom, not defiance</td>
+          </tr>
+          <tr>
+            <td><strong>Price rise mid-job</strong></td>
+            <td>Get it in writing with a reason, check the quote's validity date, flag the job-cost impact to your manager straight away</td>
+            <td>Bad news early is manageable; bad news at month-end isn't</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <span class="lbl">Your two default moves</span>
+      <p style="margin-bottom:8px">When something's unfamiliar and you're not sure what to do, these two cover most of it:</p>
+      <p style="margin:0 0 8px"><strong>1. Don't let money leave while it's disputed.</strong> Pausing a payment is reversible; paying wrongly is much harder to undo. It's completely normal to say "I'm holding this until we've checked it."</p>
+      <p style="margin:0"><strong>2. Put it in writing.</strong> A short email confirming what was agreed ("just to confirm — you'll credit the £180 for the damaged sheets") turns a fuzzy phone call into something you can point at later. This habit alone will save you repeatedly.</p>
+    </div>
+
+    <div class="note warn">
+      <span class="lbl">When you've made the mistake</span>
+      <p>You will, at some point — wrong quantity, missed a date, paid something twice. Everyone in this job has. The move is always the same: <strong>flag it early, say what happened, say what you're doing about it.</strong> A mistake surfaced quickly is an admin task; the same mistake found later by someone else is a trust problem. Managers remember how you handled it far more than what it was — and "I've spotted an error, here's my fix" reads as competence, not failure.</p>
+    </div>
+
+    <div class="note say">
+      <span class="lbl">Handy phrases for awkward moments</span>
+      <p style="margin:0 0 10px;font-size:15.5px;color:var(--ink-soft)"><strong>Querying an invoice:</strong> <em>"Hi — this one's come in at £X but our order was £Y. Could you check and send a corrected invoice or a credit note? Happy to pay the agreed amount in the meantime."</em></p>
+      <p style="margin:0 0 10px;font-size:15.5px;color:var(--ink-soft)"><strong>Chasing paperwork without nagging:</strong> <em>"Just need your insurance and CIS details before I can get you set up for payment — send them over and I'll get you in the next run."</em></p>
+      <p style="margin:0 0 10px;font-size:15.5px;color:var(--ink-soft)"><strong>Someone wants it ordered right now:</strong> <em>"Yep, I can get that moving — I just need it on a requisition with the job code so it's tracked. Two minutes and it's done."</em></p>
+      <p style="margin:0;font-size:15.5px;color:var(--ink-soft)"><strong>Buying yourself thinking time:</strong> <em>"Let me check that and come back to you today."</em> — always available, never wrong.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 11 · RESOURCES ============ -->
+  <section id="help" class="anchor">
+    <p class="eyebrow"><span>Part 12</span><span class="rule"></span></p>
+    <h2 class="title serif">Where to go when it's not here</h2>
+    <p class="lead">This pack can't cover everything, and it'll go out of date — rules change, Ariba updates, situations get weird. So here's your one-stop directory: the places to learn more, get official answers, and ask real humans who've been there. Bookmark this part.</p>
+
+    <h3>Learn the craft (procurement)</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.cips.org/">CIPS</a></td><td>The UK professional body. Free knowledge articles, templates, ethics code, and qualifications if you ever want the letters after your name</td></tr>
+          <tr><td><a href="https://www.cips.org/intelligence-hub">CIPS Knowledge / Intelligence Hub</a></td><td>Plain-English guides on the procurement cycle, the Five Rights, supplier management, negotiation</td></tr>
+          <tr><td><a href="https://www.procurious.com/">Procurious</a></td><td>A free online community + learning network aimed at procurement people — bite-size lessons and peer chat</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>SAP Ariba — official help &amp; how-tos</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://help.sap.com/docs/ariba">SAP Help Portal (Ariba)</a></td><td>The official manuals — step-by-step for the exact tasks (scheduling reports, receipts, supplier setup)</td></tr>
+          <tr><td><a href="https://community.sap.com/topics/spend-management">SAP Community — Spend Management</a></td><td>Blogs, Q&amp;A and forums where SAP users and experts answer real Ariba questions</td></tr>
+          <tr><td><a href="https://learning.sap.com/">SAP Learning</a></td><td>Free structured courses and learning journeys for Ariba modules</td></tr>
+          <tr><td><a href="https://support.ariba.com/">SAP Ariba Connect / Support</a></td><td>Raise a support case, check known issues &amp; release notes (login usually needed)</td></tr>
+          <tr><td><strong>Your own Ariba admin</strong></td><td>Honestly, your fastest route for anything config-shaped — whoever set your firm's system up (internal or a partner)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Trade &amp; construction bodies</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.fmb.org.uk/">Federation of Master Builders (FMB)</a></td><td>Guidance, contracts and support aimed squarely at small building firms</td></tr>
+          <tr><td><a href="https://www.builduk.org/">Build UK</a></td><td>Industry best practice, standard pre-qualification, fair payment &amp; supply-chain guidance</td></tr>
+          <tr><td><a href="https://www.ciob.org/">Chartered Institute of Building (CIOB)</a></td><td>The professional body for construction management — deeper technical guidance</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Rules, tax &amp; getting paid (UK)</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.gov.uk/what-is-the-construction-industry-scheme">GOV.UK — CIS</a></td><td>The official word on the Construction Industry Scheme for contractors &amp; subbies</td></tr>
+          <tr><td><a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/construction-industry-scheme">HMRC CIS helpline</a></td><td>When you (or finance) need a real answer on a CIS question</td></tr>
+          <tr><td><a href="https://www.smallbusinesscommissioner.gov.uk/">Small Business Commissioner</a></td><td>Free help with late-payment disputes — handy leverage when a client sits on money</td></tr>
+          <tr><td><a href="https://www.fsb.org.uk/">Federation of Small Businesses (FSB)</a></td><td>Legal helplines, templates and advice if your firm's a member</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Communities — ask real people</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Where</th><th>What it's good for</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.reddit.com/r/procurement/">r/procurement</a> &amp; <a href="https://www.reddit.com/r/Construction/">r/Construction</a></td><td>Candid, anonymous "has anyone dealt with this?" — often the fastest sanity-check</td></tr>
+          <tr><td><a href="https://community.sap.com/">SAP Community Q&amp;A</a></td><td>Post a specific Ariba question and get answers from people who use it daily</td></tr>
+          <tr><td><strong>LinkedIn groups</strong></td><td>Search "procurement" or "construction procurement" groups — good for networking &amp; polls</td></tr>
+          <tr><td><a href="https://www.procurious.com/">Procurious community</a></td><td>Procurement-specific peers, mentoring and discussion threads</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note say">
+      <span class="lbl">…and if it's still not here</span>
+      <p style="margin:0;font-size:15.5px;color:var(--ink-soft)">Three quick fallbacks, in order: <strong>1)</strong> for anything <em>system</em>-shaped, ask your Ariba admin or the SAP Community. <strong>2)</strong> for anything <em>money / tax / CIS / retention</em>-shaped, ask your accountant or bookkeeper — don't guess on those. <strong>3)</strong> for anything <em>"is this normal / how would you play this"</em>-shaped… ping me. Seriously — that's what mates are for. 🙂</p>
+    </div>
+  </section>
+
+  <!-- ============ APPENDIX ============ -->
+  <section id="appx" class="anchor">
+    <p class="eyebrow"><span>Appendix</span><span class="rule"></span></p>
+    <h2 class="title serif">Templates to copy</h2>
+    <p class="lead">Steal these wholesale — change the bits in [brackets] and they're yours. Having a standard form of words means you never have to compose an awkward email from scratch.</p>
+
+    <h3>Email — setting up a new merchant / supplier</h3>
+    <div class="tmpl">
+      <span class="mono">Subject:</span> Getting you set up as a supplier — few details needed<br><br>
+      Hi [Name],<br><br>
+      Thanks for [context]. To set you up our end and keep invoices moving smoothly, could you send over: full legal name &amp; address, VAT number, bank details (we'll verify these separately by phone), agreed pricing/discount, and your payment terms?<br><br>
+      Just so you know how we work: I'll always send a PO number before anything's ordered, and we pay against a valid invoice matched to that PO and the delivery note. Makes life easier for both of us.<br><br>
+      Cheers, [You]
+    </div>
+
+    <h3>Subbie onboarding — info to capture before the first PO</h3>
+    <div class="tmpl">
+      <span class="mono">Business:</span> legal name, address, UTR<br>
+      <span class="mono">CIS:</span> registration details → pass to finance to verify with HMRC<br>
+      <span class="mono">Insurance:</span> public liability (+ employers' liability if they have staff)<br>
+      <span class="mono">Right to work &amp; competence:</span> as relevant — CSCS, tickets, RAMS<br>
+      <span class="mono">Commercials:</span> day/price rate, payment terms, retention terms<br>
+      <span class="mono">Bank details:</span> verified by phone, never off an email alone
+    </div>
+
+    <h3>Change request — submitting to your admin / SAP</h3>
+    <div class="tmpl">
+      <span class="mono">Requested by:</span> [name &amp; date]<br>
+      <span class="mono">What we want:</span> [plain description]<br>
+      <span class="mono">Problem it solves:</span> [the real need, not the solution]<br>
+      <span class="mono">Who it affects:</span> [just me / all requesters / finance / suppliers]<br>
+      <span class="mono">Urgency:</span> [nice-to-have / needed by date]<br>
+      <span class="mono">My read on the bucket:</span> [1 self-serve / 2 config / 3 customisation]
+    </div>
+
+    <h3>The monthly one-pager — a structure that works</h3>
+    <div class="tmpl">
+      <span class="mono">1 · Headline:</span> "Spend this month: £X across N jobs. [Job] is £Y over — everything else on track."<br>
+      <span class="mono">2 · Jobs:</span> quoted vs actual per live job, biggest variance first<br>
+      <span class="mono">3 · Watch-outs:</span> anything trending wrong, plus what you're doing about it<br>
+      <span class="mono">4 · Wins:</span> savings, rebates claimed, problems headed off<br>
+      <span class="mono">5 · I need from you:</span> decisions or approvals, with a deadline<br>
+      <span class="mono">Appendix:</span> the detailed tables, for anyone who wants them
+    </div>
+  </section>
+
+  <!-- ============ GLOSSARY ============ -->
+  <section id="glossary" class="anchor">
+    <p class="eyebrow"><span>Glossary</span><span class="rule"></span></p>
+    <h2 class="title serif">Every term, in plain English</h2>
+    <p class="lead">Nobody is born knowing what GRNI or gross status means, and asking in a meeting is never fun. Search this instead — then click through to where it's explained properly.</p>
+
+    <div class="gloss-tools">
+      <label class="gloss-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="gsearch" type="search" autocomplete="off" placeholder="Search — try &ldquo;retention&rdquo;, &ldquo;CIS&rdquo;, &ldquo;nominal&rdquo;&hellip;" aria-label="Search the glossary">
+      </label>
+      <span class="gcount" id="gcount" aria-live="polite"></span>
+    </div>
+
+    <div class="table-scroll">
+      <table id="gtable">
+        <thead><tr><th style="width:23%">Term</th><th>Plain meaning</th><th style="width:17%">Covered in</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">Accrual</td><td>Counting a cost in the month it happened, even if the bill arrives later — so job figures aren't misleading</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">Adjudication</td><td>A fast, formal way to settle a construction payment dispute without going to court</td><td><a class="xref" href="#p8">Part 10</a></td></tr>
+          <tr><td class="mono">Aged creditors</td><td>A list of who you owe, and how overdue each one is — your "who needs paying" view</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">Call-off order</td><td>One agreed order you draw down against repeatedly, instead of a new PO every time</td><td><a class="xref" href="#p3">Part 03</a></td></tr>
+          <tr><td class="mono">CIPS</td><td>Chartered Institute of Procurement &amp; Supply — the UK professional body; sets the recognised standard</td><td><a class="xref" href="#p1">Part 01</a></td></tr>
+          <tr><td class="mono">CIS</td><td>Construction Industry Scheme — HMRC rules where the firm deducts tax before paying most subcontractors</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Construction Act</td><td>UK law on fair construction payment — payment notices, right to adjudication, no pay-when-paid</td><td><a class="xref" href="#p8">Part 10</a></td></tr>
+          <tr><td class="mono">Credit note</td><td>A supplier document that reduces what you owe — what you ask for when goods are wrong, short or returned</td><td><a class="xref" href="#trouble">Part 11</a></td></tr>
+          <tr><td class="mono">CSCS</td><td>The card scheme showing a worker is competent and safe to be on site</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Defects period</td><td>The window after completion when the contractor must fix faults — what retention is held against</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Delegation of authority</td><td>The written rules for how much each person can approve or commit. Your spend limits</td><td><a class="xref" href="#p2">Part 02</a></td></tr>
+          <tr><td class="mono">Delivery note</td><td>The docket signed when materials land on site — your proof it actually arrived</td><td><a class="xref" href="#p3">Part 03</a></td></tr>
+          <tr><td class="mono">Five Rights</td><td>Right quality, quantity, place, time and price — the CIPS test of a good buy</td><td><a class="xref" href="#p1">Part 01</a></td></tr>
+          <tr><td class="mono">Goods receipt / GRN</td><td>The record confirming what turned up — the middle leg of the three-way match</td><td><a class="xref" href="#p3">Part 03</a></td></tr>
+          <tr><td class="mono">Gross status</td><td>A CIS status letting a subcontractor be paid with no tax deducted — they settle it themselves</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">GRNI</td><td>"Goods received, not invoiced" — it's arrived but the bill hasn't. Still a real cost for that month</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">Guided Buying</td><td>The simplified, user-friendly ordering front-end in SAP Ariba</td><td><a class="xref" href="#p6">Part 08</a></td></tr>
+          <tr><td class="mono">Job code / job costing</td><td>Tagging every cost to the job it's for, so you know what a job really cost vs what you priced</td><td><a class="xref" href="#p5">Part 05</a></td></tr>
+          <tr><td class="mono">Labour-only</td><td>A subbie supplying just the labour; you supply materials. "Supply and fix" means they bring both</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Lead time</td><td>How long between ordering and it arriving — the thing that quietly wrecks programmes</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Master data</td><td>The core reference records — suppliers, categories, job codes — that everything else relies on</td><td><a class="xref" href="#p6">Part 08</a></td></tr>
+          <tr><td class="mono">Maverick spend</td><td>Buying that dodges the proper process — the thing you're steadily reducing</td><td><a class="xref" href="#p8">Part 10</a></td></tr>
+          <tr><td class="mono">Nominal code</td><td>The accounts label for <em>what kind</em> of cost it is (materials, plant, subcontractor). Job code = which job; nominal = what on</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">Off-hire</td><td>Formally ending a plant hire so charges stop. Always get an off-hire number as proof</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">On stop</td><td>When a supplier suspends your account over unpaid invoices — it can halt a job</td><td><a class="xref" href="#trouble">Part 11</a></td></tr>
+          <tr><td class="mono">P2P</td><td>Procure-to-Pay — the operational loop: requisition → PO → delivery → invoice → pay</td><td><a class="xref" href="#p1">Part 01</a></td></tr>
+          <tr><td class="mono">Pay-when-paid</td><td>Refusing to pay a subbie until the client pays you. Largely banned in the UK — don't rely on it</td><td><a class="xref" href="#p8">Part 10</a></td></tr>
+          <tr><td class="mono">Payment run</td><td>Paying a batch of approved invoices together on a set day, rather than ad-hoc</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">Payment terms</td><td>When payment is due — "net 30" means 30 days from a valid invoice</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">PO (Purchase order)</td><td>The official document committing to buy, sent to the supplier before anything happens</td><td><a class="xref" href="#p3">Part 03</a></td></tr>
+          <tr><td class="mono">Practical completion</td><td>The point the work is usable and handed over — often when half the retention is released</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Preferred supplier</td><td>A vetted supplier with agreed pricing you use by default for a category</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Production vs test</td><td>The live system vs a safe copy where changes are trialled before going live</td><td><a class="xref" href="#p7">Part 09</a></td></tr>
+          <tr><td class="mono">Proforma invoice</td><td>A request for payment up front, before goods are sent — common with new accounts</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">Prompt Payment Code</td><td>A voluntary UK commitment to pay suppliers fairly and on time</td><td><a class="xref" href="#p8">Part 10</a></td></tr>
+          <tr><td class="mono">RACI</td><td>A grid setting who is Responsible, Accountable, Consulted and Informed for each task</td><td><a class="xref" href="#p2">Part 02</a></td></tr>
+          <tr><td class="mono">RAMS</td><td>Risk Assessment &amp; Method Statement — how a subbie will carry out work safely</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Rebate</td><td>Money a merchant pays back based on volume. Easily forgotten — worth claiming</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Remittance advice</td><td>A note telling a supplier what you've just paid and which invoices it covers</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">Requisition</td><td>The internal request to buy something, before it becomes an official order</td><td><a class="xref" href="#p3">Part 03</a></td></tr>
+          <tr><td class="mono">Retention</td><td>A slice of each payment held back as security against defects — often 5%, halving at completion</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">S2P / S2C</td><td>Source-to-Pay / Source-to-Contract — the full cycle including the strategic sourcing half</td><td><a class="xref" href="#p1">Part 01</a></td></tr>
+          <tr><td class="mono">Segregation of duties</td><td>Splitting risky steps between people so no one person can push a payment through alone</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">SLP</td><td>Supplier Lifecycle &amp; Performance — Ariba's module for onboarding and managing suppliers</td><td><a class="xref" href="#p6">Part 08</a></td></tr>
+          <tr><td class="mono">Snagging</td><td>The list of small defects to put right before a job is signed off</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Spend under management</td><td>The share of total spend that actually flows through your controlled process</td><td><a class="xref" href="#p5">Part 05</a></td></tr>
+          <tr><td class="mono">Statement reconciliation</td><td>Checking a supplier's statement against your records — routinely finds credits you're owed</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr><td class="mono">Three-way match</td><td>Checking the PO, delivery note and invoice all agree before paying anything</td><td><a class="xref" href="#p3">Part 03</a></td></tr>
+          <tr><td class="mono">UTR</td><td>Unique Taxpayer Reference — the HMRC number you need from a subbie for CIS</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr><td class="mono">Variation</td><td>An agreed change to the scope of work — get it in writing before it's done, or it's a dispute</td><td><a class="xref" href="#trouble">Part 11</a></td></tr>
+        </tbody>
+      </table>
+      <div class="gloss-empty" id="gempty">No match. Try a shorter word — or it may not be in here yet, in which case: ask me.</div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p><strong>Sources &amp; further reading</strong> — grounded in recognised UK procurement practice and SAP Ariba guidance:</p>
+    <p style="line-height:1.9">
+      · <a href="https://www.cips.org/">CIPS — Chartered Institute of Procurement &amp; Supply (the UK professional body)</a><br>
+      · <a href="https://www.srscc.co.uk/news/cips-procurement-cycle/">The CIPS procurement cycle — 13 stages explained</a><br>
+      · <a href="https://www.gov.uk/government/publications/construction-industry-scheme-cis-340/construction-industry-scheme-a-guide-for-contractors-and-subcontractors-cis-340">GOV.UK — Construction Industry Scheme (CIS 340) guide</a><br>
+      · <a href="https://constructionrating.co.uk/blog/construction-retention-guide-uk-subcontractors">Construction retention explained for UK subcontractors</a><br>
+      · <a href="https://learning.sap.com/learning-journeys/introducing-sap-ariba-contracts/understanding-reports">SAP Learning — Understanding Reports (Ariba)</a><br>
+      · <a href="https://help.sap.com/doc/dd29159abb8c4f42af84c8c1cf57659c/2511/en-US/RunAnalyticalReports.pdf">SAP Help — Running &amp; scheduling Analytical Reports</a>
+    </p>
+    <p style="margin-top:20px;font-size:13px">A living document — adapt every threshold, cadence and template to your firm. The CIS, retention and payment-law notes are general awareness, not tax or legal advice; check specifics with your accountant and your contracts. For any Ariba step on your exact setup, use the in-product Help or your account admin.</p>
+  </div>
+
+</main>
+
+<div class="appearance-overlay" id="appearanceOverlay" aria-hidden="true"></div>
+<section class="today-sheet" id="todaySheet" role="dialog" aria-modal="true" aria-labelledby="todaySheetTitle" aria-hidden="true">
+  <button class="sheet-close" id="todayClose" type="button" aria-label="Close today menu">×</button>
+  <h2 id="todaySheetTitle">Useful now</h2>
+  <p>Start with the problem in front of you. These shortcuts take you to the right part of the playbook without changing the guidance underneath.</p>
+  <div class="quick-links">
+    <a href="#p3" data-close-today><strong>An order needs raising</strong><small>Run the request → approval → PO → receipt sequence.</small></a>
+    <a href="#systems" data-close-today><strong>Site needs an easier way to ask</strong><small>Set up the simple monday front door and handoff.</small></a>
+    <a href="#p4" data-close-today><strong>A supplier, subbie or hire issue</strong><small>Check compliance, terms, delivery and off-hire controls.</small></a>
+    <a href="#money" data-close-today><strong>An invoice has landed</strong><small>Match the invoice, PO and delivery evidence before payment.</small></a>
+    <a href="#trouble" data-close-today><strong>Something has gone wrong</strong><small>Resolve it calmly, keep the paper trail, and protect the job.</small></a>
+    <a href="#p8" data-close-today><strong>The process is wasting time</strong><small>Spot the failure pattern and make a small safe improvement.</small></a>
+  </div>
+</section>
+<section class="appearance-sheet" id="appearanceSheet" role="dialog" aria-modal="true" aria-labelledby="appearanceTitle" aria-hidden="true">
+  <button class="appearance-close" id="appearanceClose" type="button" aria-label="Close appearance settings">×</button>
+  <h2 id="appearanceTitle">Make it yours</h2>
+  <p>Choose a full colour theme for this copy. It changes the page surface, type contrast, dividers and accents on this device only. Nothing is sent anywhere.</p>
+  <span class="appearance-label">Colour chart</span>
+  <div class="palette-grid" id="paletteGrid">
+    <button class="palette-swatch" type="button" data-palette="classic" style="background:#1E6A50" title="Classic green" aria-label="Classic green"></button>
+    <button class="palette-swatch" type="button" data-palette="coral" style="background:#B9502D" title="Coral" aria-label="Coral"></button>
+    <button class="palette-swatch" type="button" data-palette="sky" style="background:#176C9F" title="Coastal sky" aria-label="Coastal sky"></button>
+    <button class="palette-swatch" type="button" data-palette="forest" style="background:#397A2B" title="Woodland" aria-label="Woodland"></button>
+    <button class="palette-swatch" type="button" data-palette="plum" style="background:#80366F" title="Berry plum" aria-label="Berry plum"></button>
+    <button class="palette-swatch" type="button" data-palette="sunset" style="background:#BC3E3E" title="Sunset" aria-label="Sunset"></button>
+    <button class="palette-swatch" type="button" data-palette="slate" style="background:#4859A4" title="Slate blue" aria-label="Slate blue"></button>
+    <button class="palette-swatch" type="button" data-palette="moss" style="background:#66731D" title="Moss" aria-label="Moss"></button>
+    <button class="palette-swatch" type="button" data-palette="ocean" style="background:#14777A" title="Ocean teal" aria-label="Ocean teal"></button>
+  </div>
+  <p class="appearance-choice" id="paletteChoice" aria-live="polite">Selected: <strong>Classic green</strong></p>
+  <div class="appearance-row"><div><strong>Low-light mode</strong><small>Dark, dim-venue-friendly version of your selected colour. Off by default.</small></div><button class="appearance-switch" id="lowlightSwitch" type="button" role="switch" aria-checked="false" aria-label="Low-light mode"></button></div>
+  <div class="appearance-row"><div><strong>High contrast</strong><small>Prioritises maximum text and control clarity.</small></div><button class="appearance-switch" id="contrastSwitch" type="button" role="switch" aria-checked="false" aria-label="High contrast"></button></div>
+  <button class="appearance-reset" id="appearanceReset" type="button">Reset to default look</button>
+</section>
+
+<nav class="bottom-appbar" aria-label="Quick controls"><button id="contentsBtn" type="button">Contents</button><button id="todayBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Useful now</button><button class="primary" id="appearanceBottomBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Appearance</button></nav>
+<button class="totop" id="totop" type="button" aria-label="Back to contents">↑ <span>Contents</span></button>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Appearance is deliberately explicit: this file does not follow an iPhone's
+     system dark setting. Storage is guarded because Files/Quick Look can deny
+     it; in that case the controls still work for the open session. */
+  function storeGet(key) { try { return window.localStorage.getItem(key); } catch (e) { return null; } }
+  function storeSet(key, value) { try { window.localStorage.setItem(key, value); } catch (e) {} }
+  function storeRemove(key) { try { window.localStorage.removeItem(key); } catch (e) {} }
+  var root = document.documentElement;
+  var PALETTE_KEY = 'procurement-playbook-palette';
+  var LOWLIGHT_KEY = 'procurement-playbook-lowlight';
+  var CONTRAST_KEY = 'procurement-playbook-high-contrast';
+  var DAILY_KEY = 'procurement-playbook-daily-checks';
+  var savedPalette = storeGet(PALETTE_KEY) || 'classic';
+  var savedLowlight = storeGet(LOWLIGHT_KEY) === '1';
+  var savedContrast = storeGet(CONTRAST_KEY) === '1';
+  var appearanceSheet = document.getElementById('appearanceSheet');
+  var appearanceOverlay = document.getElementById('appearanceOverlay');
+  var appearanceButton = document.getElementById('appearanceBtn');
+  var appearanceBottomButton = document.getElementById('appearanceBottomBtn');
+  var appearanceClose = document.getElementById('appearanceClose');
+  var todaySheet = document.getElementById('todaySheet');
+  var todayButton = document.getElementById('todayBtn');
+  var todayClose = document.getElementById('todayClose');
+  var lastAppearanceOpener = null;
+  var lastTodayOpener = null;
+  function updateThemeColor() {
+    var meta = document.getElementById('themeColorMeta');
+    if (!meta) return;
+    try { meta.setAttribute('content', getComputedStyle(document.body).backgroundColor || '#F5F6F2'); } catch (e) {}
+  }
+  function applyPalette(palette) {
+    if (palette && palette !== 'classic') root.setAttribute('data-palette', palette);
+    else root.removeAttribute('data-palette');
+    updateThemeColor();
+  }
+  function applyLowlight(on) { if (on) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme'); updateThemeColor(); }
+  function applyContrast(on) { if (on) root.setAttribute('data-contrast', 'high'); else root.removeAttribute('data-contrast'); updateThemeColor(); }
+  function updatePaletteButtons() {
+    var buttons = document.querySelectorAll('.palette-swatch');
+    Array.prototype.forEach.call(buttons, function (button) {
+      var selected = button.getAttribute('data-palette') === savedPalette;
+      button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      if (selected) {
+        var choice = document.getElementById('paletteChoice');
+        if (choice) choice.innerHTML = 'Selected: <strong>' + (button.getAttribute('title') || 'Classic green') + '</strong>';
+      }
+    });
+  }
+  function updateSwitch(button, on) { if (button) button.setAttribute('aria-checked', on ? 'true' : 'false'); }
+  function closeAppearance() {
+    if (!appearanceSheet) return;
+    appearanceSheet.classList.remove('open'); appearanceSheet.setAttribute('aria-hidden', 'true');
+    if (appearanceOverlay) { appearanceOverlay.classList.remove('open'); appearanceOverlay.setAttribute('aria-hidden', 'true'); }
+    [appearanceButton, appearanceBottomButton].forEach(function (button) { if (button) button.setAttribute('aria-expanded', 'false'); });
+    if (lastAppearanceOpener && document.contains(lastAppearanceOpener)) lastAppearanceOpener.focus();
+  }
+  function closeToday() {
+    if (!todaySheet) return;
+    todaySheet.classList.remove('open'); todaySheet.setAttribute('aria-hidden', 'true');
+    if (appearanceOverlay && !appearanceSheet.classList.contains('open')) { appearanceOverlay.classList.remove('open'); appearanceOverlay.setAttribute('aria-hidden', 'true'); }
+    if (todayButton) todayButton.setAttribute('aria-expanded', 'false');
+    if (lastTodayOpener && document.contains(lastTodayOpener)) lastTodayOpener.focus();
+  }
+  function openAppearance(event) {
+    closeToday();
+    lastAppearanceOpener = event && event.currentTarget ? event.currentTarget : document.activeElement;
+    if (!appearanceSheet) return;
+    appearanceSheet.classList.add('open'); appearanceSheet.setAttribute('aria-hidden', 'false');
+    if (appearanceOverlay) { appearanceOverlay.classList.add('open'); appearanceOverlay.setAttribute('aria-hidden', 'false'); }
+    [appearanceButton, appearanceBottomButton].forEach(function (button) { if (button) button.setAttribute('aria-expanded', 'true'); });
+    window.setTimeout(function () { if (appearanceClose) appearanceClose.focus(); }, 30);
+  }
+  function openToday(event) {
+    closeAppearance();
+    lastTodayOpener = event && event.currentTarget ? event.currentTarget : document.activeElement;
+    if (!todaySheet) return;
+    todaySheet.classList.add('open'); todaySheet.setAttribute('aria-hidden', 'false');
+    if (appearanceOverlay) { appearanceOverlay.classList.add('open'); appearanceOverlay.setAttribute('aria-hidden', 'false'); }
+    if (todayButton) todayButton.setAttribute('aria-expanded', 'true');
+    window.setTimeout(function () { if (todayClose) todayClose.focus(); }, 30);
+  }
+  applyPalette(savedPalette); applyLowlight(savedLowlight); applyContrast(savedContrast); updatePaletteButtons();
+  updateSwitch(document.getElementById('lowlightSwitch'), savedLowlight); updateSwitch(document.getElementById('contrastSwitch'), savedContrast);
+  if (appearanceButton) appearanceButton.addEventListener('click', openAppearance);
+  if (appearanceBottomButton) appearanceBottomButton.addEventListener('click', openAppearance);
+  if (appearanceClose) appearanceClose.addEventListener('click', closeAppearance);
+  if (appearanceOverlay) appearanceOverlay.addEventListener('click', function () { closeAppearance(); closeToday(); });
+  if (todayButton) todayButton.addEventListener('click', openToday);
+  if (todayClose) todayClose.addEventListener('click', closeToday);
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close-today]'), function (link) { link.addEventListener('click', closeToday); });
+  var paletteGrid = document.getElementById('paletteGrid');
+  if (paletteGrid) paletteGrid.addEventListener('click', function (event) {
+    var button = event.target.closest ? event.target.closest('.palette-swatch') : null;
+    if (!button) return;
+    savedPalette = button.getAttribute('data-palette') || 'classic'; storeSet(PALETTE_KEY, savedPalette); applyPalette(savedPalette); updatePaletteButtons();
+  });
+  var lowlightSwitch = document.getElementById('lowlightSwitch');
+  if (lowlightSwitch) lowlightSwitch.addEventListener('click', function () { savedLowlight = !savedLowlight; storeSet(LOWLIGHT_KEY, savedLowlight ? '1' : '0'); applyLowlight(savedLowlight); updateSwitch(lowlightSwitch, savedLowlight); });
+  var contrastSwitch = document.getElementById('contrastSwitch');
+  if (contrastSwitch) contrastSwitch.addEventListener('click', function () { savedContrast = !savedContrast; storeSet(CONTRAST_KEY, savedContrast ? '1' : '0'); applyContrast(savedContrast); updateSwitch(contrastSwitch, savedContrast); });
+  var appearanceReset = document.getElementById('appearanceReset');
+  if (appearanceReset) appearanceReset.addEventListener('click', function () {
+    savedPalette = 'classic'; savedLowlight = false; savedContrast = false;
+    storeRemove(PALETTE_KEY); storeRemove(LOWLIGHT_KEY); storeRemove(CONTRAST_KEY);
+    applyPalette(savedPalette); applyLowlight(false); applyContrast(false); updatePaletteButtons(); updateSwitch(lowlightSwitch, false); updateSwitch(contrastSwitch, false);
+  });
+  document.addEventListener('keydown', function (event) { if (event.key === 'Escape') { closeAppearance(); closeToday(); } });
+  var contentsButton = document.getElementById('contentsBtn');
+  if (contentsButton) contentsButton.addEventListener('click', function () { document.getElementById('contents').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+
+  // Small, local daily checklist — useful in Files/Quick Look, but safely
+  // degrades to a temporary checklist when localStorage is unavailable.
+  var dailyChecks = document.getElementById('dailyChecks');
+  if (dailyChecks) {
+    var dailyState = {};
+    try { dailyState = JSON.parse(storeGet(DAILY_KEY) || '{}'); } catch (e) { dailyState = {}; }
+    Array.prototype.forEach.call(dailyChecks.querySelectorAll('input[type="checkbox"]'), function (box) {
+      var key = box.getAttribute('data-daily'); box.checked = !!dailyState[key];
+      box.addEventListener('change', function () { dailyState[key] = box.checked; storeSet(DAILY_KEY, JSON.stringify(dailyState)); });
+    });
+    var dailyReset = document.getElementById('dailyReset');
+    if (dailyReset) dailyReset.addEventListener('click', function () {
+      dailyState = {}; storeRemove(DAILY_KEY);
+      Array.prototype.forEach.call(dailyChecks.querySelectorAll('input[type="checkbox"]'), function (box) { box.checked = false; });
+    });
+  }
+
+  // ---- Glossary live search ----
+  var input = document.getElementById('gsearch');
+  var table = document.getElementById('gtable');
+  var count = document.getElementById('gcount');
+  var empty = document.getElementById('gempty');
+
+  if (input && table) {
+    var rows = Array.prototype.slice.call(table.tBodies[0].rows);
+    var filter = function () {
+      var q = input.value.trim().toLowerCase();
+      var shown = 0;
+      rows.forEach(function (row) {
+        var hit = !q || row.textContent.toLowerCase().indexOf(q) !== -1;
+        row.classList.toggle('gone', !hit);
+        if (hit) shown++;
+      });
+      if (empty) empty.style.display = shown ? 'none' : 'block';
+      if (count) count.textContent = q
+        ? shown + ' of ' + rows.length + ' terms'
+        : rows.length + ' terms';
+    };
+    input.addEventListener('input', filter);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { input.value = ''; filter(); }
+    });
+    filter();
+  }
+
+  // ---- Back to contents ----
+  var btn = document.getElementById('totop');
+  if (btn) {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+    var onScroll = function () {
+      btn.classList.toggle('show', window.scrollY > 700);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+})();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){});});}</script>
+</body>
+</html>

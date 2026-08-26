@@ -1,0 +1,9 @@
+{
+  "name": "Thorn Procurement",
+  "short_name": "ThornProcurement",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#F5F6F2",
+  "theme_color": "#1E6A50",
+  "icons": [{"src":"thornprocurement-icon.png","sizes":"1024x1024","type":"image/png","purpose":"any maskable"}]
+}

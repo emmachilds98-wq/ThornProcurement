@@ -293,8 +293,9 @@
   .skip-link{position:fixed;top:-64px;left:12px;z-index:100;padding:10px 14px;border-radius:0 0 8px 8px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:top .15s ease}.skip-link:focus{top:0;outline:2px solid #fff;outline-offset:-4px}
   img,svg,video{max-width:100%;height:auto}
   .phone-bar{display:none;position:sticky;top:0;z-index:30;align-items:center;gap:8px;min-height:54px;padding:7px max(14px,env(safe-area-inset-right)) 7px max(14px,env(safe-area-inset-left));background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 1px 10px rgba(0,0,0,.06)}
-  .phone-bar a,.phone-bar .phone-brand{margin-right:auto;color:var(--accent-ink);font-weight:700;text-decoration:none;font-size:14px;border:0;background:none;padding:0;cursor:pointer;font-family:inherit}
+  .phone-bar a,.phone-bar .phone-brand{margin:0 auto 0 0;color:var(--accent-ink);font-weight:700;text-decoration:none;font-size:14px}
   .phone-action,.bottom-appbar button,.appearance-close,.palette-swatch,.appearance-reset,.appearance-switch{appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:10px;min-height:40px;padding:8px 11px;font:600 13px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
+  .phone-icon{width:40px;padding:0;font-size:18px;line-height:1;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
   .phone-action:active,.bottom-appbar button:active,.palette-swatch:active{transform:scale(.97)}
   .bottom-appbar{display:none;position:fixed;z-index:35;left:0;right:0;bottom:0;gap:8px;padding:7px max(12px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -2px 12px rgba(0,0,0,.08)}
   .bottom-appbar button{flex:1;min-height:46px;background:var(--surface-2)}
@@ -761,7 +762,7 @@ html[data-paged="on"] h2, .legacy-block html[data-paged="on"] h3, .legacy-block 
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to playbook</a>
-<div class="phone-bar" aria-label="ThornProcurement controls"><button class="phone-brand" id="phoneContentsBtn" type="button" aria-haspopup="dialog" aria-expanded="false"><span class="brand-thorn">Thorn</span><span class="brand-procurement">Procurement</span></button><button class="phone-action" id="appearanceBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Appearance</button></div>
+<div class="phone-bar" aria-label="ThornProcurement controls"><button class="phone-action phone-icon" id="appearanceBtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Appearance and settings">⚙</button><span class="phone-brand"><span class="brand-thorn">Thorn</span><span class="brand-procurement">Procurement</span></span><button class="phone-action" id="phoneContentsBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Contents</button></div>
 
 <nav class="rail" id="rail" aria-label="ThornProcurement contents">
   <div class="rail-head">
@@ -4815,7 +4816,7 @@ Thanks, [You]</p>
   <button class="appearance-reset" id="appearanceReset" type="button">Reset to default look</button>
 </section>
 
-<nav class="bottom-appbar" aria-label="Quick controls"><button id="contentsBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Contents</button><button id="todayBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Useful now</button><button class="primary" id="appearanceBottomBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Appearance</button></nav>
+<nav class="bottom-appbar" aria-label="Quick controls"><button id="contentsBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Contents</button><button class="primary" id="todayBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Useful now</button></nav>
 <button class="totop" id="totop" type="button" aria-label="Back to contents">↑ <span>Contents</span></button>
 
 <script>
@@ -4839,7 +4840,6 @@ Thanks, [You]</p>
   var appearanceSheet = document.getElementById('appearanceSheet');
   var appearanceOverlay = document.getElementById('appearanceOverlay');
   var appearanceButton = document.getElementById('appearanceBtn');
-  var appearanceBottomButton = document.getElementById('appearanceBottomBtn');
   var appearanceRailButton = document.getElementById('appearanceRailBtn');
   var appearanceClose = document.getElementById('appearanceClose');
   var todaySheet = document.getElementById('todaySheet');
@@ -4884,7 +4884,7 @@ Thanks, [You]</p>
     if (!appearanceSheet) return;
     appearanceSheet.classList.remove('open'); appearanceSheet.setAttribute('aria-hidden', 'true');
     if (appearanceOverlay && !anyPanelOpen()) { appearanceOverlay.classList.remove('open'); appearanceOverlay.setAttribute('aria-hidden', 'true'); }
-    [appearanceButton, appearanceBottomButton, appearanceRailButton].forEach(function (button) { if (button) button.setAttribute('aria-expanded', 'false'); });
+    [appearanceButton, appearanceRailButton].forEach(function (button) { if (button) button.setAttribute('aria-expanded', 'false'); });
     if (lastAppearanceOpener && document.contains(lastAppearanceOpener)) lastAppearanceOpener.focus();
   }
   function closeToday() {
@@ -4907,7 +4907,7 @@ Thanks, [You]</p>
     if (!appearanceSheet) return;
     appearanceSheet.classList.add('open'); appearanceSheet.setAttribute('aria-hidden', 'false');
     if (appearanceOverlay) { appearanceOverlay.classList.add('open'); appearanceOverlay.setAttribute('aria-hidden', 'false'); }
-    [appearanceButton, appearanceBottomButton, appearanceRailButton].forEach(function (button) { if (button) button.setAttribute('aria-expanded', 'true'); });
+    [appearanceButton, appearanceRailButton].forEach(function (button) { if (button) button.setAttribute('aria-expanded', 'true'); });
     window.setTimeout(function () { if (appearanceClose) appearanceClose.focus(); }, 30);
   }
   function openToday(event) {
@@ -4931,7 +4931,6 @@ Thanks, [You]</p>
   applyPalette(savedPalette); applyLowlight(savedLowlight); applyContrast(savedContrast); updatePaletteButtons();
   updateSwitch(document.getElementById('lowlightSwitch'), savedLowlight); updateSwitch(document.getElementById('contrastSwitch'), savedContrast);
   if (appearanceButton) appearanceButton.addEventListener('click', openAppearance);
-  if (appearanceBottomButton) appearanceBottomButton.addEventListener('click', openAppearance);
   if (appearanceRailButton) appearanceRailButton.addEventListener('click', openAppearance);
   if (appearanceClose) appearanceClose.addEventListener('click', closeAppearance);
   if (appearanceOverlay) appearanceOverlay.addEventListener('click', function () { closeAppearance(); closeToday(); closeRail(); });

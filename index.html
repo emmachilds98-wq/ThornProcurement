@@ -742,6 +742,8 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
 .rail-shortcuts a:hover{border-color:var(--accent);color:var(--accent-ink)}
 .rail-routes{list-style:none;margin:0;padding:0}
 .rail-routes li{margin:1px 0}
+.rail-routes li.rail-group{margin:14px 0 2px;padding:0 8px;font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rail-routes li.rail-group:first-child{margin-top:0}
 .rail-routes a{display:flex;gap:9px;align-items:baseline;text-decoration:none;color:var(--ink-soft);padding:7px 8px;border-radius:8px;font-size:13px;line-height:1.3}
 .rail-routes a:hover{background:var(--surface-2);color:var(--ink)}
 .rail-routes a.on{background:var(--accent-soft);color:var(--accent-ink);font-weight:650}
@@ -876,38 +878,52 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
   <div class="rail-scroll">
     <div class="rail-shortcuts-label"><span>Jump to a topic</span></div>
     <div class="rail-shortcuts">
-      <a href="#cmd">Learn the job</a>
+      <a href="#cmd">Command centre</a>
+      <a href="#p1">Learn the job</a>
       <a href="#p3">The buying engine</a>
-      <a href="#p4">Merchants, plant &amp; subbies</a>
+      <a href="#p4">Merchants &amp; subbies</a>
       <a href="#p5">Money &amp; reporting</a>
-      <a href="#systems">Systems (Ariba &amp; monday)</a>
+      <a href="#systems">Ariba &amp; monday.com</a>
       <a href="#p8">Fix what's broken</a>
       <a href="#reading">Grow your career</a>
-      <a href="#winwork">Winning &amp; negotiating work</a>
+      <a href="#winwork">Winning &amp; negotiating</a>
     </div>
     <div class="rail-shortcuts-label"><span>Full contents</span></div>
     <ul class="rail-routes">
       <li><a href="#cmd"><span class="n">00</span><span>Command centre</span></a></li>
+      <li class="rail-group">Learn the job</li>
       <li><a href="#p1"><span class="n">01</span><span>Procurement in a building firm</span></a></li>
       <li><a href="#p2"><span class="n">02</span><span>Your patch &amp; where the line is</span></a></li>
+      <li class="rail-group">The buying engine</li>
       <li><a href="#p3"><span class="n">03</span><span>The buying engine</span></a></li>
+      <li class="rail-group">Merchants &amp; subbies</li>
       <li><a href="#p4"><span class="n">04</span><span>Merchants, plant &amp; subbies</span></a></li>
+      <li class="rail-group">Money &amp; reporting</li>
       <li><a href="#p5"><span class="n">05</span><span>Reporting that earns its keep</span></a></li>
       <li><a href="#money"><span class="n">06</span><span>When you're also finance</span></a></li>
+      <li class="rail-group">Ariba &amp; monday.com</li>
       <li><a href="#systems"><span class="n">07</span><span>monday.com + Ariba together</span></a></li>
       <li><a href="#p6"><span class="n">08</span><span>Using SAP Ariba well</span></a></li>
       <li><a href="#p7"><span class="n">09</span><span>Changing Ariba safely</span></a></li>
+      <li class="rail-group">Fix what's broken</li>
       <li><a href="#p8"><span class="n">10</span><span>Spotting &amp; fixing what's broken</span></a></li>
       <li><a href="#trouble"><span class="n">11</span><span>When things go wrong</span></a></li>
+      <li class="rail-group">Governance &amp; performance</li>
       <li><a href="#gov"><span class="n">12</span><span>Governance, ethics &amp; compliance</span></a></li>
       <li><a href="#kpi"><span class="n">13</span><span>Workflow optimisation &amp; KPIs</span></a></li>
+      <li class="rail-group">Grow your career</li>
       <li><a href="#reading"><span class="n">14</span><span>Reading, research &amp; development</span></a></li>
       <li><a href="#workplan"><span class="n">15</span><span>Your 2-year development workplan</span></a></li>
+      <li class="rail-group">Support &amp; lessons learned</li>
       <li><a href="#help"><span class="n">16</span><span>Where to go when it's not here</span></a></li>
       <li><a href="#mistakes"><span class="n">17</span><span>Mistakes to watch for</span></a></li>
+      <li class="rail-group">Winning work</li>
       <li><a href="#winwork"><span class="n">18</span><span>Winning work</span></a></li>
+      <li class="rail-group">Responsible sourcing</li>
       <li><a href="#waste"><span class="n">19</span><span>Waste, carbon &amp; social value</span></a></li>
+      <li class="rail-group">Negotiating</li>
       <li><a href="#negotiate"><span class="n">20</span><span>Negotiating, without being a shark</span></a></li>
+      <li class="rail-group">Quick reference</li>
       <li><a href="#deskcard"><span class="n">21</span><span>The desk card</span></a></li>
       <li><a href="#appx"><span class="n">+</span><span>Templates</span></a></li>
       <li><a href="#glossary"><span class="n">+</span><span>Glossary (searchable)</span></a></li>

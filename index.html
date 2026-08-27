@@ -844,6 +844,55 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
   details.disclose.wp-complete{border-color:var(--accent)}
   details.disclose.wp-complete>summary::before{content:"✓";color:var(--accent);font-weight:700;margin-right:2px}
 
+  /* ============ PRACTISE IT — the training block that closes a part ============ */
+  .practise{
+    margin:26px 0 4px;padding:16px 18px 14px;
+    border:1px solid var(--line-strong);border-top:3px solid var(--accent);
+    border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);
+  }
+  .practise-label{
+    display:block;margin-bottom:8px;
+    font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);font-weight:600;
+  }
+  .practise > p{font-size:15px;color:var(--ink-soft);margin:0 0 10px}
+  .practise ol{margin:0;padding-left:22px}
+  .practise ol li{margin:0 0 8px;font-size:15px;line-height:1.55}
+  .practise ol li:last-child{margin-bottom:0}
+  .practise .practise-done{
+    margin:12px 0 0;padding-top:11px;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--ink-soft);
+  }
+  .practise .practise-done strong{color:var(--accent-ink)}
+
+  /* ============ SKILLS SELF-ASSESSMENT ============ */
+  .skill-summary{margin:18px 0 14px;padding:14px 16px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);background:var(--surface)}
+  .skill-summary .progress-label{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;font-size:.76rem;color:var(--muted)}
+  .skill-summary .progress-line{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin:6px 0 10px}
+  .skill-summary .progress-fill{height:100%;background:var(--accent);width:0%;transition:width .25s ease}
+  .skill-focus{margin:0;font-size:14.5px;color:var(--ink-soft)}
+  .skill-list{list-style:none;padding:0;margin:0 0 8px}
+  .skill-row{
+    display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;justify-content:space-between;
+    padding:12px 0;border-bottom:1px solid var(--line);
+  }
+  .skill-row:last-child{border-bottom:0}
+  .skill-name{flex:1 1 260px;font-size:15px;font-weight:650;color:var(--ink);line-height:1.35}
+  .skill-name small{display:block;margin-top:3px;font-size:12.5px;font-weight:400;color:var(--muted)}
+  .skill-scale{display:flex;flex-wrap:wrap;gap:6px;flex:0 1 auto}
+  .skill-dot{
+    appearance:none;cursor:pointer;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);
+    border-radius:999px;padding:7px 12px;min-height:36px;
+    font:600 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;white-space:nowrap;
+  }
+  .skill-dot:hover{border-color:var(--accent);color:var(--accent)}
+  .skill-dot[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .skill-row.rated-1 .skill-name{color:var(--ink)}
+  @media (max-width:520px){
+    .skill-scale{flex:1 1 100%;justify-content:space-between}
+    .skill-dot{flex:1 1 auto;text-align:center;padding:8px 6px}
+  }
+
 </style>
 
 </head>
@@ -1019,7 +1068,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 
       <div class="callout info" id="first-30-days">
         <div class="callout-label">If this is your first month in the seat</div>
-        <p>Four weeks, one job each. Don't try to fix everything at once, and don't wait until you feel ready — you learn this seat by running it. Anything you don't finish rolls into the next week rather than becoming a failure.</p>
+        <p>Four weeks, one job each. Don't try to fix everything at once, and don't wait until you feel ready — you learn this seat by running it. Anything you don't finish rolls into the next week rather than becoming a failure. When these four weeks are done, <a href="#reading-12-week">Part 14's twelve-week grounding plan</a> picks up where they leave off.</p>
         <div class="table-wrap">
           <table>
             <tr><th>Week</th><th>The one job</th><th>What "done" looks like</th></tr>
@@ -1236,6 +1285,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 
     <p>The whole job, boiled down, is turning a <em>need on site</em> into a <em>paid-for delivery or a completed bit of work</em> — the right stuff, right price, right place, right time, from someone reliable, with a paper trail finance and the taxman can trust. The recognised UK framework for this is the <strong>CIPS procurement cycle</strong>, and its north star is the <strong>Five Rights</strong>:</p>
 
+    <h3 id="p1-the-five-rights">The Five Rights — the test every order has to pass</h3>
     <div class="grid3">
       <div class="card"><span class="step">Right 1</span><h4 id="p1-right-quality" style="margin:4px 0 4px">Right quality</h4><p style="margin:0;font-size:14.5px">Fit for the job — the correct grade of timber, the right spec of aggregate, a competent subbie.</p></div>
       <div class="card"><span class="step">Right 2</span><h4 id="p1-right-quantity" style="margin:4px 0 4px">Right quantity</h4><p style="margin:0;font-size:14.5px">Enough to keep the job moving, not a yard full of over-ordered stock that walks or warps.</p></div>
@@ -1387,6 +1437,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Take last month's purchase invoices and split the total three ways — merchants, plant hire, subbies. Which world is biggest, and is that what you expected?</li>
+        <li>Pick one purchase from last week and mark it against the Five Rights. Which right was weakest, and what would fixing it have cost?</li>
+        <li>Write down your five biggest suppliers by spend from memory, then check against the actual figures.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> you can say where the firm's money goes without opening a report — and you've found at least one supplier you were wrong about. Nearly everyone is.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 2 ============ -->
@@ -1533,6 +1593,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Write your “mine / not mine / escalate” one-pager, one side of A4, and take it to your manager.</li>
+        <li>Take three real decisions from last week and place each one on it. Any that don't fit are the interesting ones.</li>
+        <li>Agree a spend limit in writing — an actual number, not “use your judgement”.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> someone asks you to approve something and you can answer with a limit and a name instead of a shrug.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 3 ============ -->
@@ -1728,6 +1798,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Raise one order the whole way through deliberately slowly, noting what evidence exists at each step.</li>
+        <li>Find one invoice from last month with no PO behind it and reconstruct what happened. Who bought it, and how?</li>
+        <li>Time yourself doing a three-way match. If it took more than five minutes, work out which of the three documents was hard to find — that's your fix.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> “no PO, no pay” is a rule you can state in one sentence, and someone else in the firm can repeat it back.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 4 ============ -->
@@ -1736,6 +1816,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
     <h2 class="title serif">Merchants, plant &amp; subbies</h2>
     <p class="lead">Your three supplier worlds behave completely differently. Most of the messes you'll inherit trace back to sloppy records in one of them — and subbies come with legal strings (CIS, insurance) that materials don't.</p>
 
+    <h3 id="p4-three-supplier-worlds">Your three supplier worlds</h3>
     <div class="grid3">
       <div class="card">
         <h4 id="p4-builders-merchants">Builders' merchants</h4>
@@ -2075,6 +2156,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Produce the list of everything currently on hire, which job it's on, and when it's off-hiring. If that list doesn't exist, today is the day it starts.</li>
+        <li>Take the insurance certificate of the subbie you use most and run the six checks over it. Diary the expiry 90 days out.</li>
+        <li>Compare three line prices on your biggest merchant's last statement against the price you believe you've agreed.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> you can say what's on hire, and for which job, without ringing anyone.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 5 ============ -->
@@ -2104,6 +2195,49 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <p>Every report above only works if <strong>every order is tagged to the right job</strong> at the point you raise it. Get that habit locked in — job code on every requisition and PO, no exceptions — and the reports basically build themselves. Skip it, and you'll spend the last day of every month guessing which job a timber delivery belonged to.</p>
     </div>
 
+    <h3 id="p5-build-spend-by-job">Building spend-by-job — once properly, then it's a repeat job</h3>
+    <p>Nobody hands you this report ready-made. You build it once, agree what each column means, and after that it's fifteen minutes a month. Six columns is all it needs, and every one of them already exists somewhere in your paperwork:</p>
+    <div class="table-scroll">
+      <table>
+        <caption>The six columns of a spend-by-job report, and where each one comes from.</caption>
+        <thead><tr><th>Column</th><th>What goes in it</th><th>Where it comes from</th><th>The trap</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Job</strong></td><td>One row per live job, plus one for overheads</td><td>Your job list — the same codes site uses</td><td>Two codes for one job after someone retyped it</td></tr>
+          <tr><td><strong>Priced at</strong></td><td>What the job was quoted or tendered at</td><td>The estimate or contract sum, plus agreed variations</td><td>Forgetting the variations, so every job looks over</td></tr>
+          <tr><td><strong>Invoiced to date</strong></td><td>Costs actually billed and matched</td><td>Matched invoices in the accounts system</td><td>Unmatched invoices sitting in a tray, uncounted</td></tr>
+          <tr><td><strong>Committed</strong></td><td>Ordered but not yet invoiced — open POs and live hires</td><td>Your PO tracker and the on-hire list</td><td>Leaving it out, which flatters every live job</td></tr>
+          <tr><td><strong>Cost to date</strong></td><td>Invoiced + committed</td><td>Add the two columns</td><td>Reporting invoiced only and calling it cost</td></tr>
+          <tr><td><strong>Variance</strong></td><td>Priced at − cost to date, in £ and %</td><td>Arithmetic</td><td>Showing % alone — £ is what gets a reaction</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The column people skip is <strong>committed</strong>, and it's the one that makes the report honest. A job that has had £30k invoiced but has £9k of timber on order and a digger burning £48 a day has already spent the £9k — the post just hasn't caught up. Invoiced-only reporting is why jobs look fine right up until the month they don't.</p>
+    <div class="note">
+      <span class="lbl">Tie it to the ledger before anyone sees it</span>
+      <p>Once a month, add up your spend-by-job total and compare it with total purchase spend in the accounts for the same period. They should agree. When they don't, the difference is almost always one of four things: an invoice with no job code (sitting in a general nominal), a job coded twice under different spellings, a credit note taken in one system and not the other, or a cost sitting in the wrong month because the delivery and the invoice straddled month-end. Find which, fix it, and note what you fixed — that note is how the same error stops recurring.</p>
+    </div>
+
+    <h3 id="p5-quoted-vs-actual-worked">Quoted vs actual — one job, worked through</h3>
+    <p>This is the report your manager will actually read, so it is worth seeing a real one. Job 214, a kitchen extension, priced at <strong>£48,600</strong> with an expected cost of £45,100 — a planned margin of £3,500, about 7%.</p>
+    <div class="table-scroll">
+      <table>
+        <caption>Job 214 at practical completion — where a 7% margin went.</caption>
+        <thead><tr><th>Cost head</th><th>Priced</th><th>Actual</th><th>Variance</th></tr></thead>
+        <tbody>
+          <tr><td>Materials</td><td class="mono">£18,400</td><td class="mono">£19,850</td><td class="mono">+£1,450</td></tr>
+          <tr><td>Own labour</td><td class="mono">£12,000</td><td class="mono">£12,000</td><td class="mono">—</td></tr>
+          <tr><td>Subcontractors</td><td class="mono">£9,800</td><td class="mono">£11,150</td><td class="mono">+£1,350</td></tr>
+          <tr><td>Plant hire</td><td class="mono">£2,400</td><td class="mono">£3,180</td><td class="mono">+£780</td></tr>
+          <tr><td>Waste</td><td class="mono">£900</td><td class="mono">£1,240</td><td class="mono">+£340</td></tr>
+          <tr><td>Other / prelims</td><td class="mono">£1,600</td><td class="mono">£1,540</td><td class="mono">−£60</td></tr>
+          <tr><td><strong>Total cost</strong></td><td class="mono"><strong>£45,100</strong></td><td class="mono"><strong>£48,960</strong></td><td class="mono"><strong>+£3,860</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A margin of £3,500 became a loss of £360, and here is the whole of it. <strong>Materials</strong>, +£1,450: two timber price rises mid-job, plus a re-order after a short delivery nobody claimed for. <strong>Subcontractors</strong>, +£1,350: groundworks ran three extra days on a variation that was agreed on site and never written down. <strong>Plant</strong>, +£780: the digger was off-hired nine days after the gang left. <strong>Waste</strong>, +£340: two extra loads, one of them a mixed skip charged at the higher rate. <strong>Own labour</strong> landed exactly on plan, and prelims came in £60 under.</p>
+    <p>Read it the way a builder does. Nothing dramatic happened — no disaster, no bad job, no argument. Four ordinary bits of slippage, none of them worth a phone call on their own, added up to the entire margin. That is what this report is <em>for</em>: not blame, but showing that the profit on a job this size is roughly the same size as the things everyone lets slide.</p>
+    <p>Then take the next step, which is the one that makes you useful: <strong>each of those four lines has a fix, and three of the four are yours.</strong> Variations get written down before the work starts (<a class="xref" href="#trouble">Part 11</a>). Plant comes off hire the day the gang leaves, from a live on-hire list (<a class="xref" href="#p4">Part 04</a>). Skips get segregated so the mixed rate stops applying (<a class="xref" href="#waste">Part 19</a>). Short deliveries get claimed the same morning, which needs the delivery note photographed at the gate (<a class="xref" href="#p8">Part 10</a>). Timber price rises you cannot control — but you can fix a price at order, which is exactly what a price-validity check is for.</p>
+
     <h3 id="p5-set-a-rhythm-and-hold-it">Set a rhythm and hold it</h3>
     <p>Predictability is the whole game. When your manager knows exactly what lands and when, the random "can you pull me a report?" pings drop right off. A sensible default:</p>
     <div class="table-scroll">
@@ -2117,6 +2251,40 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       </table>
     </div>
 
+    <h3 id="p5-quality-pass">The five-minute pass before you send it</h3>
+    <p>A report with one obviously wrong number in it loses more trust than a report that arrives late. Run these five checks every time — they take longer to read than to do:</p>
+    <ol>
+      <li><strong>Does the total tie?</strong> Spend-by-job total against total purchase spend for the period. Any gap gets explained before it gets sent, not after someone spots it.</li>
+      <li><strong>Any job with a suspicious zero?</strong> A live job with no plant, no waste or no labour usually means costs went somewhere else, not that they didn't happen.</li>
+      <li><strong>Any supplier appearing twice?</strong> "Travis P", "Travis Perkins" and "T Perkins" are one merchant and three rows — and they hide your real spend with them, which is the number that buys you a better rate.</li>
+      <li><strong>Does the biggest mover have a reason?</strong> Find the largest change since last month and be able to say what it was in one sentence. That is the first question you will be asked.</li>
+      <li><strong>Is anything in here you'd rather not mention?</strong> Say it in the report, in your own words. A number your manager discovers on their own costs you far more than a number you flagged.</li>
+    </ol>
+
+    <h3 id="p5-so-what">Writing the "so what"</h3>
+    <p>A number is not a report. The job is to turn each number into a sentence a builder can act on — what it is, what it means, and what you want them to do. The difference is small to write and enormous to receive:</p>
+    <div class="table-scroll">
+      <table>
+        <caption>The same fact, sent two ways.</caption>
+        <thead><tr><th>What most people send</th><th>What earns you the seat</th></tr></thead>
+        <tbody>
+          <tr><td>"Job 214 materials variance +£1,450."</td><td>"Job 214 came in £360 down, not £3,500 up. Most of it was timber price rises and a short delivery we never claimed for. If we fix quotes at order and photograph delivery notes at the gate, I'd expect to hold about £1,200 of that on the next one — can I make both standard?"</td></tr>
+          <tr><td>"Plant spend up 24% this month."</td><td>"Plant's up £780 this month, and it's off-hire timing rather than rates — the digger on 214 sat for nine days after the gang left. I've started a live on-hire list; I'll report the number again in a month so we can see whether it worked."</td></tr>
+          <tr><td>"Three subbie invoices on hold."</td><td>"Three subbie invoices are on hold — two missing insurance certificates that lapsed and one price query. None of it stops payment this week, but the certificates need chasing before the next run or we're paying people we can't evidence cover for."</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The shape is always the same: <strong>number, cause, what I'm doing, what I need from you.</strong> If there is nothing you need, say that too — "nothing needed, just so you've seen it" is a complete and welcome message.</p>
+
+    <h3 id="p5-number-looks-wrong">When a number looks wrong</h3>
+    <p>It will, sooner or later — usually the first time you report on a period you didn't control from the start. Three rules keep this from becoming a crisis:</p>
+    <ul>
+      <li><strong>Never quietly adjust it.</strong> Changing a figure so it looks sensible is the one habit that will genuinely damage you. Report the number and your doubt about it in the same sentence.</li>
+      <li><strong>Quarantine, don't delete.</strong> Put the questionable amount in its own line — "£4,100 unallocated, being traced" — so the rest of the report stays usable while you work it out.</li>
+      <li><strong>Say how confident you are.</strong> "This month's figures are solid apart from plant, which I'm still reconciling" is a professional sentence. Silence, followed by a correction next month, isn't.</li>
+    </ul>
+    <p>Then go and find it, using the same diagnosis method as anything else that's broken (<a class="xref" href="#p8">Part 10</a>) — most wrong numbers in a small firm are a coding error, a duplicate supplier, a credit note, or a cost landing either side of month-end.</p>
+
     <div class="note say">
       <span class="lbl">On "weekly vs 4-weekly" — your manager's actual question</span>
       <p style="font-size:15.5px;color:var(--ink-soft);margin-bottom:8px">Switching a report from weekly to 4-weekly is a fair call, and mostly a <em>cadence</em> decision, not a technical one. Simple rule of thumb before you change anything:</p>
@@ -2127,6 +2295,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <span class="lbl">Presenting to a non-specialist boss</span>
       <p>Lead with the answer, not the spreadsheet. One page: three or four numbers, a one-line "so what," and anything you need a decision on. Park the detailed tables in an appendix they can ignore. Translating procurement into plain "this job's £4k over, here's why" is a big chunk of your value — most people can't.</p>
     </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Build the six-column spend-by-job for last month and tie the total to total purchase spend in the accounts. Chase the difference until it's nil.</li>
+        <li>Write the “so what” for the biggest mover, in the number-cause-doing-need shape.</li>
+        <li>Send it, then note the first question you get asked. That question is the column your report is missing.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> your manager stops asking you to pull numbers, because they already know when the numbers arrive.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 6 · FINANCE ============ -->
@@ -2186,6 +2364,39 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
     </ul>
     <p style="font-size:14.5px;color:var(--muted)">Tip: this list makes a perfect recurring checklist board in monday.com — one item per row, rebuilt automatically each month, so you'll never wonder what you've missed. See <a class="xref" href="#systems">Part 07</a>.</p>
 
+    <h3 id="money-month-end-walkthrough">Month-end, in order — what the week actually looks like</h3>
+    <p>The tick-list above says what; this says when, and roughly how long. Spread over four short sessions it's calm; done in one panic on the last afternoon it isn't. Times assume a firm running a handful of live jobs.</p>
+    <div class="table-scroll">
+      <table>
+        <caption>A four-session month-end. Book the sessions in the diary like any other job.</caption>
+        <thead><tr><th>When</th><th>What you do</th><th>Roughly</th><th>What it prevents</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Last working day</strong></td><td>Chase what's missing: unmatched delivery notes off site, invoices you're expecting, any subbie paperwork due before the next run</td><td>30 min</td><td>The costs that land after you've closed and quietly belong to last month</td></tr>
+          <tr><td><strong>Day 1</strong></td><td>Match and code everything in: invoice to PO to delivery note, job code and nominal code on every line</td><td>1–2 hrs</td><td>A pile of "sort it later" that becomes next month's mystery</td></tr>
+          <tr><td><strong>Day 2</strong></td><td>Account for GRNI — goods received with no invoice yet — so the cost sits in the month the material actually landed</td><td>30 min</td><td>Jobs looking cheaper than they are, then spiking a month later</td></tr>
+          <tr><td><strong>Day 3</strong></td><td>Reconcile the main merchant statements; raise queries and claim any credits owed</td><td>45 min</td><td>Double charges, missing credits and a statement balance nobody can explain</td></tr>
+          <tr><td><strong>Day 4</strong></td><td>Update the retention schedule both ways, tie spend-by-job to the ledger, write the one-pager</td><td>1 hr</td><td>Retention quietly ageing out, and a report you can't stand behind</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <span class="lbl">The one that catches everybody: costs either side of the line</span>
+      <p>Material delivered on the 30th, invoiced on the 3rd. The cost belongs to the month it was <em>delivered</em>, not the month it was <em>billed</em> — that's what GRNI is for. The same applies in reverse: an invoice arriving now for something delivered two months ago belongs back there. Get this one habit right and your job figures stop lurching about; get it wrong and every month looks either brilliant or terrible for no real reason.</p>
+    </div>
+
+    <h3 id="money-cash-position">The cash question you'll be asked — and how to answer it</h3>
+    <p>Sooner or later the owner asks some version of "are we alright for money this month?". In construction that is rarely about profit — a firm can be profitable on paper and still not make payroll, because the money goes out for materials and labour long before it comes back in. Knowing three numbers means you can answer properly:</p>
+    <ol>
+      <li><strong>What's already committed.</strong> Open POs plus live hires plus subbie work done but not yet invoiced. This is money the firm has spent whether or not the invoice has arrived.</li>
+      <li><strong>What's due out, and when.</strong> Your payment run by week, sorted by terms — not one lump. Anything due on the 30th isn't this week's problem.</li>
+      <li><strong>What's due in, honestly.</strong> Client applications and invoices with their real payment dates, not their hoped-for ones — plus retention you're owed and when it's actually releasable (<a class="xref" href="#p4">Part 04</a>).</li>
+    </ol>
+    <p>Put those on one page, four weeks wide, and you have a cash look-ahead. It doesn't need software — a spreadsheet with four columns and a total row does it — and it turns "are we alright?" from a gut question into a five-second answer with a number attached.</p>
+    <div class="note warn">
+      <span class="lbl">Two habits that quietly cost cash</span>
+      <p><strong>Paying early for no reason.</strong> Paying on receipt rather than on terms hands the firm's cash to suppliers weeks before it's due. Take an early-payment discount only when it genuinely beats the value of holding the money — and it usually doesn't at small ticket sizes. <strong>Letting retention age.</strong> Money held on your subbies and money held on you both drift out of sight; a schedule with dates on it is the only thing that stops release dates passing unnoticed. Neither habit is dramatic, and both are the sort of thing that quietly makes a payroll week tight.</p>
+    </div>
+
     <h3 id="money-where-the-external-accountant-fits">Where the external accountant fits</h3>
     <p>Most firms this size lean on an <strong>external accountant or bookkeeper</strong> for the statutory, technical stuff. So when this pack says "finance," that's often <em>them</em>, not an internal department — and sometimes it's you coordinating with them. Rough split:</p>
     <div class="table-scroll">
@@ -2215,6 +2426,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <p>Supplier and subbie records — names, addresses, UTRs, bank details, sometimes right-to-work documents — count as personal data under the <b>UK GDPR and Data Protection Act 2018</b> where they relate to individuals (a sole trader or self-employed subbie, not just a limited company). The practical version for you: only collect what you actually need, keep it somewhere access-controlled rather than in loose email threads, don't forward bank details around casually, and delete or archive records you no longer need once your firm's retention policy allows it. This isn't a separate job — it's mostly the same good records hygiene this whole playbook already asks for.</p>
       
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Run one month-end as four diarised sessions instead of one long afternoon.</li>
+        <li>Reconcile your biggest merchant's statement line by line and claim anything owed back.</li>
+        <li>Build the four-week cash look-ahead — committed, due out, due in — and show it to the owner once, unprompted.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> someone asks “are we alright for money this month?” and you answer with three numbers instead of a feeling.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 7 · SYSTEMS ============ -->
@@ -2487,6 +2708,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <span class="lbl">Don't build it all at once</span>
       <p style="margin:0;font-size:15.5px;color:var(--ink-soft)">Start with <strong>the intake form and the live-orders board</strong>. That alone gives you a single front door, a visible pipeline, and something real to show your manager — probably within a week. Add the supplier expiry reminders next, because they prevent actual problems. Everything else can wait until the first two are habits. A half-used system that people trust beats a beautiful one nobody updates.</p>
     </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Count how many different ways site can ask you for something today — text, call, WhatsApp, shouted over the yard. Write the number down.</li>
+        <li>Set up the intake board and run one real request through it, start to finish.</li>
+        <li>Ask your site manager to raise the next one themselves while you watch without helping. Whatever they get stuck on is the design fault, not their fault.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> requests arrive in one place with a job code on them, and you stopped being the search engine.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 8 ============ -->
@@ -2600,6 +2831,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Schedule one report so it sends itself, to the right people, on the right day.</li>
+        <li>Save the three views you open most, so the filters stop being retyped.</li>
+        <li>Find where a PO's status lives and practise answering “where's my order?” in under a minute.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> you stop hunting the same three screens, and the weekly report arrives without you touching it.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 7 ============ -->
@@ -2684,6 +2925,39 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
     <h3 id="p7-why-you-can-t-just-flip">Why you can't just flip switches</h3>
     <p>In a big system, config changes ripple. An approval rule hits everyone's requisitions; a new field changes what reports can show; a workflow tweak can quietly break an integration. That's why proper changes go through a <strong>test environment first</strong>, then get deployed to the live ("production") site — standard SAP practice is build-and-test in a copy, then migrate deliberately, never edit live directly. You won't run that process, but you need to <em>recognise</em> when a request needs it, so you don't promise a five-minute fix that's really a two-week project.</p>
 
+    <h3 id="p7-three-questions">Before you ask for anything — three questions</h3>
+    <p>Most change requests that die in someone's inbox died because they described a <em>solution</em> instead of a <em>problem</em>. Ask yourself these three first, and the answers become the request:</p>
+    <ol>
+      <li><strong>What problem are we actually solving?</strong> "Add a job-code column" is a solution. "We can't tell which job a cost belongs to without opening every PO, which is costing an hour a month and making the job report unreliable" is a problem — and it might have three possible fixes, one of which is free.</li>
+      <li><strong>Who else does this affect?</strong> A filter on your own saved view affects you. An approval rule affects everyone who raises a requisition, including the site manager at seven in the morning. The second one needs telling people, not just doing.</li>
+      <li><strong>What happens if we don't?</strong> If the honest answer is "it stays slightly annoying", that's worth knowing before you spend someone's budget on it. Park it on the wish list below and let it prove itself.</li>
+    </ol>
+
+    <h3 id="p7-writing-a-change-request">Writing a change request the admin can act on</h3>
+    <p>Bucket 2 and 3 changes go to somebody who doesn't know your firm, your jobs or your site manager. Everything they need has to be in the request, or the first reply is a question and you've lost a week. The template in the <a class="xref" href="#tpl-change-request">appendix</a> has the fields; this is what to put in them:</p>
+    <div class="table-scroll">
+      <table>
+        <caption>What an admin needs from you — and what makes each line useless.</caption>
+        <thead><tr><th>Field</th><th>What to write</th><th>What gets it bounced</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Problem</strong></td><td>The business impact in one or two sentences, with a number if you have one</td><td>"The report is wrong"</td></tr>
+          <tr><td><strong>Current behaviour</strong></td><td>Exactly what the system does today, with the screen or report named</td><td>"It doesn't work properly"</td></tr>
+          <tr><td><strong>Wanted behaviour</strong></td><td>What you need to be able to see or do, not how you think it should be built</td><td>"Add a field" with no reason attached</td></tr>
+          <tr><td><strong>Who's affected</strong></td><td>Roles and rough numbers — "everyone who raises a requisition, 4 people"</td><td>Leaving it blank, so it's assumed to be just you</td></tr>
+          <tr><td><strong>Urgency &amp; date</strong></td><td>A real deadline and why it exists — month-end, an audit, a client's cut-off</td><td>"ASAP" on everything, which means nothing on anything</td></tr>
+          <tr><td><strong>Workaround</strong></td><td>What you're doing meanwhile, and what it costs in time</td><td>Implying the firm stops without it when it doesn't</td></tr>
+          <tr><td><strong>Evidence</strong></td><td>A screenshot, a PO number, an example that reproduces it</td><td>A description of a screenshot</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note say">
+      <span class="lbl">The same request, twice</span>
+      <p class="quote">"Can you add job codes to the spend report please?"</p>
+      <p style="margin:10px 0 0;font-size:15px;color:var(--ink-soft)">…versus:</p>
+      <p class="quote" style="margin-top:10px">"Our monthly spend report can't be split by job, so someone opens every PO by hand — about an hour a month, and it makes the job-cost figures unreliable enough that the owner doesn't fully trust them. The job code is already captured on the requisition; we just can't report on it. Needed before month-end on the 30th if possible. Meanwhile I'm exporting and splitting it manually. Example: PO 4471, job 214 — the code shows on the requisition but not in the scheduled report."</p>
+      <p style="margin:12px 0 0;font-size:15px;color:var(--ink-soft)">The second one can be actioned without a single follow-up question. It also quietly tells the admin that the data already exists, which often turns a configuration job into a five-minute reporting tweak.</p>
+    </div>
+
     <h3 id="p7-run-a-simple-change-register">Run a simple change register</h3>
     <p>No fancy software needed — one shared spreadsheet with these columns turns "who changed what?" into a clean, defensible trail:</p>
     <div class="table-scroll">
@@ -2696,11 +2970,45 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       </table>
     </div>
 
+    <h3 id="p7-verify-it-worked">After it lands — verify it, then write it down</h3>
+    <p>A change isn't done when someone says it's done; it's done when you've seen it behave. This takes ten minutes and saves the conversation where a report has been silently wrong for a quarter:</p>
+    <ul>
+      <li><strong>Watch the first live run.</strong> A rescheduled report is only proven when the first one arrives on the new date, in the right inboxes, with the right rows. Diary it.</li>
+      <li><strong>Check one known case end to end.</strong> Take a PO you already know the answer for and follow it through the changed step. If the new field is empty on it, the change isn't finished.</li>
+      <li><strong>Check what it might have broken.</strong> Approval rules, notifications and reports share plumbing — if an approval threshold moved, raise one small test requisition and see who it goes to.</li>
+      <li><strong>Ask how to undo it</strong> at the same time as asking for it. "If this causes trouble, what's the reverse?" is a normal question and a very cheap one before the fact.</li>
+      <li><strong>Close the register row</strong> with the date it went live and what you checked. That line is what protects you in three months when someone asks why the report changed.</li>
+    </ul>
+
+    <h3 id="p7-when-the-answer-is-no">When the answer is no — or nothing happens at all</h3>
+    <p>Both are normal, and neither is a dead end. Work the ladder in order, and don't skip a rung to get to the top one:</p>
+    <ol>
+      <li><strong>Get the reason, not just the verdict.</strong> "No" usually means cost, risk, or it affects other clients on a shared setup. Each has a different answer, and you can't pick one without knowing which it is.</li>
+      <li><strong>Ask what the supported version is.</strong> Very often something close is standard, free and available now — a different report type, an existing field, a saved view. Take it.</li>
+      <li><strong>Build the workaround properly.</strong> If you're exporting and splitting by hand, do it the same way every month and write down the steps, so it's a repeatable ten minutes rather than a rediscovery. Note what it costs in time — that number is the case for the change.</li>
+      <li><strong>Keep a wish list.</strong> One line per request that didn't happen, with the date and the running cost of the workaround. Bring it out once a quarter, not once a week. Three months of "this costs us an hour a month" is a far stronger argument than a request made in frustration.</li>
+      <li><strong>Escalate on impact, never on annoyance.</strong> Take it to your manager when the workaround starts affecting money, compliance or a client — with the wish-list line as the evidence. Anything short of that, wait.</li>
+    </ol>
+    <div class="note warn">
+      <span class="lbl">The one thing not to do</span>
+      <p>Don't build a shadow system. A private spreadsheet that quietly becomes the real record is the most expensive workaround there is: it works beautifully until you're on holiday, and nobody else can run it, reconcile it, or trust it. If a workaround is going to live longer than a month, it belongs somewhere the firm can see — a shared board or file, documented, with your manager knowing it exists (<a class="xref" href="#p13-cover">Part 13</a>).</p>
+    </div>
+
     <div class="note say">
       <span class="lbl">Pushing back — without saying "no"</span>
       <p class="quote">"Yep, happy to sort that. Quick check first — are we retiming a report that already exists, or do we need new info we're not capturing yet? First one I'll do today; second means a proper change through the admin, so I'll scope it and come back with a timescale."</p>
       <p style="margin:12px 0 0;font-size:15px;color:var(--ink-soft)">Never a flat no — it sorts the request into a bucket, sets expectations, and quietly teaches a non-specialist boss why some changes are quick and some aren't, without a lecture. Always ask <strong>"what problem are we actually solving?"</strong> first — nine times out of ten the real need has a simpler fix than the change they first pictured.</p>
     </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Sort every change asked of you last month into the three buckets. How many were actually bucket 1?</li>
+        <li>Write one real change request using the seven fields, and see whether it comes back with a question attached.</li>
+        <li>Start the register and the wish list, even if today they hold one line each.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> you can tell a two-minute change from a two-week project before you promise a timescale.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 8 ============ -->
@@ -2842,6 +3150,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <p class="quote">"I've been getting under the skin of how we buy, and there's one quick win I'd start with — [e.g. plant that's sat off-job still on hire]. I reckon it's costing roughly [£X] a month, and the fix is small: [a live on-hire list]. Want me to run with that one, and I'll bring the next when it's bedded in?"</p>
       <p style="margin:12px 0 0;font-size:15px;color:var(--ink-soft)">One idea, sized in money, framed as help, with a clear ask. That's how a non-specialist boss says yes — and how you earn the room to fix the bigger stuff later. You've got this.</p>
     </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Swimlane one process on paper — lanes for site, you, your manager, the supplier, accounts — and mark every wait and every loop back.</li>
+        <li>Size one leak using the table, halve the number to be safe, and write the sum in one line.</li>
+        <li>Pitch that one fix in the spot-it, size-it, sell-it shape — then deliver it before proposing the next.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> your manager says yes to the second improvement without you having to build much of a case, because the first one worked.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 10 · TROUBLESHOOTING ============ -->
@@ -2973,6 +3291,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Take the last thing that went wrong and reconstruct the timeline from the paperwork alone. Every gap you hit is a hole in the trail.</li>
+        <li>Draft the query email for something live using the template, and send it today rather than tomorrow.</li>
+        <li>Ask yourself what you'd produce if a payment dispute started this week. If the honest answer is “a search through my inbox”, fix the filing first.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> you can reconstruct any incident from the file rather than from memory — including one you weren't there for.</p>
+    </div>
+
   </section>
 
   <!-- ============ PART 11 · RESOURCES ============ -->
@@ -3142,6 +3470,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         <p>This section gives you the shape of UK law and standard practice so you recognise the ground you're standing on. It isn't a substitute for proper legal or accountancy advice on a specific situation — when real money, a real dispute, or a real allegation is on the table, bring in your manager, the owner, and a professional.</p>
       </div>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Start the gifts and conflicts register and the change register today, even if both are empty.</li>
+        <li>Put the annual sweep — insurance certificates, CIS status, retention schedule, accreditations — in the calendar with real dates.</li>
+        <li>Pick the one management plan your firm is most often asked for and write its single page.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> you could hand the folder to a client's procurement team, or an auditor, without a week of preparation first.</p>
+    </div>
+
   </section>
 
   <section id="kpi" class="anchor">
@@ -3249,12 +3587,22 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Pick three of the metrics and get a baseline this month. A number you can't yet improve is still a number you can compare to.</li>
+        <li>Automate one task you currently do by hand every week, and write down what it used to cost in time.</li>
+        <li>Write the handover note, then take a genuine week off and see what breaks. Whatever breaks is your next improvement.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> the owner checks a number without asking you for it first.</p>
+    </div>
+
   </section>
 
   <section id="reading" class="anchor">
     <p class="eyebrow"><span>Part 14</span><span class="rule"></span></p>
     <h2 class="title serif">Reading, research &amp; development</h2>
-    <p class="lead">This playbook gets you competent fast. This section is for going further, at whatever pace suits you — steady, self-paced growth rather than an urgent fix. If something's on fire right now, <a href="#help">Part 16</a>'s emergency tiles are the faster door in.</p>
+    <p class="lead">This playbook gets you competent fast. This section is for going further, at whatever pace suits you — how to learn the job when nobody in the building can teach it to you, a twelve-week grounding plan, an honest self-assessment you can re-rate as you improve, and where to read more. If something's on fire right now, <a href="#help">Part 16</a>'s emergency tiles are the faster door in.</p>
 
 <div class="legacy-block">
 <h3 id="reading-where-to-start-by-the-time">Where to start — by the time you've got</h3>
@@ -3263,6 +3611,41 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         <a class="task-card" href="#help-rules"><span class="task-kicker">20 minutes</span><strong>One official guidance page</strong><span>A GOV.UK page on CIS, VAT reverse charge, or the Construction Act — dry but authoritative, and free.</span></a>
         <a class="task-card" href="#help-craft"><span class="task-kicker">An evening</span><strong>A recorded webinar</strong><span>A CIPS or Procurious recording on supplier negotiation or category management.</span></a>
         <a class="task-card" href="#lrn-quals"><span class="task-kicker">A weekend</span><strong>Explore a qualification</strong><span>The CIPS Level 2 outline and study options — see the pathway below.</span></a>
+      </div>
+
+      <h3 id="reading-how-to-learn">How to learn this job when nobody in the building can teach you</h3>
+      <p>The hard part of a self-taught seat isn't finding material — it's that nothing tells you whether you've understood it. These five habits do that job, and between them they cost about two hours a month:</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-label">Habit 1</div>
+          <h4 id="reading-habit-own-data">Learn from your own data first</h4>
+          <p style="margin:0">Once a month, take one live job and trace it end to end — requisition, PO, delivery note, invoice, payment, job code. You will learn more about how your firm actually buys in forty minutes of that than in a day of reading, and every gap you find is a real improvement waiting (<a href="#p8">Part 10</a>).</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Habit 2</div>
+          <h4 id="reading-habit-primary">One primary source a month</h4>
+          <p style="margin:0">Read the actual GOV.UK page, the actual contract clause, the actual standard — not somebody's summary of it. Summaries are fine for orientation and useless in an argument. One primary source a month, read properly, is twelve a year and puts you ahead of most people who've been doing this a decade.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Habit 3</div>
+          <h4 id="reading-habit-questions">Keep a question log, and batch it</h4>
+          <p style="margin:0">Every time something doesn't make sense, write the question down and carry on. Once a month, take the list to whoever owns that answer — accountant for tax, Ariba admin for the system, your manager for the firm's intent. Batched questions get better answers than interruptions, and the log itself becomes your syllabus.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Habit 4</div>
+          <h4 id="reading-habit-teach">Teach it back in two sentences</h4>
+          <p style="margin:0">If you can't explain the reverse charge, or why we hold retention, to the site manager in two plain sentences, you don't have it yet — you have the words. Teaching back is the cheapest test of real understanding there is, and it makes you the person people ask.</p>
+        </div>
+        <div class="card">
+          <div class="card-label">Habit 5</div>
+          <h4 id="reading-habit-nearmiss">Study your own near-misses</h4>
+          <p style="margin:0">The invoice you nearly paid twice, the certificate that nearly lapsed, the hire you nearly forgot. Write down what nearly happened and what caught it — that log (<a href="#mistakes">Part 17</a>) is training material nobody else could write for you, because it is about your firm.</p>
+        </div>
+        <div class="card accent-ring">
+          <div class="card-label">What not to do</div>
+          <h4 id="reading-habit-avoid">Collecting instead of learning</h4>
+          <p style="margin:0">Bookmarking forty articles, subscribing to six newsletters and watching webinars in the background all feel like progress and produce none. One source, read properly, applied to one real thing this week, beats a folder of unread tabs every time.</p>
+        </div>
       </div>
 
       <h3 id="reading-a-structured-reading-list-by-topic">A structured reading list, by topic</h3>
@@ -3305,6 +3688,22 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </div>
 
+      <h3 id="reading-12-week">The first twelve weeks — a grounding plan</h3>
+      <p>The workplan in <a href="#workplan">Part 15</a> runs in quarters and deliverables. This is the inside of its first quarter, week by week, for anyone who'd rather be told exactly what to read and do next. Two to three hours a week, and it assumes you're already doing the job while you learn it.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Twelve weeks from "finding my feet" to "I run this" — read it, do it, and have something to show for it.</caption>
+          <tr><th>Weeks</th><th>Read</th><th>Do</th><th>Proof you've got it</th></tr>
+          <tr><td data-label="Weeks"><b>1–2</b></td><td data-label="Read"><a href="#cmd">Command centre</a> and <a href="#p1">Part 01</a> — the cycle, the Five Rights, where the money leaks</td><td data-label="Do">Trace one live job end to end and sketch what actually happens today</td><td data-label="Proof you've got it">You can name every hop an order takes in your firm, including the ugly ones</td></tr>
+          <tr><td data-label="Weeks"><b>3–4</b></td><td data-label="Read"><a href="#p2">Part 02</a> and <a href="#p3">Part 03</a> — your patch, and the buying engine</td><td data-label="Do">Write the "mine / not mine / escalate" one-pager and agree spend limits in writing</td><td data-label="Proof you've got it">You can raise a PO and run a three-way match without looking anything up</td></tr>
+          <tr><td data-label="Weeks"><b>5–6</b></td><td data-label="Read"><a href="#p4">Part 04</a> — merchants, plant and subbies, including CIS and insurance</td><td data-label="Do">Run the onboarding checklist over your top five suppliers; fix every gap you find</td><td data-label="Proof you've got it">You can read an insurance certificate and say why it does or doesn't cover the work</td></tr>
+          <tr><td data-label="Weeks"><b>7–8</b></td><td data-label="Read"><a href="#p5">Part 05</a> and <a href="#money">Part 06</a> — reporting and the finance half of the seat</td><td data-label="Do">Build spend-by-job properly and tie it to the ledger; deliver one monthly one-pager</td><td data-label="Proof you've got it">Your total ties, and you can explain the biggest mover in one sentence</td></tr>
+          <tr><td data-label="Weeks"><b>9–10</b></td><td data-label="Read"><a href="#systems">Part 07</a>, <a href="#p6">Part 08</a> and <a href="#p7">Part 09</a> — monday, Ariba, and changing either safely</td><td data-label="Do">Set up the order-intake board; schedule one report; log one change in the register</td><td data-label="Proof you've got it">Site has one way to ask for things, and it's the way they actually use</td></tr>
+          <tr><td data-label="Weeks"><b>11–12</b></td><td data-label="Read"><a href="#trouble">Part 11</a> and <a href="#p8">Part 10</a> — going wrong, and spotting what already has</td><td data-label="Do">Run the <a href="#current-state-review">current-state review</a>, pick one gap, size it in £, pitch it</td><td data-label="Proof you've got it">You've delivered one improvement your manager agreed to, and can say what it saved</td></tr>
+        </table>
+      </div>
+      <p style="font-size:0.85rem;color:var(--muted)">Weeks slipping is normal — a real job doesn't respect a study plan. Carry the unfinished bit forward rather than skipping it; the sequence matters more than the dates. Governance (<a href="#gov">Part 12</a>), tendering (<a href="#winwork">Part 18</a>), waste (<a href="#waste">Part 19</a>) and negotiation (<a href="#negotiate">Part 20</a>) come next, in quarters two and three of the workplan.</p>
+
       <h3 id="lrn-quals">Building your skills — a qualification pathway, if you want one</h3>
       <p>You don't need a qualification to do this job well — this playbook plus a few years of doing it will take you a long way. But if you'd like the letters after your name, or just a structured way to deepen your knowledge, CIPS runs the UK-recognised route:</p>
       <div class="table-wrap">
@@ -3322,24 +3721,81 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <h3 id="reading-free-ongoing-learning-communities-and-qanda">Free ongoing learning — communities and Q&amp;A</h3>
       <p>CIPS Knowledge Hub, Procurious, r/procurement and r/Construction, SAP Community Q&amp;A, and active LinkedIn groups all live in the full directory, kept in one place so it's easier to keep current: <a href="#help-community">Part 16 — Communities, ask real people</a>.</p>
 
-      <h3 id="reading-skills-self-assessment">Skills self-assessment</h3>
-      <p>A quick honesty check against this playbook — not a test, just a way to see where to focus next. Revisit it every few months; watch the bar move.</p>
-      <div class="table-wrap">
+      <h3 id="reading-skills-self-assessment">Skills self-assessment — rate yourself, then re-rate in three months</h3>
+      <p>Not a test, and nobody sees it but you — it is stored on this device only. Rate each area honestly against what the job actually asks, and the gaps tell you where to spend your next hour of learning. The four levels mean something specific:</p>
+      <div class="table-scroll">
         <table>
-          <tr><th>Area</th><th>Where to build it if it's shaky</th></tr>
-          <tr><td data-label="Area">The buying engine &amp; three-way match</td><td data-label="Where to build it if it's shaky"><a href="#p3">Part 03</a></td></tr>
-          <tr><td data-label="Area">CIS, VAT reverse charge &amp; retention mechanics</td><td data-label="Where to build it if it's shaky"><a href="#p4">Part 04</a></td></tr>
-          <tr><td data-label="Area">Reading &amp; presenting spend reports</td><td data-label="Where to build it if it's shaky"><a href="#p5">Part 05</a></td></tr>
-          <tr><td data-label="Area">Accounts payable &amp; month-end</td><td data-label="Where to build it if it's shaky"><a href="#money">Part 06</a></td></tr>
-          <tr><td data-label="Area">Ariba day-to-day use</td><td data-label="Where to build it if it's shaky"><a href="#p6">Part 08</a></td></tr>
-          <tr><td data-label="Area">Diagnosing &amp; improving a broken process</td><td data-label="Where to build it if it's shaky"><a href="#p8">Part 10</a></td></tr>
-          <tr><td data-label="Area">Governance, ethics &amp; the legal backdrop</td><td data-label="Where to build it if it's shaky"><a href="#gov">Part 12</a></td></tr>
-          <tr><td data-label="Area">Negotiation &amp; supplier relationship management</td><td data-label="Where to build it if it's shaky"><a href="#negotiate">Part 20</a></td></tr>
-          <tr><td data-label="Area">Pre-qualification, tendering &amp; public sector rules</td><td data-label="Where to build it if it's shaky"><a href="#winwork">Part 18</a></td></tr>
-          <tr><td data-label="Area">Waste duty of care, responsible sourcing &amp; social value</td><td data-label="Where to build it if it's shaky"><a href="#waste">Part 19</a></td></tr>
-          <tr><td data-label="Area">Employment status vs CIS — knowing when to escalate</td><td data-label="Where to build it if it's shaky"><a href="#p04-status">Part 04</a>, then your accountant</td></tr>
+          <caption>What each level means in practice — pitch yourself against a real task, not a feeling.</caption>
+          <thead><tr><th>Level</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Not yet</strong></td><td>You'd have to look it up from scratch, and you're not sure what to look up</td></tr>
+            <tr><td><strong>With help</strong></td><td>You can do it with the playbook open, or with someone to check it</td></tr>
+            <tr><td><strong>On my own</strong></td><td>You can do it unaided, and you'd spot it if it went wrong</td></tr>
+            <tr><td><strong>Could teach it</strong></td><td>You could show someone else, including why it's done that way</td></tr>
+          </tbody>
         </table>
       </div>
+      <div class="skill-summary">
+        <div class="progress-label" id="skillLabel">Nothing rated yet — 13 areas</div>
+        <div class="progress-line"><div class="progress-fill" id="skillFill"></div></div>
+        <p class="skill-focus" id="skillFocus">Rate a few areas and the two worth working on next will show up here.</p>
+        <p style="margin:8px 0 0"><button class="daily-reset" id="skillReset" type="button">Clear my ratings</button></p>
+      </div>
+      <ul class="skill-list">
+        <li class="skill-row" data-skill-row="engine">
+          <div class="skill-name">The buying engine &amp; three-way match<small>Build it in <a href="#p3">Part 03</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: The buying engine and three-way match"><button type="button" class="skill-dot" data-skill="engine" data-level="1" aria-label="The buying engine and three-way match: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="engine" data-level="2" aria-label="The buying engine and three-way match: With help">With help</button><button type="button" class="skill-dot" data-skill="engine" data-level="3" aria-label="The buying engine and three-way match: On my own">On my own</button><button type="button" class="skill-dot" data-skill="engine" data-level="4" aria-label="The buying engine and three-way match: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="cis">
+          <div class="skill-name">CIS, VAT reverse charge &amp; retention mechanics<small>Build it in <a href="#p4">Part 04</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: CIS, VAT reverse charge and retention mechanics"><button type="button" class="skill-dot" data-skill="cis" data-level="1" aria-label="CIS, VAT reverse charge and retention mechanics: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="cis" data-level="2" aria-label="CIS, VAT reverse charge and retention mechanics: With help">With help</button><button type="button" class="skill-dot" data-skill="cis" data-level="3" aria-label="CIS, VAT reverse charge and retention mechanics: On my own">On my own</button><button type="button" class="skill-dot" data-skill="cis" data-level="4" aria-label="CIS, VAT reverse charge and retention mechanics: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="reporting">
+          <div class="skill-name">Reading &amp; presenting spend reports<small>Build it in <a href="#p5">Part 05</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Reading and presenting spend reports"><button type="button" class="skill-dot" data-skill="reporting" data-level="1" aria-label="Reading and presenting spend reports: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="reporting" data-level="2" aria-label="Reading and presenting spend reports: With help">With help</button><button type="button" class="skill-dot" data-skill="reporting" data-level="3" aria-label="Reading and presenting spend reports: On my own">On my own</button><button type="button" class="skill-dot" data-skill="reporting" data-level="4" aria-label="Reading and presenting spend reports: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="ap">
+          <div class="skill-name">Accounts payable &amp; month-end<small>Build it in <a href="#money">Part 06</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Accounts payable and month-end"><button type="button" class="skill-dot" data-skill="ap" data-level="1" aria-label="Accounts payable and month-end: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="ap" data-level="2" aria-label="Accounts payable and month-end: With help">With help</button><button type="button" class="skill-dot" data-skill="ap" data-level="3" aria-label="Accounts payable and month-end: On my own">On my own</button><button type="button" class="skill-dot" data-skill="ap" data-level="4" aria-label="Accounts payable and month-end: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="ariba">
+          <div class="skill-name">Ariba day-to-day use<small>Build it in <a href="#p6">Part 08</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Ariba day-to-day use"><button type="button" class="skill-dot" data-skill="ariba" data-level="1" aria-label="Ariba day-to-day use: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="ariba" data-level="2" aria-label="Ariba day-to-day use: With help">With help</button><button type="button" class="skill-dot" data-skill="ariba" data-level="3" aria-label="Ariba day-to-day use: On my own">On my own</button><button type="button" class="skill-dot" data-skill="ariba" data-level="4" aria-label="Ariba day-to-day use: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="change">
+          <div class="skill-name">Requesting and verifying a system change<small>Build it in <a href="#p7">Part 09</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Requesting and verifying a system change"><button type="button" class="skill-dot" data-skill="change" data-level="1" aria-label="Requesting and verifying a system change: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="change" data-level="2" aria-label="Requesting and verifying a system change: With help">With help</button><button type="button" class="skill-dot" data-skill="change" data-level="3" aria-label="Requesting and verifying a system change: On my own">On my own</button><button type="button" class="skill-dot" data-skill="change" data-level="4" aria-label="Requesting and verifying a system change: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="diagnose">
+          <div class="skill-name">Diagnosing &amp; improving a broken process<small>Build it in <a href="#p8">Part 10</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Diagnosing and improving a broken process"><button type="button" class="skill-dot" data-skill="diagnose" data-level="1" aria-label="Diagnosing and improving a broken process: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="diagnose" data-level="2" aria-label="Diagnosing and improving a broken process: With help">With help</button><button type="button" class="skill-dot" data-skill="diagnose" data-level="3" aria-label="Diagnosing and improving a broken process: On my own">On my own</button><button type="button" class="skill-dot" data-skill="diagnose" data-level="4" aria-label="Diagnosing and improving a broken process: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="gov">
+          <div class="skill-name">Governance, ethics &amp; the legal backdrop<small>Build it in <a href="#gov">Part 12</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Governance, ethics and the legal backdrop"><button type="button" class="skill-dot" data-skill="gov" data-level="1" aria-label="Governance, ethics and the legal backdrop: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="gov" data-level="2" aria-label="Governance, ethics and the legal backdrop: With help">With help</button><button type="button" class="skill-dot" data-skill="gov" data-level="3" aria-label="Governance, ethics and the legal backdrop: On my own">On my own</button><button type="button" class="skill-dot" data-skill="gov" data-level="4" aria-label="Governance, ethics and the legal backdrop: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="kpi">
+          <div class="skill-name">KPIs and workflow improvement<small>Build it in <a href="#kpi">Part 13</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: KPIs and workflow improvement"><button type="button" class="skill-dot" data-skill="kpi" data-level="1" aria-label="KPIs and workflow improvement: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="kpi" data-level="2" aria-label="KPIs and workflow improvement: With help">With help</button><button type="button" class="skill-dot" data-skill="kpi" data-level="3" aria-label="KPIs and workflow improvement: On my own">On my own</button><button type="button" class="skill-dot" data-skill="kpi" data-level="4" aria-label="KPIs and workflow improvement: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="negotiate">
+          <div class="skill-name">Negotiation &amp; supplier relationship management<small>Build it in <a href="#negotiate">Part 20</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Negotiation and supplier relationship management"><button type="button" class="skill-dot" data-skill="negotiate" data-level="1" aria-label="Negotiation and supplier relationship management: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="negotiate" data-level="2" aria-label="Negotiation and supplier relationship management: With help">With help</button><button type="button" class="skill-dot" data-skill="negotiate" data-level="3" aria-label="Negotiation and supplier relationship management: On my own">On my own</button><button type="button" class="skill-dot" data-skill="negotiate" data-level="4" aria-label="Negotiation and supplier relationship management: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="tender">
+          <div class="skill-name">Pre-qualification, tendering &amp; public sector rules<small>Build it in <a href="#winwork">Part 18</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Pre-qualification, tendering and public sector rules"><button type="button" class="skill-dot" data-skill="tender" data-level="1" aria-label="Pre-qualification, tendering and public sector rules: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="tender" data-level="2" aria-label="Pre-qualification, tendering and public sector rules: With help">With help</button><button type="button" class="skill-dot" data-skill="tender" data-level="3" aria-label="Pre-qualification, tendering and public sector rules: On my own">On my own</button><button type="button" class="skill-dot" data-skill="tender" data-level="4" aria-label="Pre-qualification, tendering and public sector rules: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="waste">
+          <div class="skill-name">Waste duty of care, responsible sourcing &amp; social value<small>Build it in <a href="#waste">Part 19</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Waste duty of care, responsible sourcing and social value"><button type="button" class="skill-dot" data-skill="waste" data-level="1" aria-label="Waste duty of care, responsible sourcing and social value: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="waste" data-level="2" aria-label="Waste duty of care, responsible sourcing and social value: With help">With help</button><button type="button" class="skill-dot" data-skill="waste" data-level="3" aria-label="Waste duty of care, responsible sourcing and social value: On my own">On my own</button><button type="button" class="skill-dot" data-skill="waste" data-level="4" aria-label="Waste duty of care, responsible sourcing and social value: Could teach it">Could teach it</button></div>
+        </li>
+        <li class="skill-row" data-skill-row="status">
+          <div class="skill-name">Employment status vs CIS — knowing when to escalate<small>Build it in <a href="#p04-status">Part 04, then your accountant</a></small></div>
+          <div class="skill-scale" role="group" aria-label="Your level: Employment status vs CIS — knowing when to escalate"><button type="button" class="skill-dot" data-skill="status" data-level="1" aria-label="Employment status vs CIS — knowing when to escalate: Not yet">Not yet</button><button type="button" class="skill-dot" data-skill="status" data-level="2" aria-label="Employment status vs CIS — knowing when to escalate: With help">With help</button><button type="button" class="skill-dot" data-skill="status" data-level="3" aria-label="Employment status vs CIS — knowing when to escalate: On my own">On my own</button><button type="button" class="skill-dot" data-skill="status" data-level="4" aria-label="Employment status vs CIS — knowing when to escalate: Could teach it">Could teach it</button></div>
+        </li>
+      </ul>
+      <p style="font-size:0.85rem;color:var(--muted)">Re-rate every three months, alongside the workplan review in <a href="#workplan">Part 15</a>. Watching a row move from "with help" to "on my own" is the clearest evidence you're getting better at this — and it's exactly the kind of thing worth putting in the CPD log below.</p>
 
       <h3 id="reading-a-cpd-log-steal-this-format">A CPD log — steal this format</h3>
       <p>Continuing Professional Development doesn't need to be formal to be valuable. A one-line-per-entry log, kept honestly, is worth more than a folder of unread certificates:</p>
@@ -3361,7 +3817,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 <div class="legacy-block">
 <div class="callout">
         <div class="callout-label">How to use this workplan</div>
-      <p>Start by completing the <a href="#current-state-review">current-state review</a> in Part 17 — it tells you which quarter needs your attention first. Then revisit this workplan at the start of each quarter: ten minutes, on your own or with your manager. Read the focus, skim the competency checklist, and carry forward anything from last quarter that didn't get finished rather than abandoning it. It's designed to be worked through roughly in order, but real jobs don't respect calendars — if Q3's Ariba work needs to happen before Q2's reporting rhythm because of how your firm's onboarding landed, swap them. The sequence matters more than the exact dates.</p>
+      <p>Start by completing the <a href="#current-state-review">current-state review</a> in Part 17 — it tells you which quarter needs your attention first, and the <a href="#reading-skills-self-assessment">skills self-assessment</a> in Part 14 tells you which parts of it are yours to build. If you'd rather be told exactly what to read and do week by week, the <a href="#reading-12-week">twelve-week grounding plan</a> is the inside of Q1. Then revisit this workplan at the start of each quarter: ten minutes, on your own or with your manager. Read the focus, skim the competency checklist, and carry forward anything from last quarter that didn't get finished rather than abandoning it. It's designed to be worked through roughly in order, but real jobs don't respect calendars — if Q3's Ariba work needs to happen before Q2's reporting rhythm because of how your firm's onboarding landed, swap them. The sequence matters more than the exact dates.</p>
       </div>
 
       <h3 id="workplan-the-shape-of-it">The shape of it</h3>
@@ -3751,6 +4207,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 <div class="legacy-block">
 <p>Nobody hands this to the estimator, because it isn't estimating. It's supplier paperwork, records and compliance evidence — your material. Being the person who can turn a pre-qualification questionnaire round in an afternoon, rather than a fortnight of panic, is one of the most visible wins available in this seat.</p>
 
+      <h3 id="winwork-three-routes">Three routes to work — and what each one asks of you</h3>
       <div class="grid grid-3">
         <div class="card"><div class="card-label">Route 1</div><h4 id="winwork-main-contractor-supply-chains">Main contractor supply chains</h4><p>You want on their approved list. They want accreditation, insurance, policies and references — usually through a portal.</p></div>
         <div class="card"><div class="card-label">Route 2</div><h4 id="winwork-public-sector">Public sector</h4><p>Councils, schools, housing associations, NHS trusts. Governed by the Procurement Act 2023, advertised in one place, and with real payment rights attached.</p></div>
@@ -3884,6 +4341,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Build the evidence pack index and fill in everything that already exists. Note the gaps — they're your to-do list.</li>
+        <li>Run the bid / no-bid gate over the last enquiry your firm chased. Would it have passed?</li>
+        <li>Check every accreditation and insurance expiry date and diary each one 90 days ahead.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> a pre-qualification questionnaire is an afternoon's work rather than a fortnight of panic.</p>
+    </div>
+
   </section>
 
   <section id="waste" class="anchor">
@@ -3894,6 +4361,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 <div class="legacy-block">
 <p>None of this needs a sustainability manager or a consultant. It needs the same thing the rest of this playbook asks for: know which bits are law, keep the paperwork, and be able to answer a client's question with a real number instead of a shrug.</p>
 
+      <h3 id="waste-what-lands-here">What has landed on your desk — and which bit is law</h3>
       <div class="grid grid-3">
         <div class="card"><div class="card-label">Legal duty</div><h4 id="waste-waste">Waste</h4><p>The duty of care applies to every business that produces waste. No turnover threshold, no exemption for small firms.</p></div>
         <div class="card"><div class="card-label">Commercial pressure</div><h4 id="waste-carbon">Carbon</h4><p>Not law at your firm's size — but increasingly a scored tender question and a main-contractor requirement.</p></div>
@@ -4008,6 +4476,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Check the waste carrier registration of everyone who takes waste off your sites. It takes minutes per carrier and it's a legal duty, not a nicety.</li>
+        <li>Find last month's transfer notes. If you can't produce them in ten minutes, the filing is the problem, not the paperwork.</li>
+        <li>Get one real number you could put in a tender answer — recycling rate, a social value figure, or the proportion of timber from certified sources.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> a client asks a waste or social value question and you answer with a figure instead of a shrug.</p>
+    </div>
+
   </section>
 
   <section id="negotiate" class="anchor">
@@ -4129,6 +4607,16 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </div>
       </details>
 </div>
+    <div class="practise">
+      <span class="practise-label">Practise it</span>
+      <ol>
+        <li>Before any conversation, pull twelve months of spend with that supplier and work out what you're actually worth to them.</li>
+        <li>Write the ranked ask list, with at least three things on it that aren't price.</li>
+        <li>Within 24 hours of agreeing anything, confirm it in writing and get it onto the supplier record.</li>
+      </ol>
+      <p class="practise-done"><strong>You'll know it worked when</strong> a rate you agreed six months ago still applies today, because it's written down somewhere other than your memory.</p>
+    </div>
+
   </section>
 
   <section id="deskcard" class="anchor">
@@ -4745,6 +5233,7 @@ Thanks, [You]</p>
           <tr id="g-aged-creditors"><td class="mono"><a class="gterm" href="#g-aged-creditors">Aged creditors</a></td><td>A list of who you owe, and how overdue each one is — your "who needs paying" view</td><td><a class="xref" href="#money">Part 06</a></td></tr>
           <tr id="g-agency-and-umbrella-labour"><td class="mono"><a class="gterm" href="#g-agency-and-umbrella-labour">Agency &amp; umbrella labour</a></td><td>Workers supplied through a third party rather than engaged directly. Separate tax rules apply, and a pure supply of staff also falls outside the VAT reverse charge — flag it rather than processing it as an ordinary subbie payment.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-anchoring"><td class="mono"><a class="gterm" href="#g-anchoring">Anchoring</a></td><td>The first number mentioned in a negotiation pulls the eventual outcome toward it — a reason to have your own figure ready rather than reacting to theirs first.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr id="g-application-for-payment"><td class="mono"><a class="gterm" href="#g-application-for-payment">Application for payment</a></td><td>How a subcontractor or contractor asks to be paid on a construction contract — a valuation of work done to date rather than an ordinary invoice. It starts the payment-notice clock, so the date it goes in matters as much as the figure.</td><td><a class="xref" href="#money">Part 06</a></td></tr>
           <tr id="g-balanced-scorecard"><td class="mono"><a class="gterm" href="#g-balanced-scorecard">Balanced Scorecard</a></td><td>A reporting model (Kaplan &amp; Norton) that looks beyond money alone — financial, operational, supplier/customer and learning measures together.</td><td><a class="xref" href="#p5">Part 05</a></td></tr>
           <tr id="g-batna"><td class="mono"><a class="gterm" href="#g-batna">BATNA</a></td><td>Best Alternative To a Negotiated Agreement — your fallback if this deal doesn't happen. Knowing it is what stops you accepting a bad one.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-bes-6001"><td class="mono"><a class="gterm" href="#g-bes-6001">BES 6001</a></td><td>A responsible-sourcing standard for construction products, certifying how a manufacturer manages its own supply chain. Turns up on BREEAM projects and larger tenders.</td><td><a class="xref" href="#waste">Part 19</a></td></tr>
@@ -4764,6 +5253,7 @@ Thanks, [You]</p>
           <tr id="g-cis"><td class="mono"><a class="gterm" href="#g-cis">CIS</a></td><td>Construction Industry Scheme — HMRC rules where the firm deducts tax before paying most subcontractors</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-collateral-warranty"><td class="mono"><a class="gterm" href="#g-collateral-warranty">Collateral warranty</a></td><td>A separate legal promise from a subcontractor to a third party (like a funder or future owner) that their work meets the required standard.</td><td><a class="xref" href="#p3">Part 03</a></td></tr>
           <tr id="g-commercial-payments-bill"><td class="mono"><a class="gterm" href="#g-commercial-payments-bill">Commercial Payments Bill</a></td><td>A Bill introduced in May 2026 proposing a 60-day cap on commercial payment terms, stronger Small Business Commissioner powers, and a prohibition on construction retentions. Not law until enacted.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr id="g-committed-spend"><td class="mono"><a class="gterm" href="#g-committed-spend">Committed spend</a></td><td>Money already ordered but not yet invoiced — open POs, live hires, subbie work done. Leaving it out of a job report makes every live job look cheaper than it is.</td><td><a class="xref" href="#p5">Part 05</a></td></tr>
           <tr id="g-common-assessment-standard"><td class="mono"><a class="gterm" href="#g-common-assessment-standard">Common Assessment Standard</a></td><td>Build UK's industry-agreed pre-qualification question set, including a building-safety section, certified annually by a Recognised Assessment Body. The nearest thing to "assess once, use everywhere".</td><td><a class="xref" href="#winwork">Part 18</a></td></tr>
           <tr id="g-companies-act-2006-record-keeping"><td class="mono"><a class="gterm" href="#g-companies-act-2006-record-keeping">Companies Act 2006 (record-keeping)</a></td><td>Section 388 sets a legal minimum of 3 years for a private company's accounting records — shorter than HMRC's 6-year Corporation Tax requirement, which is the one to actually follow.</td><td><a class="xref" href="#gov">Part 12</a></td></tr>
           <tr id="g-conflict-of-interest"><td class="mono"><a class="gterm" href="#g-conflict-of-interest">Conflict of interest</a></td><td>A personal connection to a supplier that could affect your judgement — fine to have, wrong to hide.</td><td><a class="xref" href="#gov">Part 12</a></td></tr>
@@ -4772,10 +5262,13 @@ Thanks, [You]</p>
           <tr id="g-construction-phase-plan"><td class="mono"><a class="gterm" href="#g-construction-phase-plan">Construction Phase Plan</a></td><td>The site-specific health &amp; safety plan required under CDM 2015 before work starts on any construction project. Written by the principal contractor — procurement supplies the compliance evidence behind it.</td><td><a class="xref" href="#gov">Part 12</a></td></tr>
           <tr id="g-contract-works-insurance"><td class="mono"><a class="gterm" href="#g-contract-works-insurance">Contract works insurance</a></td><td>Also called contractors' all risks. Covers the works themselves while under construction — fire, damage, theft of materials on site. Many contracts state who must carry it.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-cost-avoidance"><td class="mono"><a class="gterm" href="#g-cost-avoidance">Cost avoidance</a></td><td>A saving that stops a cost happening at all — a price rise successfully resisted — as distinct from a hard saving, which reduces what's actually spent.</td><td><a class="xref" href="#p5">Part 05</a></td></tr>
+          <tr id="g-cost-to-complete"><td class="mono"><a class="gterm" href="#g-cost-to-complete">Cost to complete</a></td><td>What is still left to spend on a live job. Cost to date plus cost to complete is the number that tells you whether a job will land where it was priced.</td><td><a class="xref" href="#p5">Part 05</a></td></tr>
+          <tr id="g-cost-to-date"><td class="mono"><a class="gterm" href="#g-cost-to-date">Cost to date</a></td><td>Everything a job has cost so far — invoiced plus committed. Not the same as what has been billed, which is the mistake most job reports make.</td><td><a class="xref" href="#p5">Part 05</a></td></tr>
           <tr id="g-cpd"><td class="mono"><a class="gterm" href="#g-cpd">CPD</a></td><td>Continuing Professional Development — ongoing learning, however informal, logged so it counts toward growth (and qualifications, if you pursue them).</td><td><a class="xref" href="#reading">Part 14</a></td></tr>
           <tr id="g-credit-note"><td class="mono"><a class="gterm" href="#g-credit-note">Credit note</a></td><td>A supplier document that reduces what you owe — what you ask for when goods are wrong, short or returned</td><td><a class="xref" href="#trouble">Part 11</a></td></tr>
           <tr id="g-cscs"><td class="mono"><a class="gterm" href="#g-cscs">CSCS</a></td><td>The card scheme showing a worker is competent and safe to be on site</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-data-protection-uk-gdpr"><td class="mono"><a class="gterm" href="#g-data-protection-uk-gdpr">Data protection (UK GDPR)</a></td><td>Rules on handling personal data responsibly — relevant to supplier bank details and subbie records.</td><td><a class="xref" href="#money">Part 06</a></td></tr>
+          <tr id="g-day-rate"><td class="mono"><a class="gterm" href="#g-day-rate">Day rate</a></td><td>A price per day for labour or plant rather than per job. Easy to agree and easy to lose track of — the meter runs whether or not anyone is using it.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-debarment-list"><td class="mono"><a class="gterm" href="#g-debarment-list">Debarment list</a></td><td>A central list of suppliers excluded from public contracts. Part of registering on the Central Digital Platform is declaring that no exclusion grounds apply to your firm.</td><td><a class="xref" href="#winwork">Part 18</a></td></tr>
           <tr id="g-declaration-of-performance"><td class="mono"><a class="gterm" href="#g-declaration-of-performance">Declaration of performance</a></td><td>The manufacturer's formal statement of what a construction product does, underpinning its UKCA or CE marking. Keep it with the job file for anything structural or fire-related.</td><td><a class="xref" href="#waste">Part 19</a></td></tr>
           <tr id="g-defects-period"><td class="mono"><a class="gterm" href="#g-defects-period">Defects period</a></td><td>The window after completion when the contractor must fix faults — what retention is held against</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
@@ -4825,6 +5318,7 @@ Thanks, [You]</p>
           <tr id="g-limitation-act-1980"><td class="mono"><a class="gterm" href="#g-limitation-act-1980">Limitation Act 1980</a></td><td>UK law setting how long someone has to bring a legal claim — 6 years for a simple contract, 12 years for a contract executed as a deed. The reason contracts and POs are kept for years, not months.</td><td><a class="xref" href="#gov">Part 12</a></td></tr>
           <tr id="g-liquidated-damages-lads"><td class="mono"><a class="gterm" href="#g-liquidated-damages-lads">Liquidated damages (LADs)</a></td><td>A pre-agreed sum payable per day/week of delay against a contract programme, instead of having to prove actual loss.</td><td><a class="xref" href="#p3">Part 03</a></td></tr>
           <tr id="g-long-lead-item"><td class="mono"><a class="gterm" href="#g-long-lead-item">Long-lead item</a></td><td>Anything that can't be bought off the shelf next week — made-to-order joinery, structural steel, specialist glazing. Ordered backwards from the programme, not when site remembers to ask.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr id="g-look-ahead"><td class="mono"><a class="gterm" href="#g-look-ahead">Look-ahead</a></td><td>The forward view of what each job will need in the next week or two, so buying happens on plan rather than in a panic. Two weeks is the usual window on site.</td><td><a class="xref" href="#cmd">Part 00</a></td></tr>
           <tr id="g-lotting"><td class="mono"><a class="gterm" href="#g-lotting">Lotting</a></td><td>Dividing a large public contract into smaller lots by trade, geography or value, specifically so smaller firms can bid for a slice. Read the lot structure before dismissing a contract as too big.</td><td><a class="xref" href="#winwork">Part 18</a></td></tr>
           <tr id="g-management-plan"><td class="mono"><a class="gterm" href="#g-management-plan">Management plan</a></td><td>A short written document setting out how something will be run — a risk register, a procurement plan, a retention schedule — so the answer doesn't live only in one person's head.</td><td><a class="xref" href="#gov">Part 12</a></td></tr>
           <tr id="g-master-data"><td class="mono"><a class="gterm" href="#g-master-data">Master data</a></td><td>The core reference records — suppliers, categories, job codes — that everything else relies on</td><td><a class="xref" href="#p6">Part 08</a></td></tr>
@@ -4852,6 +5346,8 @@ Thanks, [You]</p>
           <tr id="g-practical-completion"><td class="mono"><a class="gterm" href="#g-practical-completion">Practical completion</a></td><td>The point the work is usable and handed over — often when half the retention is released</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-preferred-supplier"><td class="mono"><a class="gterm" href="#g-preferred-supplier">Preferred supplier</a></td><td>A vetted supplier with agreed pricing you use by default for a category</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-preferred-supplier-list"><td class="mono"><a class="gterm" href="#g-preferred-supplier-list">Preferred supplier list</a></td><td>A small set of merchants/subbies with settled pricing, used as the default for repeat categories.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr id="g-preliminaries-prelims"><td class="mono"><a class="gterm" href="#g-preliminaries-prelims">Preliminaries (prelims)</a></td><td>Site costs that belong to the job as a whole rather than to any one trade — welfare, scaffolding, skips, site power. Often under-priced, and a common source of job overspend.</td><td><a class="xref" href="#p5">Part 05</a></td></tr>
+          <tr id="g-price-validity"><td class="mono"><a class="gterm" href="#g-price-validity">Price validity</a></td><td>How long a quoted price is held for before it can change. Check it on anything with a lead time — a quote valid for 30 days on an item arriving in 10 weeks is a price rise waiting to happen.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-procurement-act-2023"><td class="mono"><a class="gterm" href="#g-procurement-act-2023">Procurement Act 2023</a></td><td>The UK regime governing public procurement since February 2025. Brings the Central Digital Platform, published transparency notices, and 30-day payment terms implied down public supply chains.</td><td><a class="xref" href="#winwork">Part 18</a></td></tr>
           <tr id="g-procurement-plan"><td class="mono"><a class="gterm" href="#g-procurement-plan">Procurement plan</a></td><td>A written statement of which categories matter most, who the preferred suppliers are, and the buying approach for each — Part 01's category thinking, formalised.</td><td><a class="xref" href="#gov">Part 12</a></td></tr>
           <tr id="g-production-vs-test"><td class="mono"><a class="gterm" href="#g-production-vs-test">Production vs test</a></td><td>The live system vs a safe copy where changes are trialled before going live</td><td><a class="xref" href="#p7">Part 09</a></td></tr>
@@ -4908,6 +5404,7 @@ Thanks, [You]</p>
           <tr id="g-ukca-ce-marking"><td class="mono"><a class="gterm" href="#g-ukca-ce-marking">UKCA / CE marking</a></td><td>The marking showing a construction product meets the applicable requirements for sale in the UK. Increasingly scrutinised — keep declarations of performance for anything structural or fire-related.</td><td><a class="xref" href="#waste">Part 19</a></td></tr>
           <tr id="g-unfair-contract-terms-act-1977-ucta"><td class="mono"><a class="gterm" href="#g-unfair-contract-terms-act-1977-ucta">Unfair Contract Terms Act 1977 (UCTA)</a></td><td>UK law controlling how far a business can exclude or limit its liability in a contract — an exclusion clause in a business-to-business deal must pass a "reasonableness" test to be enforceable.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-utr"><td class="mono"><a class="gterm" href="#g-utr">UTR</a></td><td>Unique Taxpayer Reference — the HMRC number you need from a subbie for CIS</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
+          <tr id="g-variance"><td class="mono"><a class="gterm" href="#g-variance">Variance</a></td><td>The gap between what a job was priced at and what it actually cost, in pounds and as a percentage. Distinct from a variation, which is a change to the work itself.</td><td><a class="xref" href="#p5">Part 05</a></td></tr>
           <tr id="g-variation"><td class="mono"><a class="gterm" href="#g-variation">Variation</a></td><td>An agreed change to the scope of work — get it in writing before it's done, or it's a dispute</td><td><a class="xref" href="#trouble">Part 11</a></td></tr>
           <tr id="g-vat"><td class="mono"><a class="gterm" href="#g-vat">VAT</a></td><td>Value Added Tax — standard UK sales tax, with construction-specific reverse charge rules to know.</td><td><a class="xref" href="#p4">Part 04</a></td></tr>
           <tr id="g-waste-hierarchy"><td class="mono"><a class="gterm" href="#g-waste-hierarchy">Waste hierarchy</a></td><td>Prevent, reuse, recycle, recover, dispose — in that order. A legal expectation as well as the honest answer to a tender question about waste strategy.</td><td><a class="xref" href="#waste">Part 19</a></td></tr>
@@ -5700,6 +6197,80 @@ Thanks, [You]</p>
       openSearch(event);
     }
   });
+
+
+  /* ============================================================
+     SKILLS SELF-ASSESSMENT — rate, remember, and surface the two
+     areas worth working on next.
+     ============================================================ */
+  var SKILLS_KEY = 'procurement-playbook-skills';
+  var skillRows = Array.prototype.slice.call(document.querySelectorAll('.skill-row'));
+  if (skillRows.length) {
+    var skillState = {};
+    try { skillState = JSON.parse(storeGet(SKILLS_KEY) || '{}'); } catch (e) { skillState = {}; }
+    var skillLabel = document.getElementById('skillLabel');
+    var skillFill = document.getElementById('skillFill');
+    var skillFocus = document.getElementById('skillFocus');
+    var LEVEL_NAMES = { '1': 'Not yet', '2': 'With help', '3': 'On my own', '4': 'Could teach it' };
+
+    var paintSkills = function () {
+      var rated = 0, weakest = [];
+      skillRows.forEach(function (row) {
+        var key = row.getAttribute('data-skill-row');
+        var level = skillState[key];
+        Array.prototype.forEach.call(row.querySelectorAll('.skill-dot'), function (dot) {
+          dot.setAttribute('aria-pressed', dot.getAttribute('data-level') === level ? 'true' : 'false');
+        });
+        if (level) {
+          rated++;
+          var name = row.querySelector('.skill-name');
+          var link = row.querySelector('.skill-name a');
+          if (+level <= 2 && name) {
+            weakest.push({
+              level: +level,
+              text: (name.childNodes[0] ? name.childNodes[0].textContent : '').trim(),
+              href: link ? link.getAttribute('href') : null
+            });
+          }
+        }
+      });
+      if (skillLabel) skillLabel.textContent = rated
+        ? rated + ' of ' + skillRows.length + ' areas rated'
+        : 'Nothing rated yet — ' + skillRows.length + ' areas';
+      if (skillFill) skillFill.style.width = Math.round((rated / skillRows.length) * 100) + '%';
+      if (skillFocus) {
+        if (!rated) {
+          skillFocus.textContent = 'Rate a few areas and the two worth working on next will show up here.';
+        } else if (!weakest.length) {
+          skillFocus.textContent = 'Nothing sitting below "on my own" — re-rate in three months, and pick a "could teach it" to actually teach someone.';
+        } else {
+          weakest.sort(function (a, b) { return a.level - b.level; });
+          var picks = weakest.slice(0, 2).map(function (item) {
+            return item.href ? '<a href="' + item.href + '">' + item.text + '</a>' : item.text;
+          });
+          skillFocus.innerHTML = 'Work on next: <strong>' + picks.join('</strong>, then <strong>') + '</strong>.';
+        }
+      }
+    };
+
+    skillRows.forEach(function (row) {
+      row.addEventListener('click', function (event) {
+        var dot = event.target && event.target.closest ? event.target.closest('.skill-dot') : null;
+        if (!dot) return;
+        var key = row.getAttribute('data-skill-row');
+        var level = dot.getAttribute('data-level');
+        if (skillState[key] === level) delete skillState[key];
+        else skillState[key] = level;
+        storeSet(SKILLS_KEY, JSON.stringify(skillState));
+        paintSkills();
+      });
+    });
+    var skillReset = document.getElementById('skillReset');
+    if (skillReset) skillReset.addEventListener('click', function () {
+      skillState = {}; storeRemove(SKILLS_KEY); paintSkills();
+    });
+    paintSkills();
+  }
 
   /* Autolinking touches a lot of text nodes, so let the page paint first. */
   var startAutolink = function () { try { autolinkGlossary(); } catch (e) {} };

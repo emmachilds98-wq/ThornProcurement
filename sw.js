@@ -11,9 +11,11 @@ self.addEventListener('activate', event => event.waitUntil(
     .then(() => self.clients.claim())
 ));
 
-/* The handbook itself is fetched network-first so a published update is read
-   straight away, with the cached copy kept as the offline fallback. Everything
-   else (icon, manifest) is cache-first — it rarely changes and should be instant. */
+/* The handbook itself is fetched network-first, with { cache: 'reload' } so
+   the browser's own HTTP cache can't hand back a stale copy in between — a
+   published update is read straight away, with the cached copy kept as the
+   offline fallback. Everything else (icon, manifest) is cache-first — it
+   rarely changes and should be instant. */
 self.addEventListener('fetch', event => {
   const request = event.request;
   if (request.method !== 'GET') return;
@@ -22,7 +24,7 @@ self.addEventListener('fetch', event => {
 
   if (wantsPage) {
     event.respondWith(
-      fetch(request).then(response => {
+      fetch(request, { cache: 'reload' }).then(response => {
         const copy = response.clone();
         caches.open(CACHE).then(cache => cache.put(request, copy));
         return response;

@@ -403,17 +403,6 @@
   font-weight:600;
 }
 .legacy-block :not([data-theme="light"]) .eyebrow, .legacy-block [data-theme="dark"] .eyebrow{color:var(--accent);}
-.legacy-block .sr-item:hover, .legacy-block .sr-item.active{background:var(--accent-soft);}
-.legacy-block .icon-btn{
-  border:1px solid var(--line-strong); background:var(--surface); color:var(--ink);
-  border-radius:6px; width:36px;height:36px; display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
-}
-.legacy-block .icon-btn:hover{border-color:var(--accent);}
-.legacy-block .sidenav a.navlink .num{
-  font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace; font-size:0.72rem; color:var(--muted); flex:none; width:1.4em;
-}
-.legacy-block .sheet-head .eyebrow{display:block; margin-bottom:10px;}
 .legacy-block hr.rule{border:none; border-top:1px solid var(--line); margin:52px 0;}
 .legacy-block /* ============================================================
    CARDS / GRIDS
@@ -640,20 +629,11 @@ details.disclose{
 .legacy-block .flow-arrow{transform:rotate(90deg); padding:4px 0;}
 }
 .legacy-block .flow-row-label{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace; font-size:0.63rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;}
-.legacy-block .footlink-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:14px;}
 
 
 
 @media print{
-.legacy-block .topbar, .legacy-block .sidenav, .legacy-block .scrim, .legacy-block .back-to-top, .legacy-block .icon-btn, .legacy-block .bottom-tabbar{display:none !important;}
-}
-.legacy-block .bottom-tabbar button.active, .legacy-block .bottom-tabbar button:active{color:var(--accent);}
-
-
-
-@media (max-width:980px){
-.legacy-block html[data-view="app"] .checklist label{padding:9px 0;}
-.legacy-block html[data-view="app"] .cadence-tab{padding:10px 13px; font-size:14px;}
+.rail, .phone-bar, .bottom-appbar, .totop, .appearance-fab, .appearance-overlay, .skip-link{display:none !important;}
 }
 .legacy-block /* ============================================================
    DESK CARD — the one-page printable / at-a-glance summary
@@ -702,37 +682,18 @@ details.disclose{
 @media (max-width:680px){
 .legacy-block .dc-cols{grid-template-columns:1fr;}
 }
-.legacy-block body.print-single .part:not(#deskcard), .legacy-block body.print-single .hero{display:none !important;}
+body.print-single .anchor:not(#deskcard), body.print-single .hero{display:none !important;}
 
 
 @media print{
-.legacy-block body.print-single .deskcard-toolbar{display:none;}
-.legacy-block #deskcard .deskcard{padding:10px; border-width:1px;}
-.legacy-block #deskcard .dc-grid{gap:8px;}
-.legacy-block #deskcard .dc-box{padding:8px 10px; break-inside:avoid;}
-.legacy-block #deskcard .dc-p, .legacy-block #deskcard .dc-list{font-size:8.6pt; line-height:1.4;}
-.legacy-block #deskcard .dc-h{font-size:7.5pt; margin-bottom:4px;}
-.legacy-block #deskcard .dc-box{background:#fff !important; border-color:#999 !important;}
+body.print-single .deskcard-toolbar{display:none;}
+#deskcard .deskcard{padding:10px; border-width:1px;}
+#deskcard .dc-grid{gap:8px;}
+#deskcard .dc-box{padding:8px 10px; break-inside:avoid;}
+#deskcard .dc-p, #deskcard .dc-list{font-size:8.6pt; line-height:1.4;}
+#deskcard .dc-h{font-size:7.5pt; margin-bottom:4px;}
+#deskcard .dc-box{background:#fff !important; border-color:#999 !important;}
 }
-.legacy-block /* ============================================================
-   PAGED MODE — one part per screen instead of one endless scroll.
-   Gated on html[data-paged="on"], .legacy-block which an inline script in <head>
-   stamps only when JS is alive, .legacy-block so a no-JS reader (or a crawler)
-   still gets the whole handbook as a single continuous document.
-   ============================================================ */
-html[data-paged="on"] .page{display:none;}
-.legacy-block html[data-paged="on"] .page.is-active{display:block;}
-.legacy-block html[data-paged="on"] .page.is-active .page-meta{display:flex;}
-.legacy-block html[data-paged="on"] .page.is-active .page-nav{display:grid; grid-template-columns:1fr 1fr;}
-
-
-@media (max-width:560px){
-.legacy-block html[data-paged="on"] .page.is-active .page-nav{grid-template-columns:1fr;}
-}
-.legacy-block .ts-item:active{background:var(--surface-2);}
-.legacy-block /* Headings sit clear of the sticky top bar when jumped to */
-html[data-paged="on"] h2, .legacy-block html[data-paged="on"] h3, .legacy-block html[data-paged="on"] h4, .legacy-block html[data-paged="on"] .gloss-item, .legacy-block html[data-paged="on"] .task-card{scroll-margin-top:78px;}
-.legacy-block .sidenav a.navlink.in-page .num{color:var(--accent);}
 html:not(.has-js) .legacy-block .cadence-panel{display:block !important}
 html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progress{display:none}
 
@@ -747,7 +708,6 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
 .rail-brand strong{font:600 14px/1.2 Georgia,"Iowan Old Style",serif;color:var(--ink)}
 .rail-close{display:none;position:absolute;right:14px;top:13px;appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:10px;min-width:40px;min-height:40px;font-size:18px;cursor:pointer}
 .rail-close:hover{border-color:var(--accent);color:var(--accent)}
-.rail-cog:hover{border-color:var(--accent);color:var(--accent)}
 .rail-collapse{margin-top:7px;width:100%;appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);border-radius:8px;padding:5px 10px;font:600 11px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
 .rail-collapse:hover{border-color:var(--accent);color:var(--accent)}
 .rail-quick{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px 16px 5px}
@@ -5322,7 +5282,33 @@ Thanks, [You]</p>
     reader.onerror = function () { setBackupStatus('Could not read that file.', true); };
     reader.readAsText(file);
   });
-  document.addEventListener('keydown', function (event) { if (event.key === 'Escape') { closeAppearance(); closeToday(); closeRail(); } });
+  function trapFocus(container, event) {
+    var focusable = Array.prototype.filter.call(
+      container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+      function (el) { return el.offsetParent !== null; }
+    );
+    if (!focusable.length) return;
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (event.shiftKey) {
+      if (document.activeElement === first || !container.contains(document.activeElement)) { event.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last || !container.contains(document.activeElement)) { event.preventDefault(); first.focus(); }
+    }
+  }
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') { closeAppearance(); closeToday(); closeRail(); return; }
+    if (event.key === 'Tab') {
+      var openDialog = (appearanceSheet && appearanceSheet.classList.contains('open')) ? appearanceSheet :
+        (todaySheet && todaySheet.classList.contains('open')) ? todaySheet : null;
+      if (openDialog) trapFocus(openDialog, event);
+    }
+  });
+  var deskcardPrintBtn = document.getElementById('deskcardPrint');
+  if (deskcardPrintBtn) deskcardPrintBtn.addEventListener('click', function () {
+    document.body.classList.add('print-single');
+    window.print();
+  });
+  window.addEventListener('afterprint', function () { document.body.classList.remove('print-single'); });
   var contentsButton = document.getElementById('contentsBtn');
   if (contentsButton) contentsButton.addEventListener('click', openRail);
   if (railClose) railClose.addEventListener('click', closeRail);
@@ -5406,13 +5392,13 @@ Thanks, [You]</p>
     }
 
     function savePos(x, y) {
-      try { window.localStorage.setItem(posKey, JSON.stringify({ x: x, y: y })); } catch (e) {}
+      storeSet(posKey, JSON.stringify({ x: x, y: y }));
     }
 
     (function restorePos() {
+      var raw = storeGet(posKey);
+      if (!raw) return;
       try {
-        var raw = window.localStorage.getItem(posKey);
-        if (!raw) return;
         var pos = JSON.parse(raw);
         if (pos && typeof pos.x === 'number' && typeof pos.y === 'number') placeAt(pos.x, pos.y);
       } catch (e) {}
@@ -5892,6 +5878,7 @@ Thanks, [You]</p>
   if (appearanceOverlay) appearanceOverlay.addEventListener('click', closeSearch);
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') { closeSearch(); return; }
+    if (event.key === 'Tab' && searchSheet && searchSheet.classList.contains('open')) { trapFocus(searchSheet, event); return; }
     var target = event.target || {};
     var tag = target.tagName || '';
     var typing = tag === 'TEXTAREA' || tag === 'SELECT' || target.isContentEditable ||

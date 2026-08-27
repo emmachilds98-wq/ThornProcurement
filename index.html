@@ -742,6 +742,7 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
 @media(max-width:820px){
   .rail{
     display:flex;position:fixed;left:0;top:0;bottom:0;width:min(86vw,340px);
+    padding-top:env(safe-area-inset-top);
     transform:translateX(-105%);transition:transform .25s ease;
     z-index:60;box-shadow:0 8px 30px rgba(0,0,0,.28);
   }

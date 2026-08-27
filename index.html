@@ -727,6 +727,17 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
 .rail-scroll{flex:1;overflow-y:auto;padding:8px 10px 14px}
 .rail-shortcuts-label{padding:5px 8px 3px;font:700 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .rail-hint{margin:0;padding:0 8px 8px;font-size:11px;line-height:1.35;color:var(--muted)}
+.rail-progress{padding:0 8px 12px}
+.rail-progress-label{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--muted);margin-bottom:4px}
+.rail-progress-line{height:5px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.rail-progress-fill{height:100%;background:var(--accent);width:0%;transition:width .25s ease}
+.rail-time{margin-left:auto;flex:0 0 auto;font-size:10px;color:var(--muted);white-space:nowrap}
+.toc-time{margin-left:auto;flex:0 0 auto;font-size:11.5px;color:var(--muted);white-space:nowrap}
+.read-time-badge{flex:0 0 auto;text-transform:none;letter-spacing:0;font-weight:500;font-size:11.5px;color:var(--muted);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;white-space:nowrap}
+.resume-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 0;padding:12px 16px;border:1px solid var(--accent);border-radius:var(--radius);background:var(--accent-soft);color:var(--accent-ink);font-size:14px}
+.resume-banner a{color:var(--accent-ink);font-weight:700;text-decoration:underline}
+.resume-banner button{appearance:none;border:0;background:none;color:var(--accent-ink);font-size:19px;line-height:1;cursor:pointer;padding:2px 4px;flex:0 0 auto}
+@media(max-width:560px){.resume-banner{flex-wrap:wrap}}
 .rail-shortcuts{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 0 8px}
 .rail-shortcuts a{text-decoration:none;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-size:11.5px;font-weight:600;line-height:1.2}
 .rail-shortcuts a:hover{border-color:var(--accent);color:var(--accent-ink)}
@@ -878,6 +889,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
     </div>
     <div class="rail-shortcuts-label"><span>Full contents</span></div>
     <p class="rail-hint">00–04 are the groundwork. Everything after is reference — jump to whatever's landed on your desk.</p>
+    <div class="rail-progress"><div class="rail-progress-label" id="railProgressLabel">0 of 24 parts read</div><div class="rail-progress-line"><div class="rail-progress-fill" id="railProgressFill"></div></div></div>
     <ul class="rail-routes">
       <li><a href="#cmd"><span class="n">00</span><span>Command centre</span></a></li>
       <li class="rail-group">Learn the job</li>
@@ -973,6 +985,11 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 </nav>
 
 <main class="wrap" id="main" tabindex="-1">
+
+  <div class="resume-banner" id="resumeBanner" hidden>
+    <span>Continue reading — you were in <a href="#" id="resumeLink"><strong id="resumeTitle"></strong></a></span>
+    <button type="button" id="resumeDismiss" aria-label="Dismiss">×</button>
+  </div>
 
   <!-- ============ HOW TO USE ============ -->
   <section>
@@ -1368,6 +1385,40 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
           <p><b>Category management.</b> Instead of treating every purchase as a one-off, group your spend into categories — timber, aggregates, plant hire, groundworks subbies, M&amp;E subbies — and think about each one as its own small strategy: who's in the market, how much leverage you have, what "good" looks like for that category specifically. In a corporate procurement team this is a full-time job per category; in a firm your size, it's a mental model you apply to your top eight to ten categories by spend.</p>
 
           <p><b>The Kraljic Matrix.</b> Developed for industrial purchasing and still the standard teaching model in procurement (CIPS included), it plots every category on two axes — how much it affects your business, and how risky or hard-to-replace the supply is — into four quadrants, each with a different strategy:</p>
+
+          <figure>
+            <div class="fig-scroll">
+              <svg viewBox="0 0 480 340" role="img" aria-labelledby="kj-t">
+                <title id="kj-t">The Kraljic Matrix: business impact on the vertical axis against supply risk on the horizontal axis, giving four quadrants — Leverage, Strategic, Routine and Bottleneck</title>
+                <rect x="70" y="20" width="180" height="140" class="dg-fill-accent dg-stroke-accent" stroke-width="1.2"/>
+                <rect x="250" y="20" width="180" height="140" class="dg-fill-amber" stroke="var(--amber)" stroke-width="1.2"/>
+                <rect x="70" y="160" width="180" height="140" class="dg-fill-surface dg-stroke" stroke-width="1.2"/>
+                <rect x="250" y="160" width="180" height="140" class="dg-fill-info" stroke="var(--info)" stroke-width="1.2"/>
+
+                <text x="160" y="80" text-anchor="middle" class="dg-t b">Leverage</text>
+                <text x="160" y="98" text-anchor="middle" class="dg-sub">bulk timber, aggregates</text>
+                <text x="340" y="80" text-anchor="middle" class="dg-t b">Strategic</text>
+                <text x="340" y="98" text-anchor="middle" class="dg-sub">key subbie relationship</text>
+                <text x="160" y="220" text-anchor="middle" class="dg-t b">Routine</text>
+                <text x="160" y="238" text-anchor="middle" class="dg-sub">PPE, consumables</text>
+                <text x="340" y="220" text-anchor="middle" class="dg-t b">Bottleneck</text>
+                <text x="340" y="238" text-anchor="middle" class="dg-sub">single-source specialist</text>
+
+                <path d="M70 305 H430" class="dg-line" marker-end="url(#ah6)"/>
+                <text x="250" y="325" text-anchor="middle" class="dg-band">Supply risk, low to high →</text>
+                <path d="M45 300 V15" class="dg-line" marker-end="url(#ah6)"/>
+                <text x="25" y="160" text-anchor="middle" class="dg-band" transform="rotate(-90 25 160)">Impact on you, low to high →</text>
+
+                <defs>
+                  <marker id="ah6" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+                    <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--ink-soft)"/>
+                  </marker>
+                </defs>
+              </svg>
+            </div>
+            <figcaption>Where a category sits decides how much attention it earns — the table below spells out the strategy for each quadrant.</figcaption>
+          </figure>
+
           <div class="table-wrap">
             <table>
               <tr><th>Quadrant</th><th>What it means</th><th>Trade example</th><th>Strategy</th></tr>
@@ -1466,6 +1517,35 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         </tbody>
       </table>
     </div>
+
+    <figure>
+      <div class="fig-scroll">
+        <svg viewBox="0 0 640 210" role="img" aria-labelledby="sal-t">
+          <title id="sal-t">A spend-authority ladder: as order value rises, wider bars need more sign-off, from you alone up to owner sign-off over £15,000</title>
+          <rect x="20" y="150" width="180" height="40" rx="8" class="dg-fill-accent dg-stroke-accent" stroke-width="1.2"/>
+          <text x="110" y="175" text-anchor="middle" class="dg-t b">You — up to £250</text>
+
+          <rect x="20" y="102" width="290" height="40" rx="8" class="dg-fill-amber" stroke="var(--amber)" stroke-width="1.2"/>
+          <text x="165" y="127" text-anchor="middle" class="dg-t b">Manager — £250 to £2,500</text>
+
+          <rect x="20" y="54" width="410" height="40" rx="8" class="dg-fill-info" stroke="var(--info)" stroke-width="1.2"/>
+          <text x="225" y="79" text-anchor="middle" class="dg-t b">Manager + Finance — £2,500 to £15,000</text>
+
+          <rect x="20" y="6" width="560" height="40" rx="8" class="dg-fill-surface dg-stroke" stroke-width="1.2"/>
+          <text x="300" y="31" text-anchor="middle" class="dg-t b">Owner sign-off — over £15,000</text>
+
+          <path d="M615 190 V16" class="dg-line-soft" marker-end="url(#ah7-soft)"/>
+          <text x="632" y="100" text-anchor="middle" class="dg-band" transform="rotate(-90 632 100)">Order value, rising →</text>
+
+          <defs>
+            <marker id="ah7-soft" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--line-strong)"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      <figcaption>The higher the value, the more eyes on it before it's committed — the same ladder from the table above, as a shape you can picture without looking it up.</figcaption>
+    </figure>
 
     <div class="note say">
       <span class="lbl">How to raise it with your manager</span>
@@ -1621,6 +1701,49 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <li><strong>The invoice</strong> — what they're charging.</li>
     </ul>
     <p>Match? Pay it. Don't match — short delivery, price crept up, half the load's missing, damaged goods sent back? You've caught it <em>before</em> the money's gone. In a trade where merchant prices move and part-loads are normal, this one control saves serious money.</p>
+
+    <figure>
+      <div class="fig-scroll">
+        <svg viewBox="0 0 640 260" role="img" aria-labelledby="twm-t">
+          <title id="twm-t">The three-way match: the PO, delivery note and invoice must all agree before an invoice is paid; a mismatch is held and queried instead</title>
+          <rect x="20" y="20" width="170" height="60" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+          <text x="105" y="46" text-anchor="middle" class="dg-t b">The PO</text>
+          <text x="105" y="64" text-anchor="middle" class="dg-sub">what we agreed</text>
+
+          <rect x="235" y="20" width="170" height="60" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+          <text x="320" y="46" text-anchor="middle" class="dg-t b">Delivery note</text>
+          <text x="320" y="64" text-anchor="middle" class="dg-sub">what arrived</text>
+
+          <rect x="450" y="20" width="170" height="60" rx="9" class="dg-fill-accent dg-stroke-accent" stroke-width="1.4"/>
+          <text x="535" y="46" text-anchor="middle" class="dg-t b">The invoice</text>
+          <text x="535" y="64" text-anchor="middle" class="dg-sub">what they're charging</text>
+
+          <path d="M105 80 V110 H320" class="dg-line"/>
+          <path d="M535 80 V110 H320" class="dg-line"/>
+          <path d="M320 80 V140" class="dg-line" marker-end="url(#ah5)"/>
+
+          <polygon points="320,150 380,182 320,214 260,182" class="dg-fill-surface dg-stroke" stroke-width="1.4"/>
+          <text x="320" y="178" text-anchor="middle" class="dg-t b">All</text>
+          <text x="320" y="194" text-anchor="middle" class="dg-t b">agree?</text>
+
+          <path d="M320 214 V232 H160 V244" class="dg-line" marker-end="url(#ah5)"/>
+          <text x="160" y="252" text-anchor="middle" class="dg-sub dg-accent-t">yes → pay it</text>
+
+          <path d="M380 182 H560 V244" class="dg-line-soft" marker-end="url(#ah5-soft)"/>
+          <text x="560" y="252" text-anchor="middle" class="dg-sub">no → hold &amp; query</text>
+
+          <defs>
+            <marker id="ah5" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--ink-soft)"/>
+            </marker>
+            <marker id="ah5-soft" markerWidth="9" markerHeight="9" refX="6.5" refY="3.2" orient="auto">
+              <path d="M0 0 L7 3.2 L0 6.4 Z" fill="var(--line-strong)"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+      <figcaption>All three agree → pay it. Any one doesn't → hold the payment and query it. That's the entire control, every time, no exceptions.</figcaption>
+    </figure>
 
     <div class="note risk">
       <span class="lbl">Watch out — signed delivery notes go walkabout</span>
@@ -3705,21 +3828,87 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <p class="eyebrow" style="margin-bottom:-6px;">You've jumped straight to a sub-section of Part 17, "Mistakes to watch for" — scroll up any time for the rest of it.</p>
       <h3 id="current-state-review">The current-state review — find the next useful improvement</h3>
       <p>Use this once when you take stock, then again every quarter. Mark each line <b>working</b>, <b>needs tightening</b> or <b>missing</b>. Do not try to fix every gap at once: choose the one that protects the most money, time or compliance risk, and use the smallest first step. “Missing” is not a failure — it is simply a clear next job.</p>
-      <div class="table-wrap dense">
-        <table>
-          <tr><th>Check what exists now</th><th>What good evidence looks like</th><th>If it needs work</th><th>Make / find the template</th><th>How to ask your manager</th></tr>
-          <tr><td data-label="Check what exists now"><b>Spend authority</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">Written limits; everyone knows who can say yes; approval is recorded before the order.</td><td data-label="If it needs work">Draft the smallest sensible ladder, then agree the exceptions.</td><td data-label="Make / find the template"><a href="#p2">Spend-authority starter in Part 02</a></td><td data-label="How to ask your manager">“Could we take 20 minutes to agree who can approve what? I’ll write it up so neither of us has to rely on memory.”</td></tr>
-          <tr><td data-label="Check what exists now"><b>Order and PO trail</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">You can trace a request to approval, PO, delivery note and invoice without hunting through messages.</td><td data-label="If it needs work">Start with one intake route and make “no PO, no pay” the default.</td><td data-label="Make / find the template"><a href="#tpl-monday-board">Order-intake / PO board blueprint</a></td><td data-label="How to ask your manager">“Can we trial one route for requests for two weeks? I’ll own the admin; we can keep it only if it makes site quicker.”</td></tr>
-          <tr><td data-label="Check what exists now"><b>Supplier and subbie checks</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">Supplier details and terms are saved; tax setup is complete before payment and applicable safety/site evidence is complete before work starts.</td><td data-label="If it needs work">Use one onboarding list and chase only the gaps.</td><td data-label="Make / find the template"><a href="#tpl-subbie-onboarding">Subbie onboarding checklist</a> · <a href="#tpl-new-supplier-email">new supplier email</a></td><td data-label="How to ask your manager">“Before we use them again, can I get these few checks on file? It protects us if there is ever a payment or site query.”</td></tr>
-          <tr><td data-label="Check what exists now"><b>Plant off-hire</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">A live list shows plant, job, off-hire date and reference number; finished hires are chased promptly.</td><td data-label="If it needs work">List what is on hire today before building anything clever.</td><td data-label="Make / find the template"><a href="#tpl-monday-board">Add the plant on-hire board from the blueprint</a></td><td data-label="How to ask your manager">“Can you tell me which plant is definitely still needed this week? I’ll get the rest off-hired and keep a live list.”</td></tr>
-          <tr><td data-label="Check what exists now"><b>Supplier performance and re-quoting</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">Preferred suppliers have a reason for being preferred; top categories are checked for price, delivery and quality.</td><td data-label="If it needs work">Score the top three suppliers first and re-quote one high-spend category.</td><td data-label="Make / find the template"><a href="#tpl-supplier-scorecard">Supplier scorecard</a></td><td data-label="How to ask your manager">“I’d like to compare one high-spend category alongside our usual supplier — not to change them automatically, just to know we are still getting good value.”</td></tr>
-          <tr><td data-label="Check what exists now"><b>Job-cost and management reporting</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">Every cost has a job code; a short regular update shows spend, watch-outs, wins and decisions needed.</td><td data-label="If it needs work">Send one imperfect one-pager this month, then improve it from feedback.</td><td data-label="Make / find the template"><a href="#tpl-monthly-one-pager">Monthly one-pager</a> · <a href="#tpl-monthly-report">full report</a></td><td data-label="How to ask your manager">“What are the three numbers or risks you most need to see each month? I’ll keep the update to one page and bring decisions, not just data.”</td></tr>
-          <tr><td data-label="Check what exists now"><b>Risk, records and key plans</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">Known risks, document locations, owners and review dates are written down — not only remembered.</td><td data-label="If it needs work">Write the five live risks; then add dates and owners, rather than designing a large system.</td><td data-label="Make / find the template"><a href="#tpl-risk-register">Risk register</a> · <a href="#tpl-plan-tracker">plan tracker</a> · <a href="#tpl-retention-schedule">retention schedule</a></td><td data-label="How to ask your manager">“I’ve written down the five risks already affecting live work. Could we check the owners and choose which one we tackle first?”</td></tr>
-          <tr><td data-label="Check what exists now"><b>Procurement plan and supplier continuity</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">Top categories, key suppliers, fallbacks and the year’s priorities are visible and reviewed.</td><td data-label="If it needs work">Make a one-page version for the top five categories; start with the supplier that would hurt most to lose.</td><td data-label="Make / find the template"><a href="#tpl-procurement-plan">Procurement plan</a> · <a href="#tpl-supplier-plan">supplier management plan</a></td><td data-label="How to ask your manager">“I’ve put our biggest categories and supplier dependencies on one page. Can you sense-check the priorities and tell me where you would not want us exposed?”</td></tr>
-          <tr><td data-label="Check what exists now"><b>Changes and improvement work</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">System/process changes have an owner, decision and simple record; one improvement is finished before the next starts.</td><td data-label="If it needs work">Log every new change from today and pick one small leak to fix this quarter.</td><td data-label="Make / find the template"><a href="#tpl-change-request">Change-request template</a> · <a href="#p8">improvement method</a></td><td data-label="How to ask your manager">“I’ve found a small change that should save [time/£]. I can test it with no disruption — are you happy for me to run it for two weeks and report back?”</td></tr>
-          <tr><td data-label="Check what exists now"><b>Training and a second opinion</b><br>[Working / Tighten / Missing]</td><td data-label="What good evidence looks like">You know where to go for tax, legal or system questions, and big decisions are not made in isolation.</td><td data-label="If it needs work">Agree one route for finance/tax, one for Ariba and one for commercial judgement.</td><td data-label="Make / find the template"><a href="#reading">Learning plan</a> · <a href="#help">where to go when it is not here</a></td><td data-label="How to ask your manager">“For decisions above [£ / risk level], can we agree when you want me to bring you in, and when you are happy for me to get an outside view first?”</td></tr>
-        </table>
-      </div>
+      <p style="font-size:0.85rem;color:var(--muted)">Ten checks, one at a time — tap each to open it, mark it in your head or on paper, then move to the next.</p>
+      <details class="disclose">
+        <summary>1. Spend authority</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> Written limits; everyone knows who can say yes; approval is recorded before the order.</p>
+          <p><b>If it needs work:</b> Draft the smallest sensible ladder, then agree the exceptions. → <a href="#p2">Spend-authority starter in Part 02</a></p>
+          <p><b>Ask your manager:</b> "Could we take 20 minutes to agree who can approve what? I'll write it up so neither of us has to rely on memory."</p>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary>2. Order and PO trail</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> You can trace a request to approval, PO, delivery note and invoice without hunting through messages.</p>
+          <p><b>If it needs work:</b> Start with one intake route and make "no PO, no pay" the default. → <a href="#tpl-monday-board">Order-intake / PO board blueprint</a></p>
+          <p><b>Ask your manager:</b> "Can we trial one route for requests for two weeks? I'll own the admin; we can keep it only if it makes site quicker."</p>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary>3. Supplier and subbie checks</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> Supplier details and terms are saved; tax setup is complete before payment and applicable safety/site evidence is complete before work starts.</p>
+          <p><b>If it needs work:</b> Use one onboarding list and chase only the gaps. → <a href="#tpl-subbie-onboarding">Subbie onboarding checklist</a> · <a href="#tpl-new-supplier-email">new supplier email</a></p>
+          <p><b>Ask your manager:</b> "Before we use them again, can I get these few checks on file? It protects us if there is ever a payment or site query."</p>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary>4. Plant off-hire</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> A live list shows plant, job, off-hire date and reference number; finished hires are chased promptly.</p>
+          <p><b>If it needs work:</b> List what is on hire today before building anything clever. → <a href="#tpl-monday-board">Add the plant on-hire board from the blueprint</a></p>
+          <p><b>Ask your manager:</b> "Can you tell me which plant is definitely still needed this week? I'll get the rest off-hired and keep a live list."</p>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary>5. Supplier performance and re-quoting</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> Preferred suppliers have a reason for being preferred; top categories are checked for price, delivery and quality.</p>
+          <p><b>If it needs work:</b> Score the top three suppliers first and re-quote one high-spend category. → <a href="#tpl-supplier-scorecard">Supplier scorecard</a></p>
+          <p><b>Ask your manager:</b> "I'd like to compare one high-spend category alongside our usual supplier — not to change them automatically, just to know we are still getting good value."</p>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary>6. Job-cost and management reporting</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> Every cost has a job code; a short regular update shows spend, watch-outs, wins and decisions needed.</p>
+          <p><b>If it needs work:</b> Send one imperfect one-pager this month, then improve it from feedback. → <a href="#tpl-monthly-one-pager">Monthly one-pager</a> · <a href="#tpl-monthly-report">full report</a></p>
+          <p><b>Ask your manager:</b> "What are the three numbers or risks you most need to see each month? I'll keep the update to one page and bring decisions, not just data."</p>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary>7. Risk, records and key plans</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> Known risks, document locations, owners and review dates are written down — not only remembered.</p>
+          <p><b>If it needs work:</b> Write the five live risks; then add dates and owners, rather than designing a large system. → <a href="#tpl-risk-register">Risk register</a> · <a href="#tpl-plan-tracker">plan tracker</a> · <a href="#tpl-retention-schedule">retention schedule</a></p>
+          <p><b>Ask your manager:</b> "I've written down the five risks already affecting live work. Could we check the owners and choose which one we tackle first?"</p>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary>8. Procurement plan and supplier continuity</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> Top categories, key suppliers, fallbacks and the year's priorities are visible and reviewed.</p>
+          <p><b>If it needs work:</b> Make a one-page version for the top five categories; start with the supplier that would hurt most to lose. → <a href="#tpl-procurement-plan">Procurement plan</a> · <a href="#tpl-supplier-plan">supplier management plan</a></p>
+          <p><b>Ask your manager:</b> "I've put our biggest categories and supplier dependencies on one page. Can you sense-check the priorities and tell me where you would not want us exposed?"</p>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary>9. Changes and improvement work</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> System/process changes have an owner, decision and simple record; one improvement is finished before the next starts.</p>
+          <p><b>If it needs work:</b> Log every new change from today and pick one small leak to fix this quarter. → <a href="#tpl-change-request">Change-request template</a> · <a href="#p8">improvement method</a></p>
+          <p><b>Ask your manager:</b> "I've found a small change that should save [time/£]. I can test it with no disruption — are you happy for me to run it for two weeks and report back?"</p>
+        </div>
+      </details>
+      <details class="disclose">
+        <summary>10. Training and a second opinion</summary>
+        <div class="disclose-body">
+          <p><b>Good evidence looks like:</b> You know where to go for tax, legal or system questions, and big decisions are not made in isolation.</p>
+          <p><b>If it needs work:</b> Agree one route for finance/tax, one for Ariba and one for commercial judgement. → <a href="#reading">Learning plan</a> · <a href="#help">where to go when it is not here</a></p>
+          <p><b>Ask your manager:</b> "For decisions above [£ / risk level], can we agree when you want me to bring you in, and when you are happy for me to get an outside view first?"</p>
+        </div>
+      </details>
       <div class="callout info">
         <div class="callout-label">Make the review lead to action</div>
         <p>At the end, write down only three things: <b>the one gap to fix now</b>, <b>the decision you need</b>, and <b>the date you will check whether the fix worked</b>. Put the decision in your next 1:1; if the manager cannot decide then, agree who will and by when. The <a href="#tpl-manager-review">manager review request</a> below gives you words to use.</p>
@@ -5351,21 +5540,94 @@ Thanks, [You]</p>
 
   var railLinks = Array.prototype.slice.call(document.querySelectorAll('.rail-routes a'));
   var railSections = Array.prototype.slice.call(document.querySelectorAll('main.wrap section.anchor'));
+
+  /* Reading time: computed live from each section's own word count rather
+     than hand-maintained, so it can't drift out of date as content changes. */
+  function estimateReadMinutes(el) {
+    var words = (el.textContent || '').trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 200));
+  }
+  railSections.forEach(function (section) {
+    var minutes = estimateReadMinutes(section);
+    var railLink = document.querySelector('.rail-routes a[href="#' + section.id + '"]');
+    if (railLink) {
+      var railTime = document.createElement('span');
+      railTime.className = 'rail-time';
+      railTime.textContent = minutes + ' min';
+      railLink.appendChild(railTime);
+    }
+    var tocLink = document.querySelector('.toc-list a[href="#' + section.id + '"]');
+    if (tocLink) {
+      var tocTime = document.createElement('span');
+      tocTime.className = 'toc-time';
+      tocTime.textContent = minutes + ' min';
+      tocLink.appendChild(tocTime);
+    }
+    var eyebrow = section.querySelector('p.eyebrow');
+    if (eyebrow) {
+      var badge = document.createElement('span');
+      badge.className = 'read-time-badge';
+      badge.textContent = minutes + ' min read';
+      eyebrow.appendChild(badge);
+    }
+  });
+
   if (railLinks.length && railSections.length && 'IntersectionObserver' in window) {
     var railLinkFor = {};
     railLinks.forEach(function (link) { railLinkFor[link.getAttribute('href')] = link; });
+
+    /* Visited sections drive both the rail's overall progress bar and the
+       "continue reading" banner — both read from the same small localStorage
+       map rather than keeping separate state. */
+    var VISITED_KEY = 'procurement-playbook-visited';
+    var LAST_SECTION_KEY = 'procurement-playbook-last-section';
+    var visitedMap = {};
+    try { visitedMap = JSON.parse(storeGet(VISITED_KEY) || '{}') || {}; } catch (e) { visitedMap = {}; }
+    var railProgressLabel = document.getElementById('railProgressLabel');
+    var railProgressFill = document.getElementById('railProgressFill');
+    function updateRailProgress() {
+      if (!railProgressLabel || !railProgressFill) return;
+      var done = railSections.filter(function (s) { return visitedMap[s.id]; }).length;
+      railProgressLabel.textContent = done + ' of ' + railSections.length + ' parts read';
+      railProgressFill.style.width = Math.round((done / railSections.length) * 100) + '%';
+    }
+    updateRailProgress();
+
     var currentOn = null;
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         var link = railLinkFor['#' + entry.target.id];
-        if (!link || link === currentOn) return;
-        if (currentOn) currentOn.classList.remove('on');
-        link.classList.add('on');
-        currentOn = link;
+        if (link && link !== currentOn) {
+          if (currentOn) currentOn.classList.remove('on');
+          link.classList.add('on');
+          currentOn = link;
+        }
+        if (!visitedMap[entry.target.id]) {
+          visitedMap[entry.target.id] = 1;
+          storeSet(VISITED_KEY, JSON.stringify(visitedMap));
+          updateRailProgress();
+        }
+        storeSet(LAST_SECTION_KEY, entry.target.id);
       });
     }, { rootMargin: '-15% 0px -75% 0px' });
     railSections.forEach(function (section) { observer.observe(section); });
+
+    var resumeBanner = document.getElementById('resumeBanner');
+    var lastSectionId = storeGet(LAST_SECTION_KEY);
+    if (resumeBanner && lastSectionId && lastSectionId !== 'cmd') {
+      var lastLink = railLinkFor['#' + lastSectionId];
+      var lastTitleEl = lastLink ? lastLink.querySelector('span:not(.n):not(.rail-time)') : null;
+      if (lastLink && lastTitleEl) {
+        document.getElementById('resumeTitle').textContent = lastTitleEl.textContent;
+        document.getElementById('resumeLink').setAttribute('href', '#' + lastSectionId);
+        resumeBanner.hidden = false;
+      }
+    }
+    var resumeDismiss = document.getElementById('resumeDismiss');
+    var resumeLinkButton = document.getElementById('resumeLink');
+    if (resumeDismiss) resumeDismiss.addEventListener('click', function () { resumeBanner.hidden = true; });
+    if (resumeLinkButton) resumeLinkButton.addEventListener('click', function () { resumeBanner.hidden = true; });
   }
 
   // ---- Glossary live search ----

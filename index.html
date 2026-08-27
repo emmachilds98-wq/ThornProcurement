@@ -270,6 +270,20 @@
   @media (prefers-reduced-motion:reduce){.totop{transition:none}}
   @media(max-width:560px){.totop{right:14px}}
 
+  /* ============ APPEARANCE (floating, movable — like the back-to-top button) ============ */
+  .appearance-fab{
+    position:fixed;right:20px;bottom:78px;z-index:20;
+    display:flex;align-items:center;justify-content:center;
+    width:46px;height:46px;padding:0;
+    background:var(--surface);color:var(--ink);
+    border:1px solid var(--line-strong);border-radius:50%;
+    font:inherit;font-size:19px;line-height:1;
+    box-shadow:var(--shadow);cursor:grab;touch-action:none;user-select:none;
+  }
+  .appearance-fab.dragging{transition:none;cursor:grabbing}
+  .appearance-fab:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:560px){.appearance-fab{right:14px}}
+
   /* ============ MISC ============ */
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
   .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:20px 0}
@@ -309,6 +323,10 @@
   .appearance-overlay.open{opacity:1;pointer-events:auto}
   .appearance-sheet{position:fixed;left:0;right:0;bottom:0;z-index:51;max-height:min(82vh,720px);overflow:auto;-webkit-overflow-scrolling:touch;padding:18px max(18px,env(safe-area-inset-right)) calc(20px + env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));border:1px solid var(--line-strong);border-bottom:0;border-radius:18px 18px 0 0;background:var(--surface);box-shadow:0 -8px 30px rgba(0,0,0,.2);transform:translateY(105%);transition:transform .22s ease}
   .appearance-sheet.open{transform:translateY(0)}
+  @media(min-width:821px){
+    .appearance-sheet{left:auto;right:24px;bottom:24px;width:360px;max-height:min(78vh,640px);border:1px solid var(--line-strong);border-radius:14px;box-shadow:0 16px 44px rgba(0,0,0,.2);transform:translateY(14px);opacity:0;pointer-events:none;transition:transform .18s ease,opacity .18s ease}
+    .appearance-sheet.open{transform:none;opacity:1;pointer-events:auto}
+  }
   .appearance-sheet h2{font-size:23px;margin:0 40px 6px 0}.appearance-sheet p{font-size:14px;color:var(--ink-soft)}
   .appearance-close{position:absolute;right:14px;top:13px;font-size:18px;min-width:40px}
   .appearance-label{display:block;margin:18px 0 8px;font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -368,7 +386,7 @@
   :root[data-theme="dark"][data-palette="cocoa"]{--paper:#221914;--surface:#30231C;--surface-2:#30231C;--ink:#F3E8DF;--ink-soft:#D2BDAE;--muted:#A38D7C;--line:#4E3A2D;--line-strong:#694D3B;--accent:#DAB090;--accent-ink:#F6D4BC;--accent-soft:#422C20;--amber:#D9D16E;--amber-soft:#363410;--red:#EE9B8C;--red-soft:#39201E;--info:#D9D16E;--info-soft:#363410;}
   :root[data-palette="smoke"]{--paper:#F5F9F9;--surface:#FFFFFF;--surface-2:#E5EEEE;--ink:#1D2C2E;--ink-soft:#4B6468;--muted:#5B7478;--line:#D0DFE0;--line-strong:#B0C4C6;--accent:#426D74;--accent-ink:#2B4B50;--accent-soft:#DEEDEE;--amber:#825006;--amber-soft:#F7EAD3;--red:#A13D34;--red-soft:#F8E3E1;--info:#825006;--info-soft:#F7EAD3;}
   :root[data-theme="dark"][data-palette="smoke"]{--paper:#172123;--surface:#212D2F;--surface-2:#212D2F;--ink:#E7F0F1;--ink-soft:#BDD0D2;--muted:#90A6A8;--line:#3A4C4E;--line-strong:#52676A;--accent:#A1C6CB;--accent-ink:#D0E8EB;--accent-soft:#283D40;--amber:#E8B66B;--amber-soft:#382A15;--red:#EE9B8D;--red-soft:#39201E;--info:#E8B66B;--info-soft:#382A15;}
-  @media(max-width:820px){body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}.phone-bar,.bottom-appbar{display:flex}.totop{bottom:calc(84px + env(safe-area-inset-bottom))}}
+  @media(max-width:820px){body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}.phone-bar,.bottom-appbar{display:flex}.totop{bottom:calc(84px + env(safe-area-inset-bottom))}.appearance-fab{bottom:calc(142px + env(safe-area-inset-bottom))}}
   @media(max-width:560px){.wrap{padding-left:16px;padding-right:16px}.hero-inner{padding:38px 16px 28px}.toc{padding:0 16px;margin:28px auto}.toc-card{padding:18px 16px}.table-scroll{-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}th,td{padding:10px 12px}.gloss-search{min-width:0}#gsearch{font-size:16px;min-height:44px}.footer{padding-bottom:25px}.phone-bar a,.phone-bar .phone-brand{font-size:13px}}
   /* Keep the existing table formats and columns, but compress them gently for
      a phone before allowing any horizontal movement. */
@@ -722,25 +740,24 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
    route list and Appearance access as the desktop layout) ============ */
 :root{--rail:300px}
 .rail{display:none;flex-direction:column;background:var(--surface)}
-.rail-head{padding:20px 18px 14px;border-bottom:1px solid var(--line);position:relative}
-.rail-brand{display:flex;align-items:center;gap:10px}
-.rail-brand img{width:30px;height:30px;border-radius:8px;flex:0 0 auto}
-.rail-brand strong{font:600 15px/1.25 Georgia,"Iowan Old Style",serif;color:var(--ink)}
+.rail-head{padding:12px 16px 8px;border-bottom:1px solid var(--line);position:relative}
+.rail-brand{display:flex;align-items:center;gap:8px}
+.rail-brand img{width:24px;height:24px;border-radius:6px;flex:0 0 auto}
+.rail-brand strong{font:600 14px/1.2 Georgia,"Iowan Old Style",serif;color:var(--ink)}
 .rail-close{display:none;position:absolute;right:14px;top:13px;appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:10px;min-width:40px;min-height:40px;font-size:18px;cursor:pointer}
 .rail-close:hover{border-color:var(--accent);color:var(--accent)}
-.rail-cog{display:none;position:absolute;right:14px;top:13px;appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:10px;min-width:40px;min-height:40px;font-size:18px;cursor:pointer}
 .rail-cog:hover{border-color:var(--accent);color:var(--accent)}
-.rail-collapse{margin-top:12px;width:100%;appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);border-radius:8px;padding:7px 10px;font:600 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
+.rail-collapse{margin-top:7px;width:100%;appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);border-radius:8px;padding:5px 10px;font:600 11px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
 .rail-collapse:hover{border-color:var(--accent);color:var(--accent)}
-.rail-quick{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 18px 6px}
-.rail-quick a{grid-column:span 2;text-decoration:none;border:1px solid var(--accent);border-radius:10px;padding:11px 12px;background:var(--accent);color:#fff;font:650 13.5px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.rail-quick a small{display:block;font-weight:400;opacity:.85;margin-top:2px}
-.rail-quick a:nth-child(2),.rail-quick a:nth-child(3){grid-column:span 1;background:var(--surface-2);color:var(--ink);border-color:var(--line);font-size:12.5px}
+.rail-quick{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px 16px 5px}
+.rail-quick a{grid-column:span 2;text-decoration:none;border:1px solid var(--accent);border-radius:9px;padding:7px 11px;background:var(--accent);color:#fff;font:650 12.5px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.rail-quick a small{display:block;font-weight:400;opacity:.85;margin-top:1px;font-size:11px}
+.rail-quick a:nth-child(2),.rail-quick a:nth-child(3){grid-column:span 1;background:var(--surface-2);color:var(--ink);border-color:var(--line);font-size:11.5px;padding:6px 10px}
 .rail-quick a:hover{filter:brightness(.96)}
 .rail-scroll{flex:1;overflow-y:auto;padding:8px 10px 14px}
-.rail-shortcuts-label{padding:8px 8px 4px;font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.rail-shortcuts{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 0 12px}
-.rail-shortcuts a{text-decoration:none;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:12.5px;font-weight:600;line-height:1.3}
+.rail-shortcuts-label{padding:5px 8px 3px;font:700 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rail-shortcuts{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 0 8px}
+.rail-shortcuts a{text-decoration:none;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-size:11.5px;font-weight:600;line-height:1.2}
 .rail-shortcuts a:hover{border-color:var(--accent);color:var(--accent-ink)}
 .rail-routes{list-style:none;margin:0;padding:0}
 .rail-routes li{margin:1px 0}
@@ -750,9 +767,6 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
 .rail-routes a:hover{background:var(--surface-2);color:var(--ink)}
 .rail-routes a.on{background:var(--accent-soft);color:var(--accent-ink);font-weight:650}
 .rail-routes .n{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--accent);min-width:20px}
-.rail-foot{padding:12px 18px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
-.rail-foot button{width:100%;appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:10px;padding:9px 10px;font:600 13px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
-.rail-foot button:hover{border-color:var(--accent);color:var(--accent)}
 .rail-restore{display:none}
 @media(min-width:821px){
   body{padding-left:var(--rail)}
@@ -763,7 +777,6 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
   body.rail-collapsed .rail-restore{display:inline-flex}
   .rail-restore{position:fixed;left:16px;top:16px;z-index:29;align-items:center;gap:7px;appearance:none;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:999px;padding:9px 14px;font:600 13px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer;box-shadow:var(--shadow)}
   .rail-restore:hover{border-color:var(--accent);color:var(--accent)}
-  .rail-cog{display:inline-flex;align-items:center;justify-content:center}
 }
 @media(max-width:820px){
   .rail{
@@ -774,7 +787,6 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
   .rail.open{transform:translateX(0)}
   .rail-collapse{display:none !important}
   .rail-close{display:inline-flex;align-items:center;justify-content:center}
-  .rail-cog{display:none !important}
 }
 
 /* ============ WEB VIEW (force the desktop rail layout even on a
@@ -786,8 +798,8 @@ body.webview-on nav.toc{display:none}
 body.webview-on .rail{display:flex;position:fixed;left:0;top:0;bottom:0;width:var(--rail);transform:none;border-right:1px solid var(--line);z-index:30;box-shadow:none}
 body.webview-on .rail-collapse{display:block !important}
 body.webview-on .rail-close{display:none}
-body.webview-on .rail-cog{display:inline-flex;align-items:center;justify-content:center}
 body.webview-on .totop{bottom:20px}
+body.webview-on .appearance-fab{bottom:78px}
 body.webview-on.rail-collapsed{padding-left:0}
 body.webview-on.rail-collapsed .rail{display:none}
 body.webview-on.rail-collapsed .rail-restore{display:inline-flex}
@@ -845,9 +857,9 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
   .search-empty{padding:20px 8px;color:var(--muted);font-size:15px;text-align:center}
   .search-trigger{margin-left:auto}
   .search-trigger svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
-  .rail-search{margin:12px 18px 0;width:calc(100% - 36px);appearance:none;text-align:left;
+  .rail-search{margin:8px 16px 0;width:calc(100% - 32px);appearance:none;text-align:left;
     border:1px solid var(--line-strong);background:var(--surface-2);color:var(--muted);
-    border-radius:10px;padding:10px 12px;font:500 13.5px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
+    border-radius:9px;padding:6px 11px;font:500 12.5px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}
   .rail-search:hover{border-color:var(--accent);color:var(--accent)}
   .rail-search kbd{float:right;font:inherit;font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
 
@@ -866,13 +878,12 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to playbook</a>
-<div class="phone-bar" aria-label="ThornProcurement controls"><span class="phone-brand"><span class="brand-thorn">Thorn</span><span class="brand-procurement">Procurement</span></span><button class="phone-action phone-icon search-trigger" type="button" data-search-open aria-haspopup="dialog" aria-expanded="false" aria-label="Search the playbook"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button><button class="phone-action phone-icon" id="appearanceBtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Appearance and settings">⚙</button></div>
+<div class="phone-bar" aria-label="ThornProcurement controls"><span class="phone-brand"><span class="brand-thorn">Thorn</span><span class="brand-procurement">Procurement</span></span><button class="phone-action phone-icon search-trigger" type="button" data-search-open aria-haspopup="dialog" aria-expanded="false" aria-label="Search the playbook"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button></div>
 
 <nav class="rail" id="rail" aria-label="ThornProcurement contents">
   <div class="rail-head">
     <div class="rail-brand"><img src="thornprocurement-icon.png" alt=""><strong><span class="brand-thorn">Thorn</span><span class="brand-procurement">Procurement</span></strong></div>
     <button class="rail-close" id="railClose" type="button" aria-label="Close contents">×</button>
-    <button class="rail-cog" id="appearanceCogBtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Appearance and settings">⚙</button>
     <button class="rail-collapse" id="railCollapse" type="button" aria-label="Hide the contents sidebar">‹ Hide contents</button>
   </div>
   <button class="rail-search" type="button" data-search-open aria-haspopup="dialog" aria-expanded="false">Search the playbook… <kbd>/</kbd></button>
@@ -933,9 +944,6 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <li><a href="#appx"><span class="n">+</span><span>Templates</span></a></li>
       <li><a href="#glossary"><span class="n">+</span><span>Glossary (searchable)</span></a></li>
     </ul>
-  </div>
-  <div class="rail-foot">
-    <button type="button" id="appearanceRailBtn" aria-haspopup="dialog" aria-expanded="false">Appearance</button>
   </div>
 </nav>
 <button class="rail-restore" id="railRestore" type="button" aria-label="Show the contents sidebar">☰ Contents</button>
@@ -5111,6 +5119,7 @@ Thanks, [You]</p>
   <button class="bb-item" id="contentsBtn" type="button" aria-haspopup="dialog" aria-expanded="false"><span class="bb-icon" aria-hidden="true">☰</span><span class="bb-label">Library</span></button>
 </nav>
 <button class="totop" id="totop" type="button" aria-label="Back to top">↑</button>
+<button class="appearance-fab" id="appearanceFab" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Appearance and settings" title="Appearance — press and hold to move">⚙</button>
 
 <script>
 (function () {
@@ -5133,9 +5142,7 @@ Thanks, [You]</p>
   var savedWebview = storeGet(WEBVIEW_KEY) === '1';
   var appearanceSheet = document.getElementById('appearanceSheet');
   var appearanceOverlay = document.getElementById('appearanceOverlay');
-  var appearanceButton = document.getElementById('appearanceBtn');
-  var appearanceRailButton = document.getElementById('appearanceRailBtn');
-  var appearanceCogButton = document.getElementById('appearanceCogBtn');
+  var appearanceFabButton = document.getElementById('appearanceFab');
   var appearanceClose = document.getElementById('appearanceClose');
   var todaySheet = document.getElementById('todaySheet');
   var todayButton = document.getElementById('todayBtn');
@@ -5180,7 +5187,7 @@ Thanks, [You]</p>
     if (!appearanceSheet) return;
     appearanceSheet.classList.remove('open'); appearanceSheet.setAttribute('aria-hidden', 'true');
     if (appearanceOverlay && !anyPanelOpen()) { appearanceOverlay.classList.remove('open'); appearanceOverlay.setAttribute('aria-hidden', 'true'); }
-    [appearanceButton, appearanceRailButton, appearanceCogButton].forEach(function (button) { if (button) button.setAttribute('aria-expanded', 'false'); });
+    if (appearanceFabButton) appearanceFabButton.setAttribute('aria-expanded', 'false');
     if (lastAppearanceOpener && document.contains(lastAppearanceOpener)) lastAppearanceOpener.focus();
   }
   function closeToday() {
@@ -5203,7 +5210,7 @@ Thanks, [You]</p>
     if (!appearanceSheet) return;
     appearanceSheet.classList.add('open'); appearanceSheet.setAttribute('aria-hidden', 'false');
     if (appearanceOverlay) { appearanceOverlay.classList.add('open'); appearanceOverlay.setAttribute('aria-hidden', 'false'); }
-    [appearanceButton, appearanceRailButton, appearanceCogButton].forEach(function (button) { if (button) button.setAttribute('aria-expanded', 'true'); });
+    if (appearanceFabButton) appearanceFabButton.setAttribute('aria-expanded', 'true');
     window.setTimeout(function () { if (appearanceClose) appearanceClose.focus(); }, 30);
   }
   function openToday(event) {
@@ -5226,9 +5233,6 @@ Thanks, [You]</p>
   }
   applyPalette(savedPalette); applyLowlight(savedLowlight); applyContrast(savedContrast); applyWebview(savedWebview); updatePaletteButtons();
   updateSwitch(document.getElementById('lowlightSwitch'), savedLowlight); updateSwitch(document.getElementById('contrastSwitch'), savedContrast); updateSwitch(document.getElementById('webviewSwitch'), savedWebview);
-  if (appearanceButton) appearanceButton.addEventListener('click', openAppearance);
-  if (appearanceRailButton) appearanceRailButton.addEventListener('click', openAppearance);
-  if (appearanceCogButton) appearanceCogButton.addEventListener('click', openAppearance);
   if (appearanceClose) appearanceClose.addEventListener('click', closeAppearance);
   if (appearanceOverlay) appearanceOverlay.addEventListener('click', function () { closeAppearance(); closeToday(); closeRail(); });
   if (todayButton) todayButton.addEventListener('click', openToday);
@@ -5318,11 +5322,10 @@ Thanks, [You]</p>
     filter();
   }
 
-  // ---- Back to top (draggable, position remembered) ----
-  var btn = document.getElementById('totop');
-  if (btn) {
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var TOTOP_POS_KEY = 'procurement-playbook-totop-pos';
+  // ---- Floating, draggable circular buttons (back-to-top, appearance) ----
+  function makeDraggableFab(btn, posKey, onActivate, opts) {
+    if (!btn) return;
+    opts = opts || {};
 
     function clamp(v, min, max) { return Math.min(Math.max(v, min), max); }
 
@@ -5337,12 +5340,12 @@ Thanks, [You]</p>
     }
 
     function savePos(x, y) {
-      try { window.localStorage.setItem(TOTOP_POS_KEY, JSON.stringify({ x: x, y: y })); } catch (e) {}
+      try { window.localStorage.setItem(posKey, JSON.stringify({ x: x, y: y })); } catch (e) {}
     }
 
     (function restorePos() {
       try {
-        var raw = window.localStorage.getItem(TOTOP_POS_KEY);
+        var raw = window.localStorage.getItem(posKey);
         if (!raw) return;
         var pos = JSON.parse(raw);
         if (pos && typeof pos.x === 'number' && typeof pos.y === 'number') placeAt(pos.x, pos.y);
@@ -5388,15 +5391,26 @@ Thanks, [You]</p>
 
     btn.addEventListener('click', function (e) {
       if (moved) { moved = false; e.preventDefault(); return; }
-      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      onActivate(e);
     });
 
-    var onScroll = function () {
-      btn.classList.toggle('show', window.scrollY > 400);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    if (opts.showOnScroll) {
+      var onScroll = function () {
+        btn.classList.toggle('show', window.scrollY > opts.scrollThreshold);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
   }
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  makeDraggableFab(document.getElementById('totop'), 'procurement-playbook-totop-pos', function () {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }, { showOnScroll: true, scrollThreshold: 400 });
+
+  makeDraggableFab(appearanceFabButton, 'procurement-playbook-appearance-fab-pos', function (e) {
+    openAppearance(e);
+  }, { showOnScroll: false });
 
   /* ============================================================
      RUNNING CHECKLIST — tabs, persistence and progress.

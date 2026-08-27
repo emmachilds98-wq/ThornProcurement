@@ -139,7 +139,8 @@
     background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     padding:22px 24px;box-shadow:var(--shadow);
   }
-  .toc-card h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;font-weight:600}
+  .toc-card h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;font-weight:600}
+  .toc-hint{margin:0 0 14px;font-size:13px;color:var(--ink-soft)}
   .toc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 28px}
   @media(max-width:560px){.toc-list{grid-template-columns:1fr}}
   .toc-list a{
@@ -717,6 +718,7 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
 .rail-quick a:hover{filter:brightness(.96)}
 .rail-scroll{flex:1;overflow-y:auto;padding:8px 10px 14px}
 .rail-shortcuts-label{padding:5px 8px 3px;font:700 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rail-hint{margin:0;padding:0 8px 8px;font-size:11px;line-height:1.35;color:var(--muted)}
 .rail-shortcuts{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 0 8px}
 .rail-shortcuts a{text-decoration:none;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-size:11.5px;font-weight:600;line-height:1.2}
 .rail-shortcuts a:hover{border-color:var(--accent);color:var(--accent-ink)}
@@ -867,6 +869,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <a href="#winwork">Winning &amp; negotiating</a>
     </div>
     <div class="rail-shortcuts-label"><span>Full contents</span></div>
+    <p class="rail-hint">00–04 are the groundwork. Everything after is reference — jump to whatever's landed on your desk.</p>
     <ul class="rail-routes">
       <li><a href="#cmd"><span class="n">00</span><span>Command centre</span></a></li>
       <li class="rail-group">Learn the job</li>
@@ -931,6 +934,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 <nav class="toc" id="contents">
   <div class="toc-card">
     <h2>What's inside</h2>
+    <p class="toc-hint">00–04 are the groundwork. Everything after is reference — jump to whatever's landed on your desk.</p>
     <ul class="toc-list">
       <li><a href="#cmd"><span class="n">00</span><span>Command centre</span></a></li>
       <li><a href="#p1"><span class="n">01</span><span>Procurement in a building firm</span></a></li>
@@ -971,30 +975,8 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       <p style="margin-bottom:0">Every number in here is a placeholder — swap them for your firm's real ones. And nothing in this pack assumes you should already know it. Go get 'em. 💪</p>
     </div>
 
-    <h3 style="margin-top:34px">If you only do four things</h3>
-    <p>Everything else in this pack supports these. Get these four bedded in and you've fixed most of what goes wrong in a small firm's buying:</p>
-    <div class="grid2">
-      <div class="card">
-        <span class="step">Foundation 1</span>
-        <h4 style="margin:4px 0 6px">No PO, no pay</h4>
-        <p style="margin:0;font-size:15px">Every spend gets an order raised <em>before</em> it happens. This one rule prevents more grief than everything else combined. → <a class="xref" href="#p3">Part 03</a></p>
-      </div>
-      <div class="card">
-        <span class="step">Foundation 2</span>
-        <h4 style="margin:4px 0 6px">Job code on everything</h4>
-        <p style="margin:0;font-size:15px">Tag every order to the job it's for, at the moment you raise it. It's what makes your reports possible. → <a class="xref" href="#p5">Part 05</a></p>
-      </div>
-      <div class="card">
-        <span class="step">Foundation 3</span>
-        <h4 style="margin:4px 0 6px">Check before you pay</h4>
-        <p style="margin:0;font-size:15px">Order, delivery note and invoice must agree — the three-way match. Catches overcharging before the money's gone. → <a class="xref" href="#p3">Part 03</a></p>
-      </div>
-      <div class="card">
-        <span class="step">Foundation 4</span>
-        <h4 style="margin:4px 0 6px">Write down what you're allowed to do</h4>
-        <p style="margin:0;font-size:15px">Agreed spend limits, in writing, with your manager. Protects you as much as the firm. → <a class="xref" href="#p2">Part 02</a></p>
-      </div>
-    </div>
+    <h3 style="margin-top:34px">Not sure where to look today?</h3>
+    <p>The four things that fix most of what goes wrong — and the full daily/weekly/monthly checklist — live in <a class="xref" href="#cmd">Command Centre</a>, just below. Already working the job and more interested in <em>what to fix next</em> than what to read next? Command Centre also has a quick version of the <a class="xref" href="#current-state-review">current-state review</a> for exactly that.</p>
   </section>
 
   <!-- ============ PART 1 ============ -->
@@ -1045,9 +1027,18 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
         <p style="margin-top:12px;"><b>Then, at the end of month one:</b> send one short update with the decisions you need — not just the data you collected. That single habit is what turns this from admin into a function (<a href="#p5">Part 05</a>).</p>
       </div>
 
-      <div class="callout neutral">
+      <div class="callout neutral" id="cmd-already-in-seat">
         <div class="callout-label">And if you've been in the seat a while already</div>
-        <p>Skip the weeks above and go straight to the <a href="#current-state-review">current-state review</a> in Part 17 — the same diagnosis, without the assumption that you're starting from nothing. Pick the single gap that protects the most money or compliance risk, fix that one, then come back for the next.</p>
+        <p>Skip the weeks above — you don't need a first-month plan, you need to know what to fix next. That's what the <a href="#current-state-review">current-state review</a> is for: mark each part of the job <b>working</b>, <b>needs tightening</b> or <b>missing</b>, then fix whichever gap protects the most money or compliance risk before moving to the next. Three of the ten checks to start with:</p>
+        <div class="table-wrap dense">
+          <table>
+            <tr><th>Check</th><th>Good looks like</th><th>If it needs work</th></tr>
+            <tr><td data-label="Check"><b>Spend authority</b></td><td data-label="Good looks like">Written limits everyone knows and uses, agreed before the order, not after</td><td data-label="If it needs work"><a href="#p2">Spend-authority starter, Part 02</a></td></tr>
+            <tr><td data-label="Check"><b>Order and PO trail</b></td><td data-label="Good looks like">Every spend traceable from request to approval, PO, delivery note and invoice</td><td data-label="If it needs work"><a href="#tpl-monday-board">Order-intake / PO board blueprint</a></td></tr>
+            <tr><td data-label="Check"><b>Supplier &amp; subbie checks</b></td><td data-label="Good looks like">Tax and safety evidence on file before payment or work starts on site</td><td data-label="If it needs work"><a href="#tpl-subbie-onboarding">Subbie onboarding checklist</a></td></tr>
+          </table>
+        </div>
+        <p style="margin:12px 0 0">→ <a href="#current-state-review">All ten checks, with a script for the manager conversation each one needs</a>, or straight to the <a href="#workplan">2-year workplan</a> once you know which stretch you're in.</p>
       </div>
 
       <h3 id="cmd-if-you-only-do-four-things">If you only do four things</h3>
@@ -3406,7 +3397,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 <div class="legacy-block">
 <div class="callout">
         <div class="callout-label">How to use this workplan</div>
-      <p>Start by completing the <a href="#current-state-review">current-state review</a> in Part 17 — it tells you which quarter needs your attention first. Then revisit this workplan at the start of each quarter: ten minutes, on your own or with your manager. Read the focus, skim the competency checklist, and carry forward anything from last quarter that didn't get finished rather than abandoning it. It's designed to be worked through roughly in order, but real jobs don't respect calendars — if Q3's Ariba work needs to happen before Q2's reporting rhythm because of how your firm's onboarding landed, swap them. The sequence matters more than the exact dates.</p>
+      <p>Start with the <a href="#current-state-review">current-state review</a> — the quick three-check version is in <a href="#cmd-already-in-seat">Command Centre</a>, the full ten-point version in Part 17 — it tells you which quarter needs your attention first. Then revisit this workplan at the start of each quarter: ten minutes, on your own or with your manager. Read the focus, skim the competency checklist, and carry forward anything from last quarter that didn't get finished rather than abandoning it. It's designed to be worked through roughly in order, but real jobs don't respect calendars — if Q3's Ariba work needs to happen before Q2's reporting rhythm because of how your firm's onboarding landed, swap them. The sequence matters more than the exact dates.</p>
       </div>
 
       <h3 id="workplan-the-shape-of-it">The shape of it</h3>
@@ -3703,7 +3694,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
       </div>
       <p style="font-size:0.85rem; color:var(--muted);">If you recognise more from the second list than the first, that's not a verdict on you — it's a map of where to spend your next few weeks. Pick one, fix it, move to the next. That's the whole job, most weeks.</p>
 
-      <p class="eyebrow" style="margin-bottom:-6px;">You've jumped straight to a sub-section of Part 16, "Mistakes to watch for" — scroll up any time for the rest of it.</p>
+      <p class="eyebrow" style="margin-bottom:-6px;">You've jumped straight to a sub-section of Part 17, "Mistakes to watch for" — scroll up any time for the rest of it.</p>
       <h3 id="current-state-review">The current-state review — find the next useful improvement</h3>
       <p>Use this once when you take stock, then again every quarter. Mark each line <b>working</b>, <b>needs tightening</b> or <b>missing</b>. Do not try to fix every gap at once: choose the one that protects the most money, time or compliance risk, and use the smallest first step. “Missing” is not a failure — it is simply a clear next job.</p>
       <div class="table-wrap dense">
@@ -3934,6 +3925,7 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
           <p><b>A word on portals.</b> You'll accumulate logins — Find a Tender, the Central Digital Platform, one or two main-contractor portals, your assessment body. Keep the account owner, login route and renewal date for each in one list that isn't only in your head. It's a five-minute job that prevents a genuinely stupid failure: missing a deadline because the only person with the password is on holiday (<a href="#p13-cover">Part 13</a>).</p>
         </div>
       </details>
+      <p><b>Once you've won the work,</b> the same preparation pays off at the negotiating table — see <a href="#negotiate">Part 20</a> for getting good terms without burning the relationship.</p>
 </div>
   </section>
 

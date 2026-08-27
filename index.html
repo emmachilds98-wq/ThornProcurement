@@ -265,7 +265,7 @@
     transition:opacity .22s ease,transform .22s ease,visibility .22s;
   }
   .totop.show{opacity:1;visibility:visible;transform:none}
-  .totop.dragging{transition:none;cursor:grabbing}
+  .totop.dragging{transition:none;cursor:grabbing;transform:scale(1.08);box-shadow:0 8px 26px rgba(0,0,0,.32)}
   .totop:hover{border-color:var(--accent);color:var(--accent)}
   @media (prefers-reduced-motion:reduce){.totop{transition:none}}
   @media(max-width:560px){.totop{right:14px}}
@@ -280,7 +280,7 @@
     font:inherit;font-size:19px;line-height:1;
     box-shadow:var(--shadow);cursor:grab;touch-action:none;user-select:none;
   }
-  .appearance-fab.dragging{transition:none;cursor:grabbing}
+  .appearance-fab.dragging{transition:none;cursor:grabbing;transform:scale(1.08);box-shadow:0 8px 26px rgba(0,0,0,.32)}
   .appearance-fab:hover{border-color:var(--accent);color:var(--accent)}
   @media(max-width:560px){.appearance-fab{right:14px}}
 
@@ -5358,40 +5358,63 @@ Thanks, [You]</p>
       placeAt(rect.left, rect.top);
     });
 
-    var dragging = false, moved = false, startX = 0, startY = 0, startLeft = 0, startTop = 0;
+    var HOLD_MS = 220, MOVE_TOLERANCE = 6;
+    var pressed = false, dragging = false, moved = false, holdTimer = null;
+    var startX = 0, startY = 0, startLeft = 0, startTop = 0;
+
+    function beginDrag() {
+      dragging = true;
+      btn.classList.add('dragging');
+    }
 
     btn.addEventListener('pointerdown', function (e) {
       if (e.button !== undefined && e.button !== 0 && e.pointerType === 'mouse') return;
-      dragging = true; moved = false;
+      pressed = true; moved = false; dragging = false;
       var rect = btn.getBoundingClientRect();
       startX = e.clientX; startY = e.clientY;
       startLeft = rect.left; startTop = rect.top;
       try { btn.setPointerCapture(e.pointerId); } catch (e2) {}
-      btn.classList.add('dragging');
+      window.clearTimeout(holdTimer);
+      holdTimer = window.setTimeout(function () {
+        holdTimer = null;
+        if (pressed && !moved) beginDrag();
+      }, HOLD_MS);
     });
 
     btn.addEventListener('pointermove', function (e) {
-      if (!dragging) return;
+      if (!pressed) return;
       var dx = e.clientX - startX, dy = e.clientY - startY;
-      if (!moved && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) moved = true;
-      if (moved) placeAt(startLeft + dx, startTop + dy);
+      if (dragging) { placeAt(startLeft + dx, startTop + dy); moved = true; return; }
+      if (Math.abs(dx) > MOVE_TOLERANCE || Math.abs(dy) > MOVE_TOLERANCE) {
+        // Moved before the hold completed — this is a scroll/swipe near the
+        // button, not a hold-to-drag gesture, so cancel it (no drag, no click).
+        moved = true;
+        window.clearTimeout(holdTimer);
+        holdTimer = null;
+      }
     });
 
-    function endDrag() {
-      if (!dragging) return;
-      dragging = false;
-      btn.classList.remove('dragging');
-      if (moved) {
+    function endDrag(e) {
+      if (!pressed) return;
+      pressed = false;
+      window.clearTimeout(holdTimer);
+      holdTimer = null;
+      if (dragging) {
+        dragging = false;
+        btn.classList.remove('dragging');
         var rect = btn.getBoundingClientRect();
         savePos(rect.left, rect.top);
+        moved = false;
+        return;
       }
+      if (!moved) onActivate(e);
+      moved = false;
     }
     btn.addEventListener('pointerup', endDrag);
-    btn.addEventListener('pointercancel', endDrag);
-
-    btn.addEventListener('click', function (e) {
-      if (moved) { moved = false; e.preventDefault(); return; }
-      onActivate(e);
+    btn.addEventListener('pointercancel', function () {
+      pressed = false; dragging = false; moved = false;
+      window.clearTimeout(holdTimer); holdTimer = null;
+      btn.classList.remove('dragging');
     });
 
     if (opts.showOnScroll) {
@@ -5406,7 +5429,7 @@ Thanks, [You]</p>
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   makeDraggableFab(document.getElementById('totop'), 'procurement-playbook-totop-pos', function () {
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-  }, { showOnScroll: true, scrollThreshold: 400 });
+  }, { showOnScroll: true, scrollThreshold: 24 });
 
   makeDraggableFab(appearanceFabButton, 'procurement-playbook-appearance-fab-pos', function (e) {
     openAppearance(e);

@@ -308,13 +308,6 @@
   /* ============ IPHONE / OFFLINE APP SHELL ============ */
   html{background:var(--paper);-webkit-text-size-adjust:100%;scroll-padding-top:76px}
   body{padding-bottom:0;overflow-x:hidden}
-  /* Colour depth: a page-wide wash of the current accent, sat behind the
-     persistent chrome (rail/phone-bar/bottom-bar/FABs all paint over it)
-     so only the scrolling content gets deeper/more saturated as it's
-     turned up. Off (0) by default; switched off entirely in low-light or
-     high-contrast, where it would fight the point of either mode. */
-  body::after{content:"";position:fixed;inset:0;z-index:15;pointer-events:none;background:var(--accent);opacity:var(--tint,0);mix-blend-mode:multiply;transition:opacity .15s}
-  :root[data-theme="dark"] body::after,:root[data-contrast="high"] body::after{opacity:0}
   .skip-link{position:fixed;top:-64px;left:12px;z-index:100;padding:10px 14px;border-radius:0 0 8px 8px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:top .15s ease}.skip-link:focus{top:0;outline:2px solid #fff;outline-offset:-4px}
   img,svg,video{max-width:100%;height:auto}
   .phone-bar{display:none;position:sticky;top:0;z-index:30;align-items:center;gap:8px;min-height:54px;padding:7px max(14px,env(safe-area-inset-right)) 7px max(14px,env(safe-area-inset-left));background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 1px 10px rgba(0,0,0,.06)}
@@ -342,6 +335,9 @@
   .appearance-choice{margin:10px 0 0!important}.appearance-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid var(--line)}.appearance-row>div{flex:1 1 auto;min-width:0}.appearance-row strong{font-size:15px}.appearance-row small{display:block;color:var(--muted);margin-top:3px}.appearance-switch{position:relative;flex:0 0 auto;width:54px;height:32px;min-height:32px;padding:0;border-radius:999px;background:var(--line-strong);transition:background .16s}.appearance-switch::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .16s}.appearance-switch[aria-checked="true"]{background:var(--accent)}.appearance-switch[aria-checked="true"]::after{transform:translateX(22px)}.appearance-reset{width:100%;margin-top:16px}.appearance-sheet input{font-size:16px}.appearance-refresh{flex:0 0 auto;white-space:nowrap}
 .appearance-backup-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}.appearance-backup-btn{appearance:none;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);color:var(--ink);min-height:40px;padding:8px 10px;font:600 13px/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}.appearance-backup-btn:active{transform:scale(.97)}.appearance-backup-status{min-height:15px;margin:8px 0 0!important;font-size:12.5px}.appearance-backup-status.warn{color:var(--red)}
 .appearance-tint{padding:14px 0;border-top:1px solid var(--line)}.appearance-tint-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.appearance-tint-head strong{font-size:15px}.appearance-tint-head span{font:650 12px/1 ui-monospace,Consolas,monospace;color:var(--accent-ink);flex:0 0 auto}.appearance-tint small{display:block;color:var(--muted);margin:3px 0 12px}.appearance-tint input[type="range"]{-webkit-appearance:none;appearance:none;display:block;width:100%;height:6px;border-radius:999px;background:linear-gradient(90deg,var(--surface-2),var(--accent));outline:none;margin:4px 0;cursor:pointer}.appearance-tint input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer}.appearance-tint input[type="range"]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer}.appearance-tint input[type="range"]::-moz-range-track{height:6px;border-radius:999px;background:linear-gradient(90deg,var(--surface-2),var(--accent))}
+#brightnessSlider,#brightnessSlider::-moz-range-track{background:linear-gradient(90deg,#1a1a1a,var(--surface-2) 50%,#fff)}
+#brightnessSlider::-webkit-slider-thumb{background:var(--surface);border-color:var(--line-strong)}
+#brightnessSlider::-moz-range-thumb{background:var(--surface);border-color:var(--line-strong)}
 .update-toast{position:fixed;left:50%;bottom:24px;z-index:70;transform:translate(-50%,12px);opacity:0;visibility:hidden;background:var(--ink);color:var(--paper);font:600 13.5px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:11px 18px;border-radius:999px;box-shadow:var(--shadow);transition:opacity .22s ease,transform .22s ease,visibility .22s;pointer-events:none;max-width:calc(100vw - 32px);text-align:center}
 .update-toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){.update-toast{transition:none}}
@@ -734,10 +730,6 @@ html:not(.has-js) .legacy-block .cadence-tabs,html:not(.has-js) .cadence-progres
 .rail-time{margin-left:auto;flex:0 0 auto;font-size:10px;color:var(--muted);white-space:nowrap}
 .toc-time{margin-left:auto;flex:0 0 auto;font-size:11.5px;color:var(--muted);white-space:nowrap}
 .read-time-badge{flex:0 0 auto;text-transform:none;letter-spacing:0;font-weight:500;font-size:11.5px;color:var(--muted);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;white-space:nowrap}
-.resume-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 0;padding:12px 16px;border:1px solid var(--accent);border-radius:var(--radius);background:var(--accent-soft);color:var(--accent-ink);font-size:14px}
-.resume-banner a{color:var(--accent-ink);font-weight:700;text-decoration:underline}
-.resume-banner button{appearance:none;border:0;background:none;color:var(--accent-ink);font-size:19px;line-height:1;cursor:pointer;padding:2px 4px;flex:0 0 auto}
-@media(max-width:560px){.resume-banner{flex-wrap:wrap}}
 .rail-shortcuts{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 0 8px}
 .rail-shortcuts a{text-decoration:none;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:7px;padding:5px 9px;font-size:11.5px;font-weight:600;line-height:1.2}
 .rail-shortcuts a:hover{border-color:var(--accent);color:var(--accent-ink)}
@@ -1036,11 +1028,6 @@ body.webview-on .rail-restore:hover{border-color:var(--accent);color:var(--accen
 </nav>
 
 <main class="wrap" id="main" tabindex="-1">
-
-  <div class="resume-banner" id="resumeBanner" hidden>
-    <span>Continue reading — you were in <a href="#" id="resumeLink"><strong id="resumeTitle"></strong></a></span>
-    <button type="button" id="resumeDismiss" aria-label="Dismiss">×</button>
-  </div>
 
   <!-- ============ HOW TO USE ============ -->
   <section>
@@ -5774,8 +5761,13 @@ Thanks, [You]</p>
   <p class="appearance-choice" id="paletteChoice" aria-live="polite">Selected: <strong>Classic green</strong></p>
   <div class="appearance-tint">
     <div class="appearance-tint-head"><strong>Colour depth</strong><span id="tintValueLabel">Off</span></div>
-    <small>Wash the page in your chosen colour — drag right for a deeper, more saturated look. Switches off automatically in low-light or high contrast.</small>
+    <small>Blends your chosen colour into the actual page and card surfaces — drag right for a richer, more saturated look. Works with low-light too; switches off in high contrast, where it would fight the point.</small>
     <input type="range" id="tintSlider" min="0" max="100" value="0" step="1" aria-label="Colour depth" aria-describedby="tintValueLabel">
+  </div>
+  <div class="appearance-tint">
+    <div class="appearance-tint-head"><strong>Brightness</strong><span id="brightnessValueLabel">Off</span></div>
+    <small>Nudge the same surfaces lighter or darker without changing which colour they're based on.</small>
+    <input type="range" id="brightnessSlider" min="-50" max="50" value="0" step="1" aria-label="Brightness" aria-describedby="brightnessValueLabel">
   </div>
   <div class="appearance-row"><div><strong>Low-light mode</strong><small>Dark, dim-venue-friendly version of your selected colour. Off by default.</small></div><button class="appearance-switch" id="lowlightSwitch" type="button" role="switch" aria-checked="false" aria-label="Low-light mode"></button></div>
   <div class="appearance-row"><div><strong>High contrast</strong><small>Prioritises maximum text and control clarity.</small></div><button class="appearance-switch" id="contrastSwitch" type="button" role="switch" aria-checked="false" aria-label="High contrast"></button></div>
@@ -5818,11 +5810,13 @@ Thanks, [You]</p>
   var CONTRAST_KEY = 'procurement-playbook-high-contrast';
   var WEBVIEW_KEY = 'procurement-playbook-webview';
   var TINT_KEY = 'procurement-playbook-tint';
+  var BRIGHT_KEY = 'procurement-playbook-brightness';
   var savedPalette = storeGet(PALETTE_KEY) || 'classic';
   var savedLowlight = storeGet(LOWLIGHT_KEY) === '1';
   var savedContrast = storeGet(CONTRAST_KEY) === '1';
   var savedWebview = storeGet(WEBVIEW_KEY) === '1';
   var savedTint = parseInt(storeGet(TINT_KEY), 10) || 0;
+  var savedBrightness = parseInt(storeGet(BRIGHT_KEY), 10) || 0;
   var appearanceSheet = document.getElementById('appearanceSheet');
   var appearanceOverlay = document.getElementById('appearanceOverlay');
   var appearanceFabButton = document.getElementById('appearanceFab');
@@ -5842,14 +5836,50 @@ Thanks, [You]</p>
     if (palette && palette !== 'classic') root.setAttribute('data-palette', palette);
     else root.removeAttribute('data-palette');
     updateThemeColor();
+    recomputeSurfaceTint();
   }
-  function applyLowlight(on) { if (on) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme'); updateThemeColor(); }
-  function applyTint(value) { root.style.setProperty('--tint', (value / 100).toFixed(2)); }
+  function applyLowlight(on) { if (on) root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme'); updateThemeColor(); recomputeSurfaceTint(); }
+  /* Colour depth and brightness recolour the actual page/card surfaces
+     rather than laying a translucent film over the top, so the result
+     reads as a genuinely different palette rather than a photo filter.
+     Each palette/theme defines its own --paper/--surface/--surface-2/
+     --accent-soft in the stylesheet; captureBaseSurfaceColors reads those
+     pure values (after clearing any earlier override) so the blend always
+     starts from the real base rather than compounding onto itself. */
+  var TINT_VARS = ['--paper', '--surface', '--surface-2', '--accent-soft'];
+  var baseSurfaceColors = {};
+  function captureBaseSurfaceColors() {
+    TINT_VARS.forEach(function (v) { root.style.removeProperty(v); });
+    var cs = getComputedStyle(root);
+    TINT_VARS.forEach(function (v) { baseSurfaceColors[v] = cs.getPropertyValue(v).trim(); });
+  }
+  function applySurfaceTint() {
+    if (root.getAttribute('data-contrast') === 'high' || (savedTint === 0 && savedBrightness === 0)) {
+      TINT_VARS.forEach(function (v) { root.style.removeProperty(v); });
+      return;
+    }
+    TINT_VARS.forEach(function (v) {
+      var base = baseSurfaceColors[v];
+      if (!base) return;
+      var color = base;
+      if (savedTint > 0) color = 'color-mix(in srgb, var(--accent) ' + savedTint + '%, ' + color + ')';
+      if (savedBrightness !== 0) {
+        var mixWith = savedBrightness > 0 ? '#fff' : '#000';
+        color = 'color-mix(in srgb, ' + mixWith + ' ' + Math.abs(savedBrightness) + '%, ' + color + ')';
+      }
+      root.style.setProperty(v, color);
+    });
+  }
+  function recomputeSurfaceTint() { captureBaseSurfaceColors(); applySurfaceTint(); }
   function updateTintLabel(value) {
     var label = document.getElementById('tintValueLabel');
     if (label) label.textContent = value === 0 ? 'Off' : value + '%';
   }
-  function applyContrast(on) { if (on) root.setAttribute('data-contrast', 'high'); else root.removeAttribute('data-contrast'); updateThemeColor(); }
+  function updateBrightnessLabel(value) {
+    var label = document.getElementById('brightnessValueLabel');
+    if (label) label.textContent = value === 0 ? 'Off' : (value > 0 ? '+' : '') + value;
+  }
+  function applyContrast(on) { if (on) root.setAttribute('data-contrast', 'high'); else root.removeAttribute('data-contrast'); updateThemeColor(); recomputeSurfaceTint(); }
   function applyWebview(on) { document.body.classList.toggle('webview-on', on); }
   function updatePaletteButtons() {
     var buttons = document.querySelectorAll('.palette-swatch');
@@ -5922,7 +5952,7 @@ Thanks, [You]</p>
     if (contentsButton) contentsButton.setAttribute('aria-expanded', 'true');
     window.setTimeout(function () { if (railClose) railClose.focus(); }, 30);
   }
-  applyPalette(savedPalette); applyLowlight(savedLowlight); applyContrast(savedContrast); applyWebview(savedWebview); applyTint(savedTint); updateTintLabel(savedTint); updatePaletteButtons();
+  applyPalette(savedPalette); applyLowlight(savedLowlight); applyContrast(savedContrast); applyWebview(savedWebview); updateTintLabel(savedTint); updateBrightnessLabel(savedBrightness); updatePaletteButtons();
   updateSwitch(document.getElementById('lowlightSwitch'), savedLowlight); updateSwitch(document.getElementById('contrastSwitch'), savedContrast); updateSwitch(document.getElementById('webviewSwitch'), savedWebview);
   if (appearanceClose) appearanceClose.addEventListener('click', closeAppearance);
   if (appearanceButton) appearanceButton.addEventListener('click', openAppearance);
@@ -5947,15 +5977,24 @@ Thanks, [You]</p>
     tintSlider.value = String(savedTint);
     tintSlider.addEventListener('input', function () {
       savedTint = parseInt(tintSlider.value, 10) || 0;
-      applyTint(savedTint); updateTintLabel(savedTint); storeSet(TINT_KEY, String(savedTint));
+      applySurfaceTint(); updateTintLabel(savedTint); storeSet(TINT_KEY, String(savedTint));
+    });
+  }
+  var brightnessSlider = document.getElementById('brightnessSlider');
+  if (brightnessSlider) {
+    brightnessSlider.value = String(savedBrightness);
+    brightnessSlider.addEventListener('input', function () {
+      savedBrightness = parseInt(brightnessSlider.value, 10) || 0;
+      applySurfaceTint(); updateBrightnessLabel(savedBrightness); storeSet(BRIGHT_KEY, String(savedBrightness));
     });
   }
   var appearanceReset = document.getElementById('appearanceReset');
   if (appearanceReset) appearanceReset.addEventListener('click', function () {
-    savedPalette = 'classic'; savedLowlight = false; savedContrast = false; savedWebview = false; savedTint = 0;
-    storeRemove(PALETTE_KEY); storeRemove(LOWLIGHT_KEY); storeRemove(CONTRAST_KEY); storeRemove(WEBVIEW_KEY); storeRemove(TINT_KEY);
-    applyPalette(savedPalette); applyLowlight(false); applyContrast(false); applyWebview(false); applyTint(0); updateTintLabel(0); updatePaletteButtons(); updateSwitch(lowlightSwitch, false); updateSwitch(contrastSwitch, false); updateSwitch(webviewSwitch, false);
+    savedPalette = 'classic'; savedLowlight = false; savedContrast = false; savedWebview = false; savedTint = 0; savedBrightness = 0;
+    storeRemove(PALETTE_KEY); storeRemove(LOWLIGHT_KEY); storeRemove(CONTRAST_KEY); storeRemove(WEBVIEW_KEY); storeRemove(TINT_KEY); storeRemove(BRIGHT_KEY);
+    applyPalette(savedPalette); applyLowlight(false); applyContrast(false); applyWebview(false); updateTintLabel(0); updateBrightnessLabel(0); updatePaletteButtons(); updateSwitch(lowlightSwitch, false); updateSwitch(contrastSwitch, false); updateSwitch(webviewSwitch, false);
     if (tintSlider) tintSlider.value = '0';
+    if (brightnessSlider) brightnessSlider.value = '0';
   });
 
   /* Backup/restore: every setting and note this copy keeps lives under the
@@ -6097,11 +6136,8 @@ Thanks, [You]</p>
     var railLinkFor = {};
     railLinks.forEach(function (link) { railLinkFor[link.getAttribute('href')] = link; });
 
-    /* Visited sections drive both the rail's overall progress bar and the
-       "continue reading" banner — both read from the same small localStorage
-       map rather than keeping separate state. */
+    /* Visited sections drive the rail's overall progress bar. */
     var VISITED_KEY = 'procurement-playbook-visited';
-    var LAST_SECTION_KEY = 'procurement-playbook-last-section';
     var visitedMap = {};
     try { visitedMap = JSON.parse(storeGet(VISITED_KEY) || '{}') || {}; } catch (e) { visitedMap = {}; }
     var railProgressLabel = document.getElementById('railProgressLabel');
@@ -6129,26 +6165,9 @@ Thanks, [You]</p>
           storeSet(VISITED_KEY, JSON.stringify(visitedMap));
           updateRailProgress();
         }
-        storeSet(LAST_SECTION_KEY, entry.target.id);
       });
     }, { rootMargin: '-15% 0px -75% 0px' });
     railSections.forEach(function (section) { observer.observe(section); });
-
-    var resumeBanner = document.getElementById('resumeBanner');
-    var lastSectionId = storeGet(LAST_SECTION_KEY);
-    if (resumeBanner && lastSectionId && lastSectionId !== 'cmd') {
-      var lastLink = railLinkFor['#' + lastSectionId];
-      var lastTitleEl = lastLink ? lastLink.querySelector('span:not(.n):not(.rail-time)') : null;
-      if (lastLink && lastTitleEl) {
-        document.getElementById('resumeTitle').textContent = lastTitleEl.textContent;
-        document.getElementById('resumeLink').setAttribute('href', '#' + lastSectionId);
-        resumeBanner.hidden = false;
-      }
-    }
-    var resumeDismiss = document.getElementById('resumeDismiss');
-    var resumeLinkButton = document.getElementById('resumeLink');
-    if (resumeDismiss) resumeDismiss.addEventListener('click', function () { resumeBanner.hidden = true; });
-    if (resumeLinkButton) resumeLinkButton.addEventListener('click', function () { resumeBanner.hidden = true; });
   }
 
   // ---- Glossary live search ----
@@ -6203,17 +6222,32 @@ Thanks, [You]</p>
     (function restorePos() {
       var raw = storeGet(posKey);
       if (!raw) return;
-      try {
-        var pos = JSON.parse(raw);
-        if (pos && typeof pos.x === 'number' && typeof pos.y === 'number') placeAt(pos.x, pos.y);
-      } catch (e) {}
+      var pos;
+      try { pos = JSON.parse(raw); } catch (e) { return; }
+      if (!(pos && typeof pos.x === 'number' && typeof pos.y === 'number')) return;
+      /* A mobile browser's address bar can still be mid-collapse when this
+         script runs, so window.innerHeight briefly under-reports the real
+         viewport — placing the button against that stale height can leave
+         it clipped below the fold until something (a scroll) forces a
+         reflow. Waiting a frame lets the viewport settle first. */
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () { placeAt(pos.x, pos.y); });
+      });
     })();
 
-    window.addEventListener('resize', function () {
+    function reclamp() {
       if (!btn.style.left) return;
       var rect = btn.getBoundingClientRect();
       placeAt(rect.left, rect.top);
-    });
+    }
+    window.addEventListener('resize', reclamp);
+    /* iOS Safari's collapsing/expanding toolbar changes the visible
+       viewport without always firing window's own resize event — only
+       visualViewport reliably reports it, which is exactly the case that
+       otherwise left the button reachable only after a scroll. */
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', reclamp);
+    }
 
     var HOLD_MS = 220, MOVE_TOLERANCE = 6;
     var pressed = false, dragging = false, moved = false, holdTimer = null;
@@ -6784,11 +6818,17 @@ Thanks, [You]</p>
   function doManualRefresh() {
     if (statusEl) statusEl.textContent = 'Checking…';
     if ('serviceWorker' in navigator && navigator.serviceWorker.getRegistration) {
-      navigator.serviceWorker.getRegistration().then(function (reg) {
-        return reg ? reg.update().catch(function () {}) : null;
-      }).then(function () {
-        window.location.reload();
-      }).catch(function () { window.location.reload(); });
+      /* reg.update() is supposed to bypass HTTP caching for the worker
+         script itself, but some static hosts still get in the way — a
+         plain no-store fetch first forces a truly fresh copy to compare
+         against before asking the registration to update. */
+      fetch('./sw.js', { cache: 'no-store' }).catch(function () {})
+        .then(function () { return navigator.serviceWorker.getRegistration(); })
+        .then(function (reg) {
+          return reg ? reg.update().catch(function () {}) : null;
+        }).then(function () {
+          window.location.reload();
+        }).catch(function () { window.location.reload(); });
     } else {
       window.location.reload();
     }
